@@ -1,0 +1,27 @@
+@import "variables";
+
+#rankList {
+  background-color: $white;
+  padding: 20px;
+  //min-height: calc(100vh - 75px);
+  .ui.header{
+    background-color: $lightGray;
+  }
+  .rankList{
+    th , td{
+      text-align: center;
+    }
+    .positive {
+      background-color: lighten(#21BA45,50%)!important;
+      color: darken(#21BA45,10%) !important;
+    }
+    .negative {
+      background-color: lighten(#DB2828 , 40%)!important;
+      color: darken(#DB2828,20%) !important;
+    }
+    .unknown {
+      background-color: transparent;
+      border:none !important;
+    }
+  }
+}

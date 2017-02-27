@@ -1,0 +1,43 @@
+/* Variables */
+/* COLORS */
+#teams {
+  background-color: #ffffff;
+  padding: 20px; }
+  #teams table th, #teams table td {
+    text-align: center;
+    position: relative; }
+  #teams .ui.table:first-child, #teams .ui.table:last-child {
+    margin-bottom: 15px;
+    margin-top: 15px; }
+  #teams .ui.table {
+    border: none;
+    padding: 0 !important;
+    margin: 0 !important; }
+  #teams .tablesContainer {
+    border: 2px solid #f0f0f0;
+    margin-bottom: 5px; }
+  #teams .teamName {
+    padding: 20px;
+    font-size: 1.8em;
+    background-color: #f0f0f0; }
+    #teams .teamName button {
+      position: relative;
+      left: 20px; }
+  #teams .ui.label.right {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%); }
+  #teams .ui.label.left {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%); }

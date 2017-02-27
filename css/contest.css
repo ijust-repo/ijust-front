@@ -1,0 +1,11 @@
+/* Variables */
+/* COLORS */
+#contest {
+  background-color: #ffffff;
+  padding: 20px; }
+  #contest .ui.header {
+    background-color: #f2f2f2; }
+  #contest table th, #contest table td {
+    text-align: center; }
+  #contest .centeredBtn {
+    margin-top: 20px; }

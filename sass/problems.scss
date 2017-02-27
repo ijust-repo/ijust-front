@@ -1,0 +1,44 @@
+@import "variables";
+
+#problems {
+  background-color: $white;
+  padding: 20px;
+  //min-height: calc(100vh - 75px);
+  .ui.header{
+    background-color: $lightGray;
+  }
+  table{
+    th , td{
+      text-align: center;
+    }
+  }
+  .ui.grid>.row>.ui.segment.column, .ui.grid>.ui.segment.column, .ui.page.grid.segment {
+    margin: 15px;
+  }
+  .box{
+    position: relative;
+    //padding: 5px;
+    .textContainer{
+      width: 100%;
+      position: relative;
+      //top:30%;
+      //left:50%;
+      //-webkit-transform: translate(-50%,-30%);
+      //-moz-transform: translate(-50%,-30%);
+      //-ms-transform: translate(-50%,-30%);
+      //-o-transform: translate(-50%,-30%);
+      //transform: translate(-50%,-30%);
+      //-webkit-transform: translateY(-30%);
+      //-moz-transform: translateY(-30%);
+      //-ms-transform: translateY(-30%);
+      //-o-transform: translateY(-30%);
+      //transform: translateY(-30%);
+      text-align: center;
+      margin-top: -25px;
+      font-size: 1.5em;
+    }
+    .button{
+      margin-top: 10px;
+    }
+  }
+}

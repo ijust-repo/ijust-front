@@ -1,0 +1,156 @@
+<div id="mtNotify"
+     ng-class="{show : $root.notifyDisplay , success : $root.notifyStatus , danger : !$root.notifyStatus }">
+    <div class="notify-status" style="width : 29% ; right : 0; ">
+
+        <i ng-if="$root.notifyStatus" class="fa fa-check-square-o"></i>
+        <i ng-if="!$root.notifyStatus" class="fa fa-warning"></i>
+    </div>
+    <div class="notify-msg" style="width : 69% ; right : 30% ;">
+        {{ $root.notifyMessage }}
+    </div>
+</div>
+
+
+<style>
+
+    #mtNotify div.notify-status i {
+        font-size: 32px ;
+    }
+    #mtNotify.success {
+        /*border-right : 3px solid #33CD5F ;*/
+        background-color: rgba(51,205,95,.8);
+    }
+
+    #mtNotify.danger {
+        /*border-right : 3px solid #886AEA ;*/
+        background-color: rgba(167,20,20,.7);
+    }
+    #mtNotify.show {
+        bottom: 0 ;
+    }
+
+    #mtNotify {
+        color : white ;
+        width : 20% ;
+        height : 100px ;
+        position : fixed  ;
+        background: rgba(50, 50, 50, 0.86);
+        z-index : 10000 ;
+        left : 40% ;
+        bottom : -150px  ;
+        display : inline-block ;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+
+        -webkit-transition: all .3s ease;
+        -moz-transition: all .3s ease;
+        -ms-transition: all .3s ease;
+        -o-transition: all .3s ease;
+        transition: all .3s ease;
+    }
+
+
+    div#mtNotify  div {
+        position : absolute ;
+        height : 50% ;
+        top : 39% ;
+
+    }
+
+    .notify-loader {
+        position: fixed;
+        top : 64px ;
+        z-index: 1000;
+        left : 0 ;
+        width: 100% ;
+        height : 6px ;
+        background-color: #11C1F3;
+        z-index: 1000 ;
+        border-bottom: 1px solid rgba(226, 226, 226, 0.25) ;
+        opacity: 0 ;
+
+        -webkit-transition: all .35s ease ;
+        -moz-transition: all .35s ease ;
+        -ms-transition: all .35s ease ;
+        -o-transition: all .35s ease ;
+        transition: all .35s ease ;
+    }
+
+    .notify-loader.positive { background-color: #387EF5;}
+    .notify-loader.calm { background-color: #11C1F3 ; }
+    .notify-loader.balanced { background-color: #33CD5F;}
+    .notify-loader.energized { background-color: #FFC900;}
+    .notify-loader.assertive { background-color: #EF473A;}
+    /*.notify-loader.royal { background-color: #886AEA;}*/
+    .notify-loader.royal { background-color: #4D5983 ;}
+    .notify-loader.dark { background-color: #444444;}
+
+    .notify-loader.loaderDisplay {
+        opacity: 1;
+    }
+
+    .dot {
+        position: absolute;
+        width : 8px ;
+        height : 6px ;
+        top : 0 ;
+        left : 90%  ;
+        background-color: #F8F8F8;
+    }
+
+
+    .dot1{
+        -webkit-animation: loading 3s infinite;
+        -moz-animation: loading 3s infinite;
+        -ms-animation: loading 3s infinite;
+        -o-animation: loading 3s infinite;
+        animation: loading 3s infinite;
+    }
+    .dot2{
+        -webkit-animation: loading 3s 1s infinite;
+        -moz-animation: loading 3s 1s infinite;
+        -ms-animation: loading 3s 1s infinite;
+        -o-animation: loading 3s 1s infinite;
+        animation: loading 3s 1s infinite;
+    }
+    .dot3{
+        -webkit-animation: loading 3s 1.5s infinite;
+        -moz-animation: loading 3s 1.5s infinite;
+        -ms-animation: loading 3s 1.5s infinite;
+        -o-animation: loading 3s 1.5s infinite;
+        animation: loading 3s 1.5s infinite;
+    }
+
+    .dot4{
+        -webkit-animation: loading 3s 2s infinite;
+        -moz-animation: loading 3s 2s infinite;
+        -ms-animation: loading 3s 2s infinite;
+        -o-animation: loading 3s 2s infinite;
+        animation: loading 3s 2s infinite;
+    }
+
+    @keyframes loading {
+        from { left: 0; }
+        to { left: 100% ; }
+    }
+    @-moz-keyframes loading {
+        from { left: 0; }
+        to { left: 100% ; }
+    }
+    @-webkit-keyframes loading {
+        from { left: 0; }
+        to { left: 100%; }
+    }
+    @-ms-keyframes loading {
+        from { left: 0; }
+        to { left: 100% ; }
+    }
+    @-o-keyframes loading {
+        from {
+            left: 0;
+        }
+        to {
+            left: 100% ;
+        }
+    }
+</style>

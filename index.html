@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab|Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+    <!-- Styles  -->
+    <link href="./bower_components/semantic/dist/semantic.min.css" type="text/css" rel="stylesheet">
+    <link href="bower_components/rome/dist/rome.css" type="text/css" rel="stylesheet">
+    <link href="css/defaults.css" type="text/css" rel="stylesheet">
+    <link href="css/index.css" type="text/css" rel="stylesheet">
+    <link href="css/landing.css" type="text/css" rel="stylesheet">
+    <link href="css/home.css" type="text/css" rel="stylesheet">
+    <link href="css/contest.css" type="text/css" rel="stylesheet">
+    <link href="css/rankList.css" type="text/css" rel="stylesheet">
+    <link href="css/teams.css" type="text/css" rel="stylesheet">
+    <link href="css/createContest.css" type="text/css" rel="stylesheet">
+    <link href="css/problem.css" type="text/css" rel="stylesheet">
+    <link href="css/problems.css" type="text/css" rel="stylesheet">
+    <!--<link href="bower_components/material-datepicker/css/material-datepicker.min.css" type="text/css" rel="stylesheet">-->
+
+    <!-- Lib Dependencies  -->
+    <script src="./js/Libraries/jquery-min.js"></script>
+    <script src="./js/Libraries/angular.min.js"></script>
+    <script src="./js/Libraries/angular-ui-router.min.js"></script>
+    <script src="./js/Libraries/ngStorage.min.js"></script>
+    <script src="./js/Libraries/ng-file-upload-all.min.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src='//www.google.com/recaptcha/api.js'></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
+    <script src="bower_components/rome/dist/rome.min.js"></script>
+    <!--<script src="bower_components/material-datepicker/js/material-datepicker.min.js"></script>-->
+
+    <!-- Dependency Modules  -->
+    <script src="js/Modules/UserModule/userModule.js"></script>
+    <script src="js/Modules/UserModule/UserModel.js"></script>
+    <script src="js/Modules/UserModule/UserServices.js"></script>
+
+    <script src="js/Modules/TeamModule/teamModule.js"></script>
+    <script src="js/Modules/TeamModule/TeamModel.js"></script>
+    <script src="js/Modules/TeamModule/TeamServices.js"></script>
+
+    <script src="js/Modules/ContestModule/contestModule.js"></script>
+    <script src="js/Modules/ContestModule/ContestModel.js"></script>
+    <script src="js/Modules/ContestModule/ContestServices.js"></script>
+
+    <script src="js/Modules/SubmissionModule/submissionModule.js"></script>
+    <script src="js/Modules/SubmissionModule/SubmissionModel.js"></script>
+    <script src="js/Modules/SubmissionModule/SubmissionServices.js"></script>
+
+    <!-- Independent Directives  -->
+    <script src="js/Directives/mtNotify.js"></script>
+    <script src="bower_components/semantic/dist/semantic.min.js"></script>
+
+    <!-- Main Module  -->
+    <script src="js/app.js"></script>
+
+    <!-- Global Services -->
+    <script src="js/Conf/Constants.js"></script>
+    <script src="js/Conf/Temp.js"></script>
+    <script src="js/Conf/AuthInterceptor.js"></script>
+    <script src="js/Services/AuthService.js"></script>
+
+    <!-- Controllers -->
+    <script src="js/Controllers/RootCtrl.js"></script>
+    <script src="js/Controllers/LandingCtrl.js"></script>
+    <script src="js/Controllers/HomeCtrl.js"></script>
+    <script src="js/Controllers/TeamsCtrl.js"></script>
+    <script src="js/Controllers/ContestCtrl.js"></script>
+    <script src="js/Controllers/RankListCtrl.js"></script>
+    <script src="js/Controllers/CreateContestCtrl.js"></script>
+    <script src="js/Controllers/ProblemCtrl.js"></script>
+    <script src="js/Controllers/ProblemsCtrl.js"></script>
+
+    <title>
+        iust acm judge
+    </title>
+
+</head>
+
+<body ng-app="ijust" ng-controller="RootCtrl">
+<div>
+    <!--<div class="loading" ng-show="$root.notifyLoader">-->
+    <!--</div>-->
+    <main id="main">
+        <div class="ui medium pointing menu" id="mainMenu">
+            <div class="item">
+                <img src="/img/noText.png">
+            </div>
+            <a class="item" ui-sref="/" ui-sref-active="active">
+                Home
+            </a>
+            <a class="item" ui-sref="teams" ui-sref-active="active">
+                my Teams
+            </a>
+            <a class="item" ui-sref="create_contest" ui-sref-active="active">
+                Create Contest
+            </a>
+            <a class="item">
+                <div class="ui teal button " id="createTeam">Create Team</div>
+            </a>
+            <div class="right menu">
+                <a class="item" ui-sref="profile" ui-sref-active="active">
+                    Profile
+                </a>
+                <div class="item">
+                    <div class="ui red button" ng-click="logOut()">Log Out</div>
+                </div>
+            </div>
+        </div>
+
+        <form class="ui form small modal createTeamModal">
+            <i class="close icon"></i>
+            <div class="header">
+                Create Team
+            </div>
+            <div class="content">
+                <div class="field noRadius">
+                    <label>Team Name</label>
+                    <div class="ui corner labeled input">
+                        <input type="text" placeholder="enter your team name" ng-model="newTeamInfo.name">
+                        <div class="ui corner label">
+                            <i class="asterisk icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Member 1</label>
+                    <div class="ui labeled input">
+                        <input type="text" placeholder="first member is optional" ng-model="newTeamInfo.members[0]">
+                        <!--<div class="ui corner label">-->
+                            <!--<i class="asterisk icon"></i>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Member2</label>
+                    <div class="ui labeled input">
+                        <input type="text" placeholder="second member is optional" ng-model="newTeamInfo.members[1]">
+                    </div>
+                </div>
+                <div class="ui negative message" ng-show="showCreateTeamError">
+                    <!--<i class="close icon"></i>-->
+                    <div class="header" style="text-align: center">
+                        {{createTeamError}}
+                    </div>
+                </div>
+                <div class="ui positive message" ng-show="showCreateTeamSuccess">
+                    <!--<i class="close icon"></i>-->
+                    <div class="header" style="text-align: center">
+                        {{createTeamSuccess}}
+                    </div>
+                </div>
+            </div>
+            <div class="actions">
+                <!--<div class="ui black deny button">-->
+                    <!--Nope-->
+                <!--</div>-->
+                <!--<div class="ui positive right labeled icon button">-->
+                    <!--Yep, that's me-->
+                    <!--<i class="checkmark icon"></i>-->
+                <!--</div>-->
+                <button class="ui green centeredBtn button" ng-click="createTeam()">submit</button>
+            </div>
+        </form>
+        <div>
+            <!--<mt-notify></mt-notify>-->
+            <div ui-view></div>
+        </div>
+        <div class="backgroundImage">
+        </div>
+    </main>
+</div>
+</body>
+</html>

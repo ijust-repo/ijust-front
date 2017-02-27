@@ -1,0 +1,54 @@
+@import "variables";
+
+#problem {
+  background-color: $white;
+  padding: 20px;
+  //min-height: calc(100vh - 75px);
+  .ui.header{
+    background-color: $lightGray;
+    font-family: 'yekan';
+  }
+  table{
+    th , td{
+      text-align: center;
+    }
+    td{
+      position: relative;
+    }
+  }
+  .body{
+    direction: rtl;
+    text-align: justify;
+    font-size: 1.1em;
+    word-spacing: 4px;
+    font-family: 'yekan';
+    padding: {
+      right: 30px;
+      left: 30px;
+    };
+    p{
+      line-height: 30px;
+    }
+  }
+  .pre{
+    white-space:pre ;
+    //&.output {
+    //  position: absolute;
+    //  top: 0;
+    //  left:50%;
+    //  -webkit-transform: translateX(-50%);
+    //  -moz-transform: translateX(-50%);
+    //  -ms-transform: translateX(-50%);
+    //  -o-transform: translateX(-50%);
+    //  transform: translateX(-50%);
+    //}
+  }
+  input[type="file"]{
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+}

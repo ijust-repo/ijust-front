@@ -1,0 +1,28 @@
+@import "variables";
+#home{
+  .ui.header{
+    background-color: $lightGray;
+  }
+  .centeredBtn{
+    position: relative;
+    left:50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  &.ui.container {
+    background-color: $white;
+    padding: 20px;
+    min-height: calc(100vh - 75px)
+  }
+  table{
+    th , td{
+      text-align: center;
+    }
+  }
+  .selectable {
+    cursor: pointer;
+  }
+}

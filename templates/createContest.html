@@ -1,0 +1,40 @@
+<div class="ui container" id="createContest">
+    <!--<div class="ui active inverted dimmer" ng-show="$root.notifyLoader">-->
+        <!--<div class="ui text massive loader">Loading</div>-->
+    <!--</div>-->
+    <h3 class="ui top attached header centered">
+        Create Contest
+    </h3>
+    <div class="ui attached otherContests segment">
+        <div class="ui form">
+            <div class="three fields">
+                <div class="field">
+                    <label>Contest Name</label>
+                    <input type="text" placeholder="Contest Name" ng-model="contestInfo.name">
+                </div>
+                <div class="field">
+                    <label>Start Date and Time</label>
+                    <input type="text" placeholder="Starts on" ng-bind="contestInfo.starts_on" id="start">
+                </div>
+                <div class="field">
+                    <label>End Date and Time</label>
+                    <input type="text" placeholder="Ends on" ng-bind="contestInfo.ends_on" id="end">
+                </div>
+            </div>
+            <button class="ui positive button centeredBtn" type="submit" ng-click="create()" ng-show="!buttonLoader">create</button>
+            <button class="ui positive loading button centeredBtn" type="submit" ng-click="create()" ng-show="buttonLoader">create</button>
+            <div class="ui positive message" ng-show="showSuccessMsg">
+                <!--<i class="close icon"></i>-->
+                <div class="header" style="text-align: center">
+                    {{successMsg}}
+                </div>
+            </div>
+            <div class="ui negative message" ng-show="showErrorMsg">
+                <!--<i class="close icon"></i>-->
+                <div class="header" style="text-align: center">
+                    {{errorMsg}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+/* Variables */
+/* COLORS */
+#home .ui.header {
+  background-color: #f2f2f2; }
+
+#home .centeredBtn {
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%); }
+
+#home.ui.container {
+  background-color: #ffffff;
+  padding: 20px;
+  min-height: calc(100vh - 75px); }
+
+#home table th, #home table td {
+  text-align: center; }
+
+#home .selectable {
+  cursor: pointer; }

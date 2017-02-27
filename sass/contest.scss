@@ -1,0 +1,18 @@
+@import "variables";
+
+#contest {
+    background-color: $white;
+    padding: 20px;
+    //min-height: calc(100vh - 75px);
+    .ui.header{
+        background-color: $lightGray;
+    }
+    table{
+        th , td{
+            text-align: center;
+        }
+    }
+    .centeredBtn {
+        margin-top: 20px;
+    }
+}

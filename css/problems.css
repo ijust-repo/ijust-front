@@ -1,0 +1,21 @@
+/* Variables */
+/* COLORS */
+#problems {
+  background-color: #ffffff;
+  padding: 20px; }
+  #problems .ui.header {
+    background-color: #f2f2f2; }
+  #problems table th, #problems table td {
+    text-align: center; }
+  #problems .ui.grid > .row > .ui.segment.column, #problems .ui.grid > .ui.segment.column, #problems .ui.page.grid.segment {
+    margin: 15px; }
+  #problems .box {
+    position: relative; }
+    #problems .box .textContainer {
+      width: 100%;
+      position: relative;
+      text-align: center;
+      margin-top: -25px;
+      font-size: 1.5em; }
+    #problems .box .button {
+      margin-top: 10px; }

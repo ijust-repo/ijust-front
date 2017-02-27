@@ -1,0 +1,9 @@
+@import "variables";
+
+#createContest {
+  background-color: $white;
+  padding: 20px;
+  .ui.header{
+    background-color: $lightGray;
+  }
+}

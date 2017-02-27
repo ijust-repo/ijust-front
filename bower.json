@@ -1,0 +1,25 @@
+{
+  "name": "ijust",
+  "authors": [
+    "Amirmohammad.moradi@gmail.com <Amirmohammad.moradi@gmail.com>"
+  ],
+  "description": "iust acm judge",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "http://ijust.ir/",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "semantic": "semantic-ui#^2.2.4",
+    "angular" : "1.4.9",
+    "jquery" : "3.1.1",
+    "angular-cookies": "1.4.9",
+    "rome": "^2.1.22",
+    "moment": "^2.15.1"
+  }
+}

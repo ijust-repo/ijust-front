@@ -1,0 +1,147 @@
+<div class="ui container" id="contest">
+    <div class="ui active inverted dimmer" ng-show="$root.notifyLoader">
+        <div class="ui text massive loader">Loading</div>
+    </div>
+    <!--<div class="ui one column centered grid labeled icon massive menu" style="position: relative" ng-show="isOwner || isJoined">-->
+    <div class="ui one column centered grid labeled icon massive menu" style="position: relative" ng-show="isOwner || isJoined">
+            <a class="item" style="border-left: 1px solid rgba(34,36,38,.1);"
+               ui-sref="problems({contestId:contestId , teamId:teamId})">
+                <i class="copy icon"></i>
+                Problems
+            </a>
+            <a class="item" ui-sref="rank_list({contestName : contestName})">
+                <i class="ordered list icon"></i>
+                Rank List
+            </a>
+            <a class="item" ui-sref="submitted({contestName : contestName})" ng-show="isJoined">
+                <i class="browser icon"></i>
+                Submits
+            </a>
+            <a class="item teamButton" ng-show="isOwner">
+                <i class="users icon"></i>
+                <div class="floating ui orange label">{{pendingTeamsNumber}}</div>
+                Teams
+            </a>
+        <!--<div style="position: absolute ; right: 0;">-->
+            <!--<div class="item" style="border-left: 1px solid rgba(34,36,38,.1);">-->
+                <!--<i class="hourglass half icon"></i>-->
+                <!--00:00:00-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+    <h3 class="ui top attached header centered">
+        Info
+    </h3>
+    <div class="ui attached thisContest segment">
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Admin</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <!--<th></th>-->
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{contestInfo.name}}</td>
+                <td>{{contestInfo.owner.username}}</td>
+                <td>{{contestInfo.starts_on}}</td>
+                <td>
+                    <span>{{contestInfo.ends_on}}</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="ui two column centered grid">
+        <div class="ui column">
+            <button class="ui blue button centeredBtn" ng-show="isOwner">Edit Information</button>
+            <!--<button class="ui blue button centeredBtn" ng-show="!isOwner && !isJoined">Join Contest</button>-->
+            <div class="ui dropdown blue button teamDropDown centeredBtn"
+                 style="height: 39px;padding: 13px"
+                 ng-show="!isOwner && !isJoined"
+                 data-tooltip="select your team to join this contest"
+                data-inverted="">
+                <div class="text">Join Contest</div>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <div class="item" ng-repeat="team in myTeams" ng-click="join(team.name)">{{team.name}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui positive message" ng-show="showSuccessJoinMsg">
+        <!--<i class="close icon"></i>-->
+        <div class="header" style="text-align: center">
+            {{successJoinMsg}}
+        </div>
+    </div>
+    <div class="ui negative message" ng-show="showErrorJoinMsg">
+        <!--<i class="close icon"></i>-->
+        <div class="header" style="text-align: center">
+            {{errorJoinMsg}}
+        </div>
+    </div>
+    <!--<div class="ui two column centered grid">-->
+        <!--<div class="ui column">-->
+            <!--<select ng-options="t as team.name for team in myTeams" ng-model="teamName" ng-change="join()">-->
+                <!--<option value="" disabled selected>Select Your Team</option>-->
+            <!--</select>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="ui pendingTeams modal">
+        <i class="close icon"></i>
+        <div class="header">
+            Teams Requests to Join Contest
+        </div>
+        <div class="content">
+            <!--<div class="ui active dimmer" ng-show="isShowPendingLoading">-->
+                <!--<div class="ui massive loader"></div>-->
+            <!--</div>-->
+            <div class="ui negative message" ng-if="pendingTeamsNumber == 0">
+                <div class="header" style="text-align: center">
+                    No Team's Request to Join
+                </div>
+            </div>
+            <table class="ui celled table" ng-if="pendingTeamsNumber != 0">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Admin</th>
+                    <th>Members</th>
+                    <th>Action</th>
+                    <!--<th></th>-->
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="pt in pendingTeams">
+                    <td>{{pt.name}}</td>
+                    <td>{{pt.owner.username}}</td>
+                    <td ng-repeat="m in pt.members">
+                        <span class="ui label">{{m.username}}</span>
+                    </td>
+                    <td>
+                        <div class="ui buttons">
+                            <button class="ui green button" ng-click="acceptJoinRequest(pt.id)">Accept</button>
+                            <div class="or"></div>
+                            <button class="ui red button" ng-click="rejectJoinRequest(pt.id)">Reject</button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="ui success message" ng-show="successJoinTeam">
+                <div class="header">
+                    team joined successfully.
+                </div>
+            </div>
+            <div class="ui error message" ng-show="rejectJoinTeam">
+                <div class="header">
+                    team rejected successfully.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

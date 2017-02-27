@@ -1,0 +1,48 @@
+/* Variables */
+/* COLORS */
+#landing {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-top: 35px; }
+  #landing #container {
+    position: relative;
+    z-index: +10; }
+  #landing .openSans {
+    font-family: 'Open Sans', sans-serif; }
+  #landing .josefinSlab {
+    font-family: 'Josefin Slab', serif; }
+  #landing .centeredTextContainer {
+    width: 100%; }
+    #landing .centeredTextContainer .centeredText {
+      text-align: center; }
+  #landing #justTitle {
+    margin-top: 10px;
+    margin-bottom: 10px; }
+  #landing .segment {
+    padding-top: 30px;
+    padding-right: 40px;
+    padding-left: 40px; }
+  #landing #signUpBox {
+    margin-top: 0; }
+    #landing #signUpBox .ui.middle.aligned.center.aligned.grid.column {
+      padding-top: 0; }
+    #landing #signUpBox #passField, #landing #signUpBox #emailField {
+      padding-left: 0;
+      padding-right: 5px; }
+    #landing #signUpBox #rePassField, #landing #signUpBox #usernameField {
+      padding-left: 5px;
+      padding-right: 0; }
+    #landing #signUpBox #emailField, #landing #signUpBox #usernameField {
+      padding-bottom: 0;
+      margin-bottom: 0; }
+    #landing #signUpBox .g-recaptcha {
+      margin-bottom: 10px; }
+      #landing #signUpBox .g-recaptcha > div {
+        position: relative;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%); }

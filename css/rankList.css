@@ -1,0 +1,18 @@
+/* Variables */
+/* COLORS */
+#rankList {
+  background-color: #ffffff;
+  padding: 20px; }
+  #rankList .ui.header {
+    background-color: #f2f2f2; }
+  #rankList .rankList th, #rankList .rankList td {
+    text-align: center; }
+  #rankList .rankList .positive {
+    background-color: #e0fae6 !important;
+    color: #198f35 !important; }
+  #rankList .rankList .negative {
+    background-color: #f8d7d7 !important;
+    color: #861717 !important; }
+  #rankList .rankList .unknown {
+    background-color: transparent;
+    border: none !important; }

@@ -1,0 +1,1 @@
+var contestModule = angular.module('contestModule' , []);

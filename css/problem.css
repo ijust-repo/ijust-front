@@ -1,0 +1,31 @@
+/* Variables */
+/* COLORS */
+#problem {
+  background-color: #ffffff;
+  padding: 20px; }
+  #problem .ui.header {
+    background-color: #f2f2f2;
+    font-family: 'yekan'; }
+  #problem table th, #problem table td {
+    text-align: center; }
+  #problem table td {
+    position: relative; }
+  #problem .body {
+    direction: rtl;
+    text-align: justify;
+    font-size: 1.1em;
+    word-spacing: 4px;
+    font-family: 'yekan';
+    padding-right: 30px;
+    padding-left: 30px; }
+    #problem .body p {
+      line-height: 30px; }
+  #problem .pre {
+    white-space: pre; }
+  #problem input[type="file"] {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1; }

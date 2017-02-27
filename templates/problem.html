@@ -1,0 +1,149 @@
+<div class="ui container" id="problem">
+    <div class="ui active inverted dimmer" ng-show="$root.notifyLoader">
+        <div class="ui text massive loader">Loading</div>
+    </div>
+    <div class="ui one column centered grid labeled icon pointing massive menu" style="position: relative">
+        <div style="position: absolute ; left: 0;">
+            <a class="item" style="border-left: 1px solid rgba(34,36,38,.1);"
+               ui-sref="contest({contestName:contestName})">
+                <i class="backward icon"></i>
+                Back
+            </a>
+        </div>
+        <a class="item" style="border-left: 1px solid rgba(34,36,38,.1);" ui-sref="problems({contestId:contestId , teamId:teamId})">
+            <i class="copy icon"></i>
+            Problems
+        </a>
+        <a class="rankListButton item" ui-sref="rank_list({contestName : contestName})">
+            <i class="ordered list icon"></i>
+            Rank List
+        </a>
+        <a class="item" ui-sref="submitted({contestName : contestName})" ng-show="isJoined">
+            <i class="browser icon"></i>
+            Submits
+        </a>
+        <a class="item teamButton" ng-show="isOwner">
+            <i class="users icon"></i>
+            <div class="floating ui orange label">{{pendingTeamsNumber}}</div>
+            Teams
+        </a>
+        <!--<div style="position: absolute ; right: 0;">-->
+            <!--<div class="item" style="border-left: 1px solid rgba(34,36,38,.1);">-->
+                <!--<i class="hourglass half icon"></i>-->
+                <!--00:00:00-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+    <h3 class="ui top attached header centered">
+        {{problemInfo.order}}-{{problemInfo.title}}
+    </h3>
+    <div class="ui attached rankList segment">
+        <table class="ui celled table">
+            <thead>
+                <tr>
+                    <th>Time Limit</th>
+                    <th>Space Limit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{problemInfo.time_limit}} ms</td>
+                    <td>{{problemInfo.space_limit}} kb</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="ui segment body">
+            <p>
+                {{problemInfo.body}}
+            </p>
+        </div>
+        <table class="ui celled table" ng-repeat="t in problemInfo.testcases">
+            <thead>
+                <tr>
+                    <th>Input Test</th>
+                    <th>Output Test</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="pre input">{{t.input}}</td>
+                    <td class="pre output">{{t.output}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <!--<button class="ui blue button" type="file" ngf-select="uploadFiles($file, $invalidFiles)">upload</button>-->
+        <div class="ui segment grid container">
+            <div class="three column row">
+                <div class="column">
+                    <div class="ui dropdown blue button fileTypesDropDown centeredBtn"
+                         style="height: 37px;padding: 11px">
+                        <div class="text">File Type</div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item" ng-repeat="ft in fileTypes" ng-click="getFileType(ft)">{{ft}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <input class="" type="file" id="file" name="file"/>
+                    <label class="ui blue button centeredBtn" for="file">Upload</label>
+                </div>
+                <div class="column">
+                    <button class="ui positive button centeredBtn" ng-click="upload()">Submit</button>
+                </div>
+            </div>
+        </div>
+        <div class="ui icon message centeredBtn " style="max-width: 400px" ng-show="isCompile">
+            <i class="notched circle loading icon"></i>
+            <div class="content">
+                <div class="header">
+                    Go To Submits
+                </div>
+                <p>your code is compiling now.</p>
+            </div>
+        </div>
+    </div>
+    <div class="ui pendingTeams modal">
+        <i class="close icon"></i>
+        <div class="header">
+            Teams Requests to Join Contest
+        </div>
+        <div class="content">
+            <!--<div class="ui active dimmer" ng-show="isShowPendingLoading">-->
+            <!--<div class="ui massive loader"></div>-->
+            <!--</div>-->
+            <div class="ui negative message" ng-if="pendingTeamsNumber == 0">
+                <div class="header" style="text-align: center">
+                    No Team's Request to Join
+                </div>
+            </div>
+            <table class="ui celled table" ng-if="pendingTeamsNumber != 0">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Admin</th>
+                    <th>Members</th>
+                    <th>Action</th>
+                    <!--<th></th>-->
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="pt in pendingTeams">
+                    <td>{{pt.name}}</td>
+                    <td>{{pt.owner.username}}</td>
+                    <td ng-repeat="m in pt.members">
+                        <span class="ui label">{{m.username}}</span>
+                    </td>
+                    <td>
+                        <div class="ui buttons">
+                            <button class="ui green button" ng-click="acceptJoinRequest(pt.id)">Accept</button>
+                            <div class="or"></div>
+                            <button class="ui red button" ng-click="rejectJoinRequest(pt.id)">Reject</button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

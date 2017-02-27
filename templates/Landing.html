@@ -1,0 +1,113 @@
+<div id="landing">
+    <img class="ui centered small image" src="/img/iust.png">
+    <div class="centeredVertically" id="container">
+        <div class="centeredTextContainer" id="justTitle">
+            <h2 class="centeredText">
+                <span class="ui big header josefinSlab">welcome to</span>
+                <span class="ui big header openSans blue" data-tooltip="Iran University of Science and Technology "
+                      data-position="top center">I.U.S.T</span>
+                <span class="ui big header josefinSlab">programming contest</span>
+                <span class="ui big header josefinSlab orange">Judge</span>
+            </h2>
+        </div>
+        <div class="ui two column centered grid" ng-show="isLoginBoxShow">
+            <div class="ui middle aligned center aligned grid column">
+                <div class="column">
+                    <form class="ui large form" ng-submit="login()">
+                        <div class="ui tall stacked segment">
+                            <div class="field">
+                                <div class="ui left icon input">
+                                    <i class="user icon"></i>
+                                    <input type="text" name="email" placeholder="Username"
+                                           ng-model="LoginInfo.username">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui left icon input">
+                                    <i class="lock icon"></i>
+                                    <input type="password" name="password" placeholder="Password"
+                                           ng-model="LoginInfo.password">
+                                </div>
+                            </div>
+                            <div class="ui buttons">
+                                <button ng-show="!$root.notifyLoader" type="submit" class="ui positive button">login
+                                </button>
+                                <button ng-show="$root.notifyLoader" class="ui loading positive button">login</button>
+                                <div class="or"></div>
+                                <div class="ui button" ng-click="showSignUpBox()">sign up</div>
+                            </div>
+                        </div>
+
+                        <div ng-show="$root.notifyDisplay" class="ui error visible message">
+                            <i class="close icon" ng-click="$root.hideNotify()"></i>
+                            <div>
+                                {{ $root.notifyMessage }}
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <div class="ui message">
+                        Forgot Password? <a href="#">Recover your Password</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui two column centered grid" ng-show="isSignUpBoxShow" id="signUpBox">
+            <div class="ui middle aligned center aligned grid column">
+                <div class="column">
+                    <form class="ui large form" ng-submit="signUp()">
+                        <div class="ui tall stacked segment">
+                            <div class="ui grid container">
+                                <div class="field eight wide column" id="emailField">
+                                    <div class="ui left icon input">
+                                        <i class="at icon"></i>
+                                        <input type="email" name="email" placeholder="E-mail"
+                                               ng-model="signUpInfo.email">
+                                    </div>
+                                </div>
+                                <div class="field eight wide column" id="usernameField">
+                                    <div class="ui left icon input">
+                                        <i class="user icon"></i>
+                                        <input type="text" name="signUp-username" placeholder="Username"
+                                               ng-model="signUpInfo.username">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui grid container">
+                                <div class="field eight wide column" id="passField">
+                                    <div class="ui left icon input">
+                                        <i class="lock icon"></i>
+                                        <input type="password" name="signUp-password" placeholder="Password"
+                                               ng-model="signUpInfo.password">
+                                    </div>
+                                </div>
+                                <div class="field eight wide column" id="rePassField">
+                                    <div class="ui left icon input">
+                                        <i class="lock icon"></i>
+                                        <input type="password" name="re-password" placeholder="confirm Password"
+                                               ng-model="confirmPassword">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="g-recaptcha" ng-model="signUpInfo.recaptcha" data-sitekey=6LeY_BMTAAAAAE-E_uPAGHoiCVPR1wKUwStnXXpW></div>
+                            <div class="ui buttons">
+                                <button ng-show="!$root.notifyLoader" type="submit" class="ui positive button">sign up
+                                </button>
+                                <button ng-show="$root.notifyLoader" class="ui loading positive button">sign up</button>
+                                <div class="or"></div>
+                                <div class="ui button" ng-click="showLoginBox()">login</div>
+                            </div>
+                        </div>
+                        <div ng-show="$root.notifyDisplay" class="ui error visible message">
+                            <i class="close icon" ng-click="$root.hideNotify()"></i>
+                            <div>
+                                {{ $root.notifyMessage }}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
