@@ -38,7 +38,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="contest in contestsList.joined_contests" ui-sref="contest({contestName : contest.name})">
+            <tr ng-repeat="contest in contestsList.joined_contests" ui-sref="contest({contestId : contest.id})">
                 <td>{{contest.name}}</td>
                 <td>{{contest.owner.username}}</td>
                 <td>{{$parent.getDate(contest.starts_at)}}</td>
@@ -68,7 +68,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="contest in contestsList.waiting_contests" ui-sref="contest({contestName : contest.name})">
+            <tr ng-repeat="contest in contestsList.waiting_contests" ui-sref="contest({contestId : contest.id})">
                 <td>{{contest.name}}</td>
                 <td>{{contest.owner.username}}</td>
                 <td>{{$parent.getDate(contest.starts_at)}}</td>

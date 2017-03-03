@@ -4,7 +4,7 @@
     </div>
     <div class="ui one column centered grid labeled icon massive menu" style="position: relative">
         <a class="item" style="border-left: 1px solid rgba(34,36,38,.1);"
-           ng-if="$root.isAdmin||$root.isOwner||$root.isJoined==2"
+           ng-if="$root.isAdmin||$root.isOwner||($root.isJoined==2 && $root.contestInfo.is_active)"
            ui-sref="problems({contestId:contestId , teamId:teamId})">
             <i class="copy icon"></i>
             Problems
