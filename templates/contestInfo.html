@@ -1,0 +1,60 @@
+<div id="contestInfo">
+    <h3 class="ui top attached header centered">
+        Contest Info
+    </h3>
+    <div class="ui attached thisContest loading segment">
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Admin</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <!--<th></th>-->
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{contestInfo.name}}</td>
+                <td>{{contestInfo.owner.username}}</td>
+                <td>{{$parent.getDate(contestInfo.starts_at)}}</td>
+                <td>
+                    <span>{{$parent.getDate(contestInfo.ends_at)}}</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="ui two column centered grid">
+            <div class="ui column">
+                <button class="ui blue button centeredBtn" ng-show="isOwner && isAdmin">Edit Information</button>
+                <div class="ui dropdown blue button teamDropDown centeredBtn"
+                     style="height: 39px;padding: 13px"
+                     ng-show="!isOwner && !isJoined"
+                     data-tooltip="select your team to join this contest"
+                     data-inverted="">
+                    <div class="text">Join Contest</div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <div class="item" ng-repeat="team in $root.myTeams" ng-click="join(team.id)">{{team.name}}</div>
+                    </div>
+                    <!--<span ng-repeat="team in $root.myTeams">{{team.name}}</span>-->
+                </div>
+            </div>
+        </div>
+        <div class="ui info message" ng-show="isJoined==1">
+            <div class="header" style="text-align: center">
+                Your Request is Pending ...
+            </div>
+        </div>
+        <div class="ui positive message" ng-show="showSuccessJoinMsg">
+            <div class="header" style="text-align: center">
+                {{successJoinMsg}}
+            </div>
+        </div>
+        <div class="ui negative message" ng-show="showErrorJoinMsg">
+            <div class="header" style="text-align: center">
+                {{errorJoinMsg}}
+            </div>
+        </div>
+    </div>
+</div>

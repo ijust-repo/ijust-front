@@ -354,6 +354,16 @@ var ContestModel = function ($http, Constants) {
 
     };
 
+    var getPendingTeams = function (contestId, callback) {
+        $http.get(Constants.server + Constants.version + 'contest/' + contestId + '/pending_teams')
+            .success(function (data , status) {
+                callback(data,true);
+            })
+            .error(function (data, status) {
+                callback(data,false);
+            })
+    };
+
     var teamGetList = function (contestId, callback) {
         $http.get(Constants.server + Constants.version + 'contest/' + contestId + '/team')
             .success(function (data, status) {
@@ -375,7 +385,7 @@ var ContestModel = function ($http, Constants) {
     };
 
     var teamJoin = function (contestId, JSON, callback) {
-        $http.post(Constants.server + Constants.version + 'contest/' + contestId + '/team')
+        $http.post(Constants.server + Constants.version + 'contest/' + contestId + '/team' , JSON)
             .success(function (data, status) {
                 callback(data, true);
             })
@@ -394,7 +404,7 @@ var ContestModel = function ($http, Constants) {
                 } else {
                     msg = "خطای ناشناخته"
                 }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -478,6 +488,7 @@ var ContestModel = function ($http, Constants) {
         getProblemInfo:getProblemInfo,
         editProblem:editProblem,
         problemDownloadBody:problemDownloadBody,
+        getPendingTeams:getPendingTeams,
         teamGetList: teamGetList,
         teamJoin: teamJoin,
         teamUnJoin: teamUnJoin,

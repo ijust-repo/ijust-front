@@ -20,9 +20,14 @@ var ijust = angular.module("ijust",
                 controller : 'TeamCtrl'
             })
             .state('contest' , {
-                url : '/contest/:contestName' ,
+                url : '/contest/:contestId' ,
                 templateUrl: '/templates/contest.html' ,
                 controller : 'ContestCtrl'
+            })
+            .state('contest.info' , {
+                url : '/info' ,
+                templateUrl: '/templates/contestInfo.html' ,
+                controller : 'ContestInfoCtrl'
             })
             .state('rank_list' , {
                 url : '/contest/:contestName/rank_list' ,

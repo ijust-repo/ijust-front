@@ -45,7 +45,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="contest in contestsList" ui-sref="contest({contestName : contest.name})">
+            <tr ng-repeat="contest in contestsList" ui-sref="contest({contestId : contest.id})">
                 <td>{{contest.name}}</td>
                 <td>{{contest.owner.username}}</td>
                 <td>{{$parent.getDate(contest.starts_at)}}</td>
@@ -80,7 +80,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="contest in ownedContests" ui-sref="contest({contestName : contest.name})">
+            <tr ng-repeat="contest in ownedContests" ui-sref="contest({contestId : contest.id})">
                 <td>{{contest.name}}</td>
                 <td>{{contest.owner.username}}</td>
                 <td>{{$parent.getDate(contest.starts_at)}}</td>
@@ -114,15 +114,15 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="contest in adminContests" ui-sref="contest({contestName : contest.name})">
-                <td>{{contest.name}}</td>
-                <td>{{contest.owner.username}}</td>
-                <td>{{$parent.getDate(contest.starts_at)}}</td>
-                <td>{{$parent.getDate(contest.ends_at)}}</td>
-                <td ng-if="contest.is_active">
+            <tr ng-repeat="ac in adminContests" ui-sref="contest({contestId : ac.id})">
+                <td>{{ac.name}}</td>
+                <td>{{ac.owner.username}}</td>
+                <td>{{$parent.getDate(ac.starts_at)}}</td>
+                <td>{{$parent.getDate(ac.ends_at)}}</td>
+                <td ng-if="ac.is_active">
                     <i class="large green checkmark icon"></i>
                 </td>
-                <td ng-if="!contest.is_active">
+                <td ng-if="!ac.is_active">
                     <i class="large red close icon"></i>
                 </td>
             </tr>

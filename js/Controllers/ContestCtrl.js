@@ -1,112 +1,67 @@
-var ContestCtrl = function ($scope , mtNotifyService , $stateParams , Temp ,
+var ContestCtrl = function ($scope , mtNotifyService , $stateParams , $location ,
                                 ContestModel , UserModel , TeamModel , $rootScope) {
 
     $rootScope.notifyLoader = true;
-
-    $scope.contestName = $stateParams.contestName ;
-    Temp.contestName = $stateParams.contestName ;
-    $scope.contestInfo = {} ;
+    $scope.pendingTeamsNumber = 0 ;
+    $rootScope.contestId = $stateParams.contestId ;
+    $rootScope.contestInfo = {} ;
     $scope.isShowPendingLoading = false ;
-
     $scope.successJoinTeam = false ;
     $scope.rejectJoinTeam = false ;
 
     // user states on the contest
-    $scope.isJoined = false ;
-    $scope.isOwner = false ;
-    $scope.isNew = false ;
-    
-    //by default
-    Temp.userState = "new" ;
+    $rootScope.isJoined = 0 ;
+    $rootScope.isOwner = false ;
+    $rootScope.isAdmin = false ;
+    $rootScope.isNew = false ;
+    $rootScope.problemShow = false ;
 
     // to join
-    $scope.myTeams = {};
+    $scope.myTeams = [];
+    $scope.pendingTeams={};
     $scope.showSuccessJoinMsg = false ;
     $scope.showErrorJoinMsg = false ;
 
-    ContestModel.getContestInfoByName($scope.contestName , function (data , status) {
-        if(status){
-            $scope.contestInfo = data ;
-            $scope.contestId = data.id ;
-            Temp.contestId = data.id ;
-            $rootScope.contestId = $scope.contestId ;
-            UserModel.getUserProfile(function (data , status) {
-                if(status){
-                    $scope.username = data.username ;
-                    $scope.userId = data.id ;
-                    Temp.userId = data.id ;
-                    $rootScope.userId=data.id ;
-                    UserModel.getUserTeams($scope.userId , function (data , status) {
-                        $scope.myTeams = data.teams ;
-                        for (var i=0 ; i < data.teams.length ; i++ ){
-                            for(var j=0 ; j<data.teams[i].contests.length ; j++){
-                                Temp.joinedContests.push(data.teams[i].contests[j].name) ;
-                                if (data.teams[i].contests[j].name == $scope.contestName){
-                                    // $scope.teamName = data.teams[i].name ;
-                                    $scope.teamId = data.teams[i].id ;
-                                }
-                            }
-                        }
-                        if($.inArray(Temp.contestName, Temp.joinedContests) > -1){
-                            $scope.isJoined = true ;
-                            Temp.userState = "joined" ;
-                        }
-                    });
-                    if($scope.contestInfo.owner.username == $scope.username){
-                        Temp.userState = "owner";
-                        $scope.teamId = 'dudeAdmin' ;
-                        ContestModel.getPendingTeams($scope.contestId , function (data , status) {
-                            if(status){
-                                $scope.pendingTeamsNumber = data.teams.length ;
-                                $scope.isOwner = true ;
-                                $scope.pendingTeams = data.teams ;
-                                $rootScope.notifyLoader = false;
-                            }
-                            else {
-                                $rootScope.notifyLoader = false;
-                            }
-                        });
-                    }
-                    else {
-                        $rootScope.notifyLoader = false;
-                    }
-                }
-            });
-            $scope.join = function (teamName) {
-                var JSON = {
-                    contest_id : $scope.contestId ,
-                    team_name : teamName
-                };
-                TeamModel.joinRequest(JSON , function (data , status) {
-                    if(status){
-                        $scope.showSuccessJoinMsg = true ;
-                        $scope.showErrorJoinMsg = false ;
-                        $scope.successJoinMsg = "Your Join Request is Pending , wait for Contest's Admin to Accept."
-                    }
-                    else{
-                        $scope.showErrorJoinMsg = true ;
-                        $scope.showSuccessJoinMsg = false ;
-                        $scope.errorJoinMsg = data.errors ;
-                    }
-                } )
-            };
-            // $('.thisContest').removeClass('loading');
+    var infoPath = "/contest/"+$rootScope.contestId+"/info";
+    $location.path(infoPath);
+
+    ContestModel.getContestInfoById($rootScope.contestId , function (data, status) {
+        if (status){
+            console.log(data);
+            $rootScope.contestInfo = data ;
+            $rootScope.isOwner = data.is_owner ;
+            $rootScope.isAdmin = data.is_admin ;
+            $rootScope.isJoined = data.joining_status.status;
+            $rootScope.notifyLoader = false;
+            $('.thisContest').removeClass('loading');
         }
-        else{
-            //nth
+    });
+
+    TeamModel.getMyTeams(function (data, status) {
+        if(status){
+            $rootScope.myTeams=data.owner_teams;
+            console.log($rootScope.myTeams)
+        }
+    });
+
+    ContestModel.getPendingTeams($rootScope.contestId,function (data, status) {
+        if (status){
+            $scope.pendingTeams=data.pending_teams;
+            $scope.pendingTeamsNumber = $scope.pendingTeams.length;
+            console.log(data);
         }
     });
 
     $scope.acceptJoinRequest = function (teamId) {
         // $scope.isShowPendingLoading= true ;
         $rootScope.notifyLoader = true ;
-        ContestModel.acceptOrRejectJoinRequest( $rootScope.contestId, teamId , ({ "acceptation" : true }) , function (data , status) {
+        ContestModel.teamAccept( $rootScope.contestId, teamId ,  function (data , status) {
             if(status){
                 ContestModel.getPendingTeams($rootScope.contestId , function (data , status) {
                     if(status){
-                        $scope.pendingTeamsNumber = data.teams.length ;
+                        $scope.pendingTeams=data.pending_teams;
+                        $scope.pendingTeamsNumber = $scope.pendingTeams.length;
                         $scope.isShowTeamButton = true ;
-                        $scope.pendingTeams = data.teams ;
                         $scope.successJoinTeam = true ;
                         $scope.rejectJoinTeam = false ;
                     }
@@ -122,13 +77,13 @@ var ContestCtrl = function ($scope , mtNotifyService , $stateParams , Temp ,
 
     $scope.rejectJoinRequest = function (teamId) {
         $scope.isShowPendingLoading= true ;
-        ContestModel.acceptOrRejectJoinRequest( $rootScope.contestId, teamId , ({ "acceptation" : false }) , function (data , status) {
+        ContestModel.teamReject( $rootScope.contestId, teamId  , function (data , status) {
             if(status){
                 ContestModel.getPendingTeams($rootScope.contestId , function (data , status) {
                     if(status){
-                        $scope.pendingTeamsNumber = data.teams.length ;
+                        $scope.pendingTeams=data.pending_teams;
+                        $scope.pendingTeamsNumber = $scope.pendingTeams.length;
                         $scope.isShowTeamButton = true ;
-                        $scope.pendingTeams = data.teams ;
                         $scope.successJoinTeam = false ;
                         $scope.rejectJoinTeam = true ;
                     }
@@ -146,12 +101,6 @@ var ContestCtrl = function ($scope , mtNotifyService , $stateParams , Temp ,
             .modal('show')
         ;
     });
-
-    // $('.teamDropDown').click(function () {
-        $('.ui.dropdown')
-            .dropdown()
-        ;
-    // })
     
 };
 
