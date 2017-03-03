@@ -25,4 +25,7 @@
   .selectable {
     cursor: pointer;
   }
+  .ui.error.visible.message{
+    margin-top: 0 !important;
+  }
 }

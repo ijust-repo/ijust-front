@@ -57,3 +57,6 @@ body {
   src: url(../font/Yekan.eot?#iefix) format("embedded-opentype"), url(../font/Yekan.woff) format("woff"), url(../font/Yekan.ttf) format("truetype"), url(../font/Yekan.svg#BYekan) format("svg");
   font-weight: normal;
   font-style: normal; }
+
+.ui.error.visible.message p {
+  text-align: center; }

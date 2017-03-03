@@ -22,3 +22,6 @@
 
 #home .selectable {
   cursor: pointer; }
+
+#home .ui.error.visible.message {
+  margin-top: 0 !important; }

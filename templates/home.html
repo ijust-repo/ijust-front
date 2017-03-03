@@ -1,94 +1,136 @@
 <div class="ui container" id="home">
+
     <div class="ui active inverted dimmer" ng-show="$root.notifyLoader">
         <div class="ui text massive loader">Loading</div>
     </div>
-    <!--<h3 class="ui top attached header centered">-->
-        <!--Contests you Joined-->
-    <!--</h3>-->
-    <!--<div class="ui attached joinedContests loading segment">-->
-        <!--<table class="ui selectable  celled table">-->
-            <!--<thead>-->
-            <!--<tr>-->
-                <!--<th>Name</th>-->
-                <!--<th>Admin</th>-->
-                <!--<th>Start Time</th>-->
-                <!--<th>End Time</th>-->
-                <!--&lt;!&ndash;<th></th>&ndash;&gt;-->
-            <!--</tr>-->
-            <!--</thead>-->
-            <!--<tbody>-->
-            <!--<tr ng-repeat="contest in joinedContests" ui-sref="contest({contestName : contest.name})">-->
-                <!--<td>{{contest.name}}</td>-->
-                <!--<td>{{contest.owner.username}}</td>-->
-                <!--<td>{{contest.starts_on}}</td>-->
-                <!--<td>-->
-                    <!--<span>{{contest.ends_on}}</span>-->
-                    <!--&lt;!&ndash;<button class="ui button right floated" ui-sref="contest({contestName : contest.name})">Show</button>&ndash;&gt;-->
-                <!--</td>-->
-            <!--</tr>-->
-            <!--</tbody>-->
-        <!--</table>-->
-    <!--</div>-->
 
     <h3 class="ui top attached header centered">
-        <!--Contests you can Join-->
+        Your Teams
+    </h3>
+    <div class="ui attached otherContests loading segment">
+        <table class="ui selectable  celled table" ng-show="!teamsEmptyError">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Owner</th>
+                <th>Members</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="team in myTeams" ui-sref="contest({contestName : contest.name})">
+                <td>{{team.name}}</td>
+                <td>{{team.owner.name}}</td>
+                <td><span ng-repeat="tm in team.members">{{tm.name}},</span></td>
+            </tr>
+            </tbody>
+        </table>
+        <div ng-show="teamsEmptyError" class="ui error visible message">
+            <p>you have not any team</p>
+        </div>
+    </div>
+
+    <h3 class="ui top attached header centered">
         All Contests
     </h3>
     <div class="ui attached otherContests loading segment">
-        <table class="ui selectable  celled table">
+        <table class="ui selectable  celled table" ng-show="!allContetsEmptyError">
             <thead>
             <tr>
                 <th>Name</th>
                 <th>Admin</th>
                 <th>Start Time</th>
                 <th>End Time</th>
-                <!--<th></th>-->
+                <th>active</th>
+                <th>status</th>
             </tr>
             </thead>
             <tbody>
             <tr ng-repeat="contest in contestsList" ui-sref="contest({contestName : contest.name})">
                 <td>{{contest.name}}</td>
                 <td>{{contest.owner.username}}</td>
-                <td>{{contest.starts_on}}</td>
-                <td>
-                    <span>{{contest.ends_on}}</span>
-                    <!--<button class="ui button right floated" ui-sref="contest({contestName : contest.name})">Show</button>-->
+                <td>{{$parent.getDate(contest.starts_at)}}</td>
+                <td>{{$parent.getDate(contest.ends_at)}}</td>
+                <td ng-if="contest.is_active"><i class="large green checkmark icon"></i></td>
+                <td ng-if="!contest.is_active"><i class="large red close icon"></i></td>
+                <td ng-class="{'negative': contest.joining_status.status == '0' ,'pending': contest.joining_status.status == '1'  , 'positive': contest.joining_status.status == '2' }">
+                    <span ng-if="contest.joining_status.status == '0'"><i class="icon close"></i>not joined</span>
+                    <span ng-if="contest.joining_status.status == '1'"><i class="icon attention"></i>pending</span>
+                    <span ng-if="contest.joining_status.status == '2'"><i class="icon checkmark"></i>joined</span>
                 </td>
             </tr>
             </tbody>
         </table>
+        <div ng-show="allContetsEmptyError" class="ui error visible message">
+            <p>there is no contest</p>
+        </div>
     </div>
 
     <h3 class="ui top attached header centered">
         Contests you Created
     </h3>
     <div class="ui attached  ownedContests loading segment">
-        <table class="ui selectable  celled table">
+        <table class="ui selectable  celled table" ng-show="!ownedContetsEmptyError">
             <thead>
             <tr>
                 <th>Name</th>
-                <th>Created Time</th>
+                <th>Admin</th>
                 <th>Start Time</th>
                 <th>End Time</th>
-                <!--<th></th>-->
+                <th>active</th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="contest in ownedContets" ui-sref="contest({contestName : contest.name})">
+            <tr ng-repeat="contest in ownedContests" ui-sref="contest({contestName : contest.name})">
                 <td>{{contest.name}}</td>
-                <td>{{contest.created_on}}</td>
-                <td>{{contest.starts_on}}</td>
-                <td>
-                    <span>{{contest.ends_on}}</span>
-                    <!--<button class="ui button right floated" ui-sref="contest({contestName : contest.name})">Show</button>-->
+                <td>{{contest.owner.username}}</td>
+                <td>{{$parent.getDate(contest.starts_at)}}</td>
+                <td>{{$parent.getDate(contest.ends_at)}}</td>
+                <td ng-if="contest.is_active">
+                    <i class="large green checkmark icon"></i>
+                </td>
+                <td ng-if="!contest.is_active">
+                    <i class="large red close icon"></i>
                 </td>
             </tr>
             </tbody>
         </table>
-        <!--<div class="ui one column centered grid">-->
-            <!--<div class="column">-->
-                <!--<button class=" ui blue centeredBtn button">Create Contest</button>-->
-            <!--</div>-->
-        <!--</div>-->
+        <div ng-show="ownedContetsEmptyError" class="ui error visible message">
+            <p>You didn't created any contest yet</p>
+        </div>
     </div>
+
+    <h3 class="ui top attached header centered">
+        Contests you are admin
+    </h3>
+    <div class="ui attached adminContests loading segment">
+        <table class="ui selectable  celled table" ng-show="!adminContetsEmptyError">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Admin</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>active</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="contest in adminContests" ui-sref="contest({contestName : contest.name})">
+                <td>{{contest.name}}</td>
+                <td>{{contest.owner.username}}</td>
+                <td>{{$parent.getDate(contest.starts_at)}}</td>
+                <td>{{$parent.getDate(contest.ends_at)}}</td>
+                <td ng-if="contest.is_active">
+                    <i class="large green checkmark icon"></i>
+                </td>
+                <td ng-if="!contest.is_active">
+                    <i class="large red close icon"></i>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div ng-show="adminContetsEmptyError" class="ui error visible message">
+            <p>You are not admin of any contest</p>
+        </div>
+    </div>
+
 </div>

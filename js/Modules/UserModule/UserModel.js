@@ -8,16 +8,16 @@ var UserModel = function ($http, Constants) {
             .error(function (data, status) {
                 var msg;
                 if (status == 404) {
-                    msg = "این حساب وجود ندارد"
+                    msg = "this account does not exist"
                 }
                 else if (status == 400) {
-                    msg = "لطفا دوباره تلاش کنید"
+                    msg = "please try later"
                 }
                 else if (status == 406) {
-                    msg = "رمز عبور یا نام کاربری اشتباه است"
+                    msg = "username or password is wrong"
                 }
                 else {
-                    msg = "خطای نا شناخته"
+                    msg = "unknown error , please try later"
                 }
                 callback(msg, false);
             })
@@ -31,12 +31,12 @@ var UserModel = function ($http, Constants) {
             .error(function (data, status) {
                 var msg;
                 if (status == 400) {
-                    msg = "لطفا دوباره تلاش کنید"
+                    msg = "please try later"
                 } else if (status == 409) {
-                    msg = "نام کاربری یا ایمیل وجود دارد"
+                    msg = "this username or email already exist"
                 }
                 else {
-                    msg = "خطای نا شناخته"
+                    msg = "unknown error , please try later"
                 }
                 callback(msg, false);
             })
@@ -50,10 +50,10 @@ var UserModel = function ($http, Constants) {
             .error(function (data, status) {
                 var msg;
                 if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است."
+                    msg = "please sign in again"
                 }
                 else {
-                    msg = "خطای نا شناخته"
+                    msg = "unknown error , please try later"
                 }
                 callback(msg, false);
             })
@@ -67,11 +67,11 @@ var UserModel = function ($http, Constants) {
             .error(function (data, status) {
                 var msg;
                 if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است."
+                    msg = "please sign in again"
                 } else if (status == 404) {
-                    msg = "کاربر مورد نظر یافت نشد"
+                    msg = "this account does not exist"
                 } else {
-                    msg = "خطای نا شناخته"
+                    msg = "unknown error , please try later"
                 }
                 callback(msg, false);
             })
@@ -85,11 +85,11 @@ var UserModel = function ($http, Constants) {
             .error(function (data, status) {
                 var msg;
                 if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است."
+                    msg = "please sign in again"
                 } else if (status == 404) {
-                    msg = "کاربر مورد نظر یافت نشد"
+                    msg = "this account does not exist"
                 } else {
-                    msg = "خطای نا شناخته"
+                    msg = "unknown error , please try later"
                 }
                 callback(msg, false);
             })

@@ -1,17 +1,31 @@
 var LandingCtrl = function ($scope , UserModel , $cookies ,
                             mtNotifyService , $rootScope ,
                             $state , $localStorage ) {
-    
-    if($rootScope.isAuthenticated){
-        $state.go('home');
-    }
 
+    // check for authentication
+    // if($rootScope.isAuthenticated && $localStorage.token){
+    //     $state.go('home');
+    // }
+    UserModel.getMyInfo(function (data , status) {
+        if (status){
+            $rootScope.isAuthenticated = true ;
+            $state.go('home');
+        }
+        else{
+            delete $localStorage.token;
+            $rootScope.isAuthenticated = false;
+        }
+    });
+
+    // make page ready
     mtNotifyService.unLoad();
 
+    // variables
     $scope.LoginInfo = {} ;
     $scope.signUpInfo = {};
     $scope.isLoginBoxShow = true;
     $scope.isSignUpBoxShow = false;
+
     $scope.showLoginBox = function () {
         $scope.isLoginBoxShow = true;
         $scope.isSignUpBoxShow = false;
@@ -22,14 +36,15 @@ var LandingCtrl = function ($scope , UserModel , $cookies ,
         $scope.isSignUpBoxShow = true;
         $rootScope.hideNotify();
     };
+
     $scope.login = function () {
         mtNotifyService.load();
-        if ( !($scope.LoginInfo.username) || !($scope.LoginInfo.password)){
-            mtNotifyService.show(" Username and Password required" , 0);
+        if ( !($scope.LoginInfo.login) || !($scope.LoginInfo.password)){
+            mtNotifyService.show(" Username/E-mail and Password required" , 0);
             return ;
         }
-        if ( !($scope.LoginInfo.username) && ($scope.LoginInfo.password)) {
-            mtNotifyService.show("Please enter Username" , 0);
+        if ( !($scope.LoginInfo.login) && ($scope.LoginInfo.password)) {
+            mtNotifyService.show("Please enter Username/E-mail" , 0);
             return;
         }
         if (($scope.LoginInfo.username) && !($scope.LoginInfo.password)) {
@@ -44,13 +59,14 @@ var LandingCtrl = function ($scope , UserModel , $cookies ,
                 mtNotifyService.unLoad();
             }
             else {
-                mtNotifyService.show(data.errors , 0)
+                mtNotifyService.show(data , 0)
             }
         }) ;
     };
 
     $scope.signUp = function () {
         mtNotifyService.load();
+        $scope.signUpInfo.recaptcha = $("#g-recaptcha-response").val();
         // console.log($scope.signUpInfo);
         if ( !$scope.signUpInfo.email ){
             mtNotifyService.show("please enter E-mail" , 0);
@@ -74,13 +90,13 @@ var LandingCtrl = function ($scope , UserModel , $cookies ,
         }
         UserModel.signUp($scope.signUpInfo , function (data , status) {
            if(status) {
-               $scope.LoginInfo.username = $scope.signUpInfo.username ;
+               $scope.LoginInfo.login = $scope.signUpInfo.username ;
                $scope.LoginInfo.password = $scope.signUpInfo.password ;
                $scope.login();
                mtNotifyService.unLoad()
            }
             else {
-               mtNotifyService.show(data.errors , 0);
+               mtNotifyService.show(data , 0);
            }
         })
     }

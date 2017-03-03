@@ -1,6 +1,9 @@
 <div id="landing">
+    <!-- logo -->
     <img class="ui centered small image" src="/img/iust.png">
+    <!-- container -->
     <div class="centeredVertically" id="container">
+        <!-- heading -->
         <div class="centeredTextContainer" id="justTitle">
             <h2 class="centeredText">
                 <span class="ui big header josefinSlab">welcome to</span>
@@ -10,6 +13,7 @@
                 <span class="ui big header josefinSlab orange">Judge</span>
             </h2>
         </div>
+        <!-- login form -->
         <div class="ui two column centered grid" ng-show="isLoginBoxShow">
             <div class="ui middle aligned center aligned grid column">
                 <div class="column">
@@ -18,8 +22,8 @@
                             <div class="field">
                                 <div class="ui left icon input">
                                     <i class="user icon"></i>
-                                    <input type="text" name="email" placeholder="Username"
-                                           ng-model="LoginInfo.username">
+                                    <input type="text" name="email" placeholder="Username or E-mail"
+                                           ng-model="LoginInfo.login">
                                 </div>
                             </div>
                             <div class="field">
@@ -53,6 +57,7 @@
                 </div>
             </div>
         </div>
+        <!-- signup form -->
         <div class="ui two column centered grid" ng-show="isSignUpBoxShow" id="signUpBox">
             <div class="ui middle aligned center aligned grid column">
                 <div class="column">
@@ -90,7 +95,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="g-recaptcha" ng-model="signUpInfo.recaptcha" data-sitekey=6LeY_BMTAAAAAE-E_uPAGHoiCVPR1wKUwStnXXpW></div>
+                            <div class="g-recaptcha" data-sitekey=6LeDPwcTAAAAADVt4vp-kdTHXcbl76JbRFK3PUV5></div>
                             <div class="ui buttons">
                                 <button ng-show="!$root.notifyLoader" type="submit" class="ui positive button">sign up
                                 </button>

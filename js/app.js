@@ -11,7 +11,7 @@ var ijust = angular.module("ijust",
         $stateProvider
             .state('/', {
                 url: '/',
-                templateUrl: '/templates/Landing.html',
+                templateUrl: '/templates/landing.html',
                 controller: 'LandingCtrl'
             })
             .state('teams' , {
