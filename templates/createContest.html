@@ -14,13 +14,14 @@
                 </div>
                 <div class="field">
                     <label>Start Date and Time</label>
-                    <input type="text" placeholder="Starts on" ng-bind="contestInfo.starts_on" id="start">
+                    <input type="text" placeholder="Starts on" ng-bind="contestInfo.starts_at" id="start">
                 </div>
                 <div class="field">
                     <label>End Date and Time</label>
-                    <input type="text" placeholder="Ends on" ng-bind="contestInfo.ends_on" id="end">
+                    <input type="text" placeholder="Ends on" ng-bind="contestInfo.ends_at" id="end">
                 </div>
             </div>
+            <div class="g-recaptcha" data-sitekey=6LeDPwcTAAAAADVt4vp-kdTHXcbl76JbRFK3PUV5></div>
             <button class="ui positive button centeredBtn" type="submit" ng-click="create()" ng-show="!buttonLoader">create</button>
             <button class="ui positive loading button centeredBtn" type="submit" ng-click="create()" ng-show="buttonLoader">create</button>
             <div class="ui positive message" ng-show="showSuccessMsg">

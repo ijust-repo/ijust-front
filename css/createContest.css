@@ -5,3 +5,13 @@
   padding: 20px; }
   #createContest .ui.header {
     background-color: #f2f2f2; }
+  #createContest .g-recaptcha {
+    margin-bottom: 10px; }
+    #createContest .g-recaptcha > div {
+      position: relative;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+      transform: translateX(-50%); }

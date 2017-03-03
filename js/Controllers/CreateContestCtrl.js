@@ -6,8 +6,8 @@ var CreateContestCtrl = function ($scope , $rootScope , ContestModel) {
     $scope.buttonLoader = false ;
     $scope.successMsg = "" ;
     $scope.errorMsg = "";
-    $scope.contestInfo.starts_on=rome(start);
-    $scope.contestInfo.ends_on=rome(end);
+    $scope.contestInfo.starts_at=rome(start);
+    $scope.contestInfo.ends_at=rome(end);
 
     function convertlocaltoUCP(date){
         var n_date=new Date(date);
@@ -28,10 +28,11 @@ var CreateContestCtrl = function ($scope , $rootScope , ContestModel) {
 
     $scope.create = function () {
         $scope.buttonLoader = true;
-        $scope.contestInfo.starts_on = $scope.contestInfo.starts_on.associated.value ;
-        $scope.contestInfo.ends_on = $scope.contestInfo.ends_on.associated.value ;
-        $scope.contestInfo.starts_on = convertlocaltoUCP($scope.contestInfo.starts_on);
-        $scope.contestInfo.ends_on = convertlocaltoUCP($scope.contestInfo.ends_on);
+        $scope.contestInfo.starts_at = $scope.contestInfo.starts_at.associated.value ;
+        $scope.contestInfo.ends_at = $scope.contestInfo.ends_at.associated.value ;
+        $scope.contestInfo.starts_at = convertlocaltoUCP($scope.contestInfo.starts_at);
+        $scope.contestInfo.ends_at = convertlocaltoUCP($scope.contestInfo.ends_at);
+        $scope.contestInfo.recaptcha = $("#g-recaptcha-response").val();
         ContestModel.createContest($scope.contestInfo , function (data , status) {
             if(status){
                 $scope.showSuccessMsg = true ;
@@ -42,7 +43,7 @@ var CreateContestCtrl = function ($scope , $rootScope , ContestModel) {
             else {
                 $scope.showErrorMsg = true ;
                 $scope.showSuccessMsg = false ;
-                $scope.errorMsg = "Error" ;
+                $scope.errorMsg = data.error ;
                 $scope.buttonLoader = false ;
             }
         })

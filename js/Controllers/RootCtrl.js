@@ -33,6 +33,7 @@ var RootCtrl = function ($scope, $rootScope, UserModel ,
         console.log($scope.newTeamInfo);
         TeamModel.createTeam($scope.newTeamInfo , function (data , status) {
             if(status){
+                $scope.showCreateTeamError = false ;
                 $scope.showCreateTeamSuccess = true ;
                 $scope.createTeamSuccess = "Your Team Created Successfully" ;
                 $scope.newTeamInfo = {};
@@ -41,6 +42,7 @@ var RootCtrl = function ($scope, $rootScope, UserModel ,
                 console.log($rootScope.myTeams);
             }
             else{
+                $scope.showCreateTeamSuccess = false ;
                 $scope.showCreateTeamError = true ;
                 $scope.createTeamError = data.error ;
                 $scope.newTeamInfo = {};
