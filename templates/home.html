@@ -7,8 +7,8 @@
     <h3 class="ui top attached header centered">
         Your Teams
     </h3>
-    <div class="ui attached otherContests loading segment">
-        <table class="ui selectable  celled table" ng-show="!teamsEmptyError">
+    <div class="ui attached teamInfo loading segment">
+        <table class="ui selectable  celled table" ng-show="!$root.teamsEmptyError">
             <thead>
             <tr>
                 <th>Name</th>
@@ -17,14 +17,14 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="team in myTeams" ui-sref="contest({contestName : contest.name})">
+            <tr ng-repeat="team in $root.myTeams" ui-sref="team({teamId : team.id})">
                 <td>{{team.name}}</td>
-                <td>{{team.owner.name}}</td>
-                <td><span ng-repeat="tm in team.members">{{tm.name}},</span></td>
+                <td>{{team.owner.username}}</td>
+                <td><span ng-repeat="tm in team.members">{{tm.username}},</span></td>
             </tr>
             </tbody>
         </table>
-        <div ng-show="teamsEmptyError" class="ui error visible message">
+        <div ng-show="$root.teamsEmptyError" class="ui error visible message">
             <p>you have not any team</p>
         </div>
     </div>

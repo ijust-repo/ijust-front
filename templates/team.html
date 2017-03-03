@@ -1,0 +1,85 @@
+<div class="ui container" id="team">
+    <div class="ui active inverted dimmer" ng-show="$root.notifyLoader">
+        <div class="ui text massive loader">Loading</div>
+    </div>
+    <h3 class="ui top attached header centered">
+        Your Team Info
+    </h3>
+    <div class="ui attached teamInfo loading segment">
+        <table class="ui selectable  celled table" ng-show="!$root.teamsEmptyError">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Owner</th>
+                <th>Members</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{teamInfo.name}}</td>
+                <td>{{teamInfo.owner.username}}</td>
+                <td><span ng-repeat="tm in teamInfo.members">{{tm.username}},</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <h3 class="ui top attached header centered">
+        Joined Contests
+    </h3>
+    <div class="ui attached otherContests loading segment">
+        <table class="ui selectable  celled table" ng-show="!joinedContetsEmptyError">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Admin</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>active</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="contest in contestsList.joined_contests" ui-sref="contest({contestName : contest.name})">
+                <td>{{contest.name}}</td>
+                <td>{{contest.owner.username}}</td>
+                <td>{{$parent.getDate(contest.starts_at)}}</td>
+                <td>{{$parent.getDate(contest.ends_at)}}</td>
+                <td ng-if="contest.is_active"><i class="large green checkmark icon"></i></td>
+                <td ng-if="!contest.is_active"><i class="large red close icon"></i></td>
+            </tr>
+            </tbody>
+        </table>
+        <div ng-show="joinedContetsEmptyError" class="ui error visible message">
+            <p>there is no joined contest</p>
+        </div>
+    </div>
+
+    <h3 class="ui top attached header centered">
+        Pending Contests
+    </h3>
+    <div class="ui attached otherContests loading segment">
+        <table class="ui selectable  celled table" ng-show="!pendingContetsEmptyError">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Admin</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>active</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="contest in contestsList.waiting_contests" ui-sref="contest({contestName : contest.name})">
+                <td>{{contest.name}}</td>
+                <td>{{contest.owner.username}}</td>
+                <td>{{$parent.getDate(contest.starts_at)}}</td>
+                <td>{{$parent.getDate(contest.ends_at)}}</td>
+                <td ng-if="contest.is_active"><i class="large green checkmark icon"></i></td>
+                <td ng-if="!contest.is_active"><i class="large red close icon"></i></td>
+            </tr>
+            </tbody>
+        </table>
+        <div ng-show="pendingContetsEmptyError" class="ui error visible message">
+            <p>there is no pending contest</p>
+        </div>
+    </div>
+</div>

@@ -14,10 +14,10 @@ var ijust = angular.module("ijust",
                 templateUrl: '/templates/landing.html',
                 controller: 'LandingCtrl'
             })
-            .state('teams' , {
-                url : '/teams' ,
-                templateUrl: '/templates/teams.html' ,
-                controller : 'TeamsCtrl'
+            .state('team' , {
+                url : '/team/:teamId' ,
+                templateUrl: '/templates/team.html' ,
+                controller : 'TeamCtrl'
             })
             .state('contest' , {
                 url : '/contest/:contestName' ,

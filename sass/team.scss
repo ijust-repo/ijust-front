@@ -1,0 +1,15 @@
+@import "variables";
+
+#team{
+  background-color: $white;
+  padding: 20px;
+  table{
+    th , td{
+      text-align: center;
+      position: relative;
+    }
+  }
+  .ui.error.visible.message{
+    margin-top: 0 !important;
+  }
+}

@@ -18,7 +18,7 @@
     <link href="css/home.css" type="text/css" rel="stylesheet">
     <link href="css/contest.css" type="text/css" rel="stylesheet">
     <link href="css/rankList.css" type="text/css" rel="stylesheet">
-    <link href="css/teams.css" type="text/css" rel="stylesheet">
+    <link href="css/team.css" type="text/css" rel="stylesheet">
     <link href="css/createContest.css" type="text/css" rel="stylesheet">
     <link href="css/problem.css" type="text/css" rel="stylesheet">
     <link href="css/problems.css" type="text/css" rel="stylesheet">
@@ -70,7 +70,7 @@
     <script src="js/Controllers/RootCtrl.js"></script>
     <script src="js/Controllers/LandingCtrl.js"></script>
     <script src="js/Controllers/HomeCtrl.js"></script>
-    <script src="js/Controllers/TeamsCtrl.js"></script>
+    <script src="js/Controllers/TeamCtrl.js"></script>
     <script src="js/Controllers/ContestCtrl.js"></script>
     <script src="js/Controllers/RankListCtrl.js"></script>
     <script src="js/Controllers/CreateContestCtrl.js"></script>
@@ -92,11 +92,8 @@
             <div class="item">
                 <img src="/img/noText.png">
             </div>
-            <a class="item" ui-sref="/" ui-sref-active="active">
+            <a class="item" ui-sref="home" ui-sref-active="active">
                 Home
-            </a>
-            <a class="item" ui-sref="teams" ui-sref-active="active">
-                my Teams
             </a>
             <a class="item" ui-sref="create_contest" ui-sref-active="active">
                 Create Contest
@@ -105,8 +102,12 @@
                 <div class="ui teal button " id="createTeam">Create Team</div>
             </a>
             <div class="right menu">
-                <a class="item" ui-sref="profile" ui-sref-active="active">
-                    Profile
+                <a class="item ui dropdown">
+                    <div class="text">{{userInfo.username}}</div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <div class="item">{{userInfo.email}}</div>
+                    </div>
                 </a>
                 <div class="item">
                     <div class="ui red button" ng-click="logOut()">Log Out</div>

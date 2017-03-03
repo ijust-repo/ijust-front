@@ -16,7 +16,7 @@ var TeamModel = function ($http, Constants) {
     };
 
     var getTeamInfo = function (teamID, callback) {
-        $http.get(Constants.server + Constants.version + 'team' + teamID)
+        $http.get(Constants.server + Constants.version + 'team/' + teamID)
             .success(function (data, status) {
                 callback(data, true);
             })
@@ -34,7 +34,7 @@ var TeamModel = function ($http, Constants) {
     };
 
     var createTeam = function (JSON,callback) {
-        $http.post(Constants.server + Constants.version + 'team')
+        $http.post(Constants.server + Constants.version + 'team' , JSON)
             .success(function (data, status) {
                 callback(data, true);
             })
@@ -53,7 +53,7 @@ var TeamModel = function ($http, Constants) {
                 } else{
                     msg = "خطای نا شناخته"
                 }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 

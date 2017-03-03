@@ -1,0 +1,10 @@
+/* Variables */
+/* COLORS */
+#team {
+  background-color: #ffffff;
+  padding: 20px; }
+  #team table th, #team table td {
+    text-align: center;
+    position: relative; }
+  #team .ui.error.visible.message {
+    margin-top: 0 !important; }

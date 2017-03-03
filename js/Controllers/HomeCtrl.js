@@ -4,19 +4,20 @@ var HomeCtrl = function ( $scope , mtNotifyService , ContestModel , TeamModel , 
     $scope.allContetsEmptyError = false;
     $scope.ownedContetsEmptyError = false;
     $scope.adminContetsEmptyError = false;
-    $scope.teamsEmptyError = false;
+    $rootScope.teamsEmptyError = false;
     $scope.ownedContets = {} ;
     $scope.adminContets = {} ;
     $scope.contestsList = {} ;
-    $scope.myTeams = [] ;
+    $rootScope.myTeams = [] ;
 
     TeamModel.getMyTeams(function (data, status) {
         if (status){
-            $scope.myTeams.push(data.owner_teams);
-            $scope.myTeams.push(data.member_teams);
-            if (data.member_teams.length==0){
-                $scope.teamsEmptyError = true ;
+            $rootScope.myTeams=data.owner_teams;
+            $rootScope.myTeams.concat(data.member_teams);
+            if ($rootScope.myTeams.length==0){
+                $rootScope.teamsEmptyError = true ;
             }
+            $('.teamInfo').removeClass('loading');
             console.log('my teams:',$scope.myTeams);
             $rootScope.notifyLoader = false ;
         }
