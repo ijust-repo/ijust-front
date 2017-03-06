@@ -1,5 +1,5 @@
 var AuthService = function ($http, Constants, $localStorage,
-                            $q, $interval, $rootScope, $state,
+                            $q, $interval, $rootScope, UserModel,
                             $window, $cookies ) {
 
     var _isAuthenticated = false;

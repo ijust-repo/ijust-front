@@ -32,7 +32,6 @@
     <script src="./js/Libraries/ngStorage.min.js"></script>
     <script src="./js/Libraries/ng-file-upload-all.min.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
-    <script src='//www.google.com/recaptcha/api.js'></script>
     <script src="bower_components/moment/min/moment.min.js"></script>
     <script src="bower_components/rome/dist/rome.min.js"></script>
     <!--<script src="bower_components/material-datepicker/js/material-datepicker.min.js"></script>-->
@@ -105,10 +104,10 @@
             </a>
             <div class="right menu">
                 <a class="item ui dropdown">
-                    <div class="text">{{userInfo.username}}</div>
+                    <div class="text">{{$root.userInfo.username}}</div>
                     <i class="dropdown icon"></i>
                     <div class="menu">
-                        <div class="item">{{userInfo.email}}</div>
+                        <div class="item">{{$root.userInfo.email}}</div>
                     </div>
                 </a>
                 <div class="item">
@@ -179,5 +178,6 @@
         </div>
     </main>
 </div>
+<script src='//www.google.com/recaptcha/api.js'></script>
 </body>
 </html>

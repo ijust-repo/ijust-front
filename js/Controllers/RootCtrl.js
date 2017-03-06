@@ -13,7 +13,7 @@ var RootCtrl = function ($scope, $rootScope, UserModel ,
 
     UserModel.getMyInfo(function (data, status) {
         if(status){
-            $scope.userInfo = data ;
+            $rootScope.userInfo = data ;
         }
     });
 
@@ -23,6 +23,7 @@ var RootCtrl = function ($scope, $rootScope, UserModel ,
             if(status){
                 $rootScope.isAuthenticated = false ;
                 delete $localStorage.token ;
+                delete $rootScope.userInfo ;
                 setTimeout($scope.logOutLoader = false ,1000);
                 $state.go('/');
             }

@@ -1,5 +1,5 @@
 var ContestInfoCtrl = function ($scope, mtNotifyService, $stateParams,
-                                ContestModel, UserModel, TeamModel, $rootScope) {
+                                ContestModel, TeamModel, $rootScope) {
 
     $('.ui.dropdown')
         .dropdown()

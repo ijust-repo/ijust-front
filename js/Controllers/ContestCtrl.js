@@ -1,5 +1,5 @@
 var ContestCtrl = function ($scope , mtNotifyService , $stateParams , $location ,
-                                ContestModel , UserModel , TeamModel , $rootScope) {
+                                ContestModel , TeamModel , $rootScope) {
 
     $rootScope.notifyLoader = true;
     $scope.pendingTeamsNumber = 0 ;
@@ -24,6 +24,12 @@ var ContestCtrl = function ($scope , mtNotifyService , $stateParams , $location 
 
     var infoPath = "/contest/"+$rootScope.contestId+"/info";
     $location.path(infoPath);
+
+    UserModel.getMyInfo(function (data, status) {
+        if(status){
+            $rootScope.userInfo = data ;
+        }
+    });
 
     ContestModel.getContestInfoById($rootScope.contestId , function (data, status) {
         if (status){
