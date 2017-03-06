@@ -1,4 +1,4 @@
-var ContestCtrl = function ($scope , mtNotifyService , $stateParams , $location ,
+var ContestCtrl = function ($scope , mtNotifyService , $stateParams , $location , UserModel,
                                 ContestModel , TeamModel , $rootScope) {
 
     $rootScope.notifyLoader = true;
