@@ -1,0 +1,58 @@
+<div id="addProblem">
+    <div class="ui three top attached steps">
+        <div class="create active step">
+            <i class="setting icon"></i>
+            <div class="content">
+                <div class="title">create</div>
+                <div class="description">set your problem statics</div>
+            </div>
+        </div>
+        <div class="body step">
+            <i class="sticky note icon"></i>
+            <div class="content">
+                <div class="title">body</div>
+                <div class="description">upload the pdf of problem</div>
+            </div>
+        </div>
+        <div class="test step">
+            <i class="browser icon"></i>
+            <div class="content">
+                <div class="title">test case</div>
+                <div class="description">upload test cases</div>
+            </div>
+        </div>
+    </div>
+    <div class="ui attached segment">
+        <div class="ui form" ng-if="show=='create'">
+            <div class="three fields">
+                <div class="field">
+                    <label>Problem Title</label>
+                    <input type="text" placeholder="Problem Title" ng-model="problemInfo.title">
+                </div>
+                <div class="field">
+                    <label>Time Limit</label>
+                    <input type="number" placeholder="Time Limit" ng-model="problemInfo.time_limit">
+                </div>
+                <div class="field">
+                    <label>Space Limit</label>
+                    <input type="number" placeholder="Space Limit" ng-model="problemInfo.space_limit">
+                </div>
+            </div>
+            <div style="width: 100% ; height: 40px; position: relative">
+                <button class="ui positive button centeredBtn" type="submit" ng-click="createProblem()" ng-show="!buttonLoader">create</button>
+                <button class="ui positive loading button centeredBtn" type="submit" ng-click="createProblem()" ng-show="buttonLoader">create</button>
+            </div>
+            <div ng-show="showProblemCreateError" class="ui error visible message ten wide column">
+                <p>{{problemCreateError}}</p>
+            </div>
+        </div>
+
+        <div class="" ng-if="show=='body'">
+            <button class="ui blue button centeredBtn" type="file" ngf-select="uploadBody($file, $invalidFiles)"
+                    accept="pdf/*"
+                    ng-show="!buttonLoader">upload pdf</button>
+            <button class="ui blue loading button centeredBtn" ng-show="!buttonLoader">upload pdf</button>
+        </div>
+        <div class="" ng-if="show=='test'"></div>
+    </div>
+</div>

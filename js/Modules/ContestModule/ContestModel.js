@@ -200,8 +200,8 @@ var ContestModel = function ($http, Constants) {
             })
     };
 
-    var getProblemList = function (contestId, callback) {
-        $http.get(Constants.server + Constants.version + 'contest' + contestId + '/problem')
+    var getProblemsList = function (contestId, callback) {
+        $http.get(Constants.server + Constants.version + 'contest/' + contestId + '/problem')
             .success(function (data, status) {
                 callback(data, true);
             })
@@ -217,7 +217,7 @@ var ContestModel = function ($http, Constants) {
                 else {
                     msg = "خطای ناشناخته"
                 }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -246,7 +246,7 @@ var ContestModel = function ($http, Constants) {
     };
 
     var createProblem = function (contestId, JSON, callback) {
-        $http.post(Constants.server + Constants.version + 'contest/' + contestId + 'problem', JSON)
+        $http.post(Constants.server + Constants.version + 'contest/' + contestId + '/problem', JSON)
             .success(function (data, status) {
                 callback(data, true);
             })
@@ -263,7 +263,7 @@ var ContestModel = function ($http, Constants) {
                 } else {
                     msg = "خطای ناشناخته"
                 }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -350,6 +350,17 @@ var ContestModel = function ($http, Constants) {
                     msg = "خطای ناشناخته"
                 }
                 callback(msg, false);
+            })
+
+    };
+
+    var problemUploadBody = function (contestId, problemId, FILE , callback) {
+        $http.post(Constants.server + Constants.version + 'contest/' + contestId + '/problem/' + problemId + '/body',FILE)
+            .success(function (data, status) {
+                callback(data, true);
+            })
+            .error(function (data, status) {
+                callback(data, false);
             })
 
     };
@@ -481,13 +492,14 @@ var ContestModel = function ($http, Constants) {
         getContestAdminList: getContestAdminList,
         addAdmin:addAdmin,
         removeAdmin:removeAdmin,
-        getProblemList:getProblemList,
+        getProblemsList:getProblemsList,
         problemChangeOrder: problemChangeOrder,
         createProblem: createProblem,
         deleteProblem: deleteProblem,
         getProblemInfo:getProblemInfo,
         editProblem:editProblem,
         problemDownloadBody:problemDownloadBody,
+        problemUploadBody:problemUploadBody,
         getPendingTeams:getPendingTeams,
         teamGetList: teamGetList,
         teamJoin: teamJoin,

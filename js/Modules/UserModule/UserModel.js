@@ -19,7 +19,7 @@ var UserModel = function ($http, Constants) {
                 else {
                     msg = "unknown error , please try later"
                 }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -38,7 +38,7 @@ var UserModel = function ($http, Constants) {
                 else {
                     msg = "unknown error , please try later"
                 }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 

@@ -6,6 +6,7 @@ var RootCtrl = function ($scope, $rootScope, UserModel ,
     $scope.newTeamInfo.members = [];
     $scope.showCreateTeamError = false ;
     $scope.showCreateTeamSuccess = false ;
+    $rootScope.userInfo = {} ;
     
     if(!$localStorage.token){
         $state.go('/');

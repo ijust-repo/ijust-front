@@ -21,6 +21,7 @@
     <link href="css/team.css" type="text/css" rel="stylesheet">
     <link href="css/createContest.css" type="text/css" rel="stylesheet">
     <link href="css/problem.css" type="text/css" rel="stylesheet">
+    <link href="css/addProblem.css" type="text/css" rel="stylesheet">
     <link href="css/problems.css" type="text/css" rel="stylesheet">
     <link href="css/contestInfo.css" type="text/css" rel="stylesheet">
     <!--<link href="bower_components/material-datepicker/css/material-datepicker.min.css" type="text/css" rel="stylesheet">-->
@@ -76,6 +77,7 @@
     <script src="js/Controllers/RankListCtrl.js"></script>
     <script src="js/Controllers/CreateContestCtrl.js"></script>
     <script src="js/Controllers/ProblemCtrl.js"></script>
+    <script src="js/Controllers/addProblemCtrl.js"></script>
     <script src="js/Controllers/ProblemsCtrl.js"></script>
 
     <title>
@@ -103,12 +105,13 @@
                 <div class="ui teal button " id="createTeam">Create Team</div>
             </a>
             <div class="right menu">
-                <a class="item ui dropdown">
+                <!--<a class="item ui dropdown">-->
+                <a class="item">
                     <div class="text">{{$root.userInfo.username}}</div>
-                    <i class="dropdown icon"></i>
-                    <div class="menu">
-                        <div class="item">{{$root.userInfo.email}}</div>
-                    </div>
+                    <!--<i class="dropdown icon"></i>-->
+                    <!--<div class="menu">-->
+                        <!--<div class="item">{{$root.userInfo.email}}</div>-->
+                    <!--</div>-->
                 </a>
                 <div class="item">
                     <div class="ui red button" ng-click="logOut()">Log Out</div>

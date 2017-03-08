@@ -25,31 +25,6 @@ var ContestCtrl = function ($scope , mtNotifyService , $stateParams , $location 
     var infoPath = "/contest/"+$rootScope.contestId+"/info";
     $location.path(infoPath);
 
-    UserModel.getMyInfo(function (data, status) {
-        if(status){
-            $rootScope.userInfo = data ;
-        }
-    });
-
-    ContestModel.getContestInfoById($rootScope.contestId , function (data, status) {
-        if (status){
-            console.log(data);
-            $rootScope.contestInfo = data ;
-            $rootScope.isOwner = data.is_owner ;
-            $rootScope.isAdmin = data.is_admin ;
-            $rootScope.isJoined = data.joining_status.status;
-            $rootScope.notifyLoader = false;
-            $('.thisContest').removeClass('loading');
-        }
-    });
-
-    TeamModel.getMyTeams(function (data, status) {
-        if(status){
-            $rootScope.myTeams=data.owner_teams;
-            console.log($rootScope.myTeams)
-        }
-    });
-
     ContestModel.getPendingTeams($rootScope.contestId,function (data, status) {
         if (status){
             $scope.pendingTeams=data.pending_teams;

@@ -1,44 +1,10 @@
-<div class="ui container" id="problems">
-    <div class="ui active inverted dimmer" ng-show="$root.notifyLoader">
-        <div class="ui text massive loader">Loading</div>
-    </div>
-    <div class="ui one column centered grid labeled icon pointing massive menu" style="position: relative">
-        <div style="position: absolute ; left: 0;">
-            <a class="item" style="border-left: 1px solid rgba(34,36,38,.1);"
-               ui-sref="contest({contestName:contestName})">
-                <i class="backward icon"></i>
-                Back
-            </a>
-        </div>
-        <a class="active item" style="border-left: 1px solid rgba(34,36,38,.1);">
-            <i class="copy icon"></i>
-            Problems
-        </a>
-        <a class="rankListButton item" ui-sref="rank_list({contestName : contestName})">
-            <i class="ordered list icon"></i>
-            Rank List
-        </a>
-        <a class="item" ui-sref="submitted({contestName : contestName})" ng-show="isJoined">
-            <i class="browser icon"></i>
-            Submits
-        </a>
-        <a class="item teamButton" ng-show="isOwner">
-            <i class="users icon"></i>
-            <div class="floating ui orange label">{{pendingTeamsNumber}}</div>
-            Teams
-        </a>
-        <!--<div style="position: absolute ; right: 0;">-->
-            <!--<div class="item" style="border-left: 1px solid rgba(34,36,38,.1);">-->
-                <!--<i class="hourglass half icon"></i>-->
-                <!--00:00:00-->
-            <!--</div>-->
-        <!--</div>-->
-    </div>
+<div id="problems">
     <h3 class="ui top attached header centered">
         Problems
     </h3>
-    <div class="ui attached rankList segment centered grid container">
+    <div class="ui attached problemsList loading segment centered grid container">
         <!--<div class="centeredBtn">-->
+        <div ui-view></div>
         <div ng-repeat="problem in problemsInfo" class="ui stacked segment four wide column box">
             <a class="ui teal ribbon label">{{mapToString(problem.order)}}</a>
             <div class="textContainer">
@@ -47,54 +13,14 @@
             <!--<a class="ui blue ribbon label" style="margin-top: 15px">Show</a>-->
             <a class="ui blue button centeredBtn" ui-sref="problem({contestId:contestId , teamId:teamId , problemId:problem.id})">show</a>
         </div>
-        <div class="sixteen wide column" style="position: absolute;top: -55px;" ng-show="isOwner">
-            <button class="ui orange right labeled icon button" style="float: right;margin-right: -10px">
+        <div class="sixteen wide column" style="position: absolute;top: -55px;" ng-show="isOwner||isAdmin">
+            <button class="ui orange right labeled icon button" style="float: right;margin-right: -10px" ui-sref="contest.problems.addProblem">
                 <i class="right plus icon"></i>
                 Add Problem
             </button>
         </div>
-    </div>
-    <div class="ui pendingTeams modal">
-        <i class="close icon"></i>
-        <div class="header">
-            Teams Requests to Join Contest
-        </div>
-        <div class="content">
-            <!--<div class="ui active dimmer" ng-show="isShowPendingLoading">-->
-            <!--<div class="ui massive loader"></div>-->
-            <!--</div>-->
-            <div class="ui negative message" ng-if="pendingTeamsNumber == 0">
-                <div class="header" style="text-align: center">
-                    No Team's Request to Join
-                </div>
-            </div>
-            <table class="ui celled table" ng-if="pendingTeamsNumber != 0">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Admin</th>
-                    <th>Members</th>
-                    <th>Action</th>
-                    <!--<th></th>-->
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="pt in pendingTeams">
-                    <td>{{pt.name}}</td>
-                    <td>{{pt.owner.username}}</td>
-                    <td ng-repeat="m in pt.members">
-                        <span class="ui label">{{m.username}}</span>
-                    </td>
-                    <td>
-                        <div class="ui buttons">
-                            <button class="ui green button" ng-click="acceptJoinRequest(pt.id)">Accept</button>
-                            <div class="or"></div>
-                            <button class="ui red button" ng-click="rejectJoinRequest(pt.id)">Reject</button>
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+        <div ng-show="showProblemsEmptyError" class="ui error visible message ten wide column">
+            <p>there is no problem</p>
         </div>
     </div>
 </div>

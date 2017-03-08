@@ -39,10 +39,15 @@ var ijust = angular.module("ijust",
                 templateUrl: '/templates/submitted.html' ,
                 controller : 'RankListCtrl'
             })
-            .state('problems' , {
-                url : '/contest/:contestId/:teamId/problems' ,
+            .state('contest.problems' , {
+                url : '/problems' ,
                 templateUrl: '/templates/problems.html' ,
                 controller : 'ProblemsCtrl'
+            })
+            .state('contest.problems.addProblem' , {
+                url : '/add_problem' ,
+                templateUrl: '/templates/addProblem.html' ,
+                controller : 'addProblemCtrl'
             })
             .state('problem' , {
                 url : '/contest/:contestId/:teamId/problems/:problemId' ,

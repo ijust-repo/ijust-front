@@ -1,9 +1,19 @@
 var ContestInfoCtrl = function ($scope, mtNotifyService, $stateParams,
                                 ContestModel, TeamModel, $rootScope) {
 
-    $('.ui.dropdown')
-        .dropdown()
-    ;
+
+    ContestModel.getContestInfoById($rootScope.contestId , function (data, status) {
+        if (status){
+            console.log(data);
+            $rootScope.contestInfo = data ;
+            $rootScope.isOwner = data.is_owner ;
+            $rootScope.isAdmin = data.is_admin ;
+            $rootScope.isJoined = data.joining_status.status;
+            $rootScope.notifyLoader = false;
+            $('.thisContest').removeClass('loading');
+        }
+    });
+
     $scope.join = function (teamId) {
         var JSON = {
             team_id: teamId
@@ -22,6 +32,9 @@ var ContestInfoCtrl = function ($scope, mtNotifyService, $stateParams,
             }
         })
     };
+
+    $('.ui.dropdown')
+        .dropdown();
 };
 
 ijust.controller('ContestInfoCtrl', ContestInfoCtrl);
