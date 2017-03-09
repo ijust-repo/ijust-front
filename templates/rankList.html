@@ -17,9 +17,9 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="team in result.result">
+            <tr ng-repeat="(key,team) in result.result">
                 <td>{{$index+1}}</td>
-                <td><a>{{team}}</a></td>
+                <td><a>{{key}}</a></td>
                 <td>{{team.solved_count}}</td>
                 <td>{{team.penalty}}</td>
                 <!--<td ng-repeat="t in team.problems_list " ng-class="{'positive': t.solved ,'negative': !t.solved}">-->

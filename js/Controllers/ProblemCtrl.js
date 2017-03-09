@@ -2,12 +2,13 @@ var ProblemCtrl = function ($scope , $rootScope , Temp , ContestModel , Submissi
     , $stateParams , Constants , Upload , $timeout , $state) {
 
     $scope.problemId = $stateParams.problemId;
-    $scope.fileTypeList = ['c++','python 2.x','python 3.x','java'];
+    $scope.fileTypeList = ['c++' ,'c++11','python 2.x','python 3.x','java8'];
     $scope.fileTypes = {
         'c++' : 0,
-        'python 2.x' : 1,
-        'python 3.x' : 2,
-        'java' : 3
+        'c++11' : 1,
+        'python 2.x' : 2,
+        'python 3.x' : 3,
+        'java' : 4
     };
     $scope.fileType = "";
     $scope.fileAsString = "";
