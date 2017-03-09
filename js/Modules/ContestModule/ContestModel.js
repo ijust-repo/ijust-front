@@ -481,6 +481,16 @@ var ContestModel = function ($http, Constants) {
             })
     };
 
+    var getResult = function (contestId , callback) {
+        $http.get(Constants.server + Constants.version + 'contest/' + contestId + '/result')
+            .success(function (data,status) {
+                callback(data,true);
+            })
+            .error(function (data,satus) {
+                callback(data,false)
+            })
+    };
+
     return {
         getAllContestsList: getAllContestsList,
         createContest: createContest,
@@ -505,6 +515,7 @@ var ContestModel = function ($http, Constants) {
         teamJoin: teamJoin,
         teamUnJoin: teamUnJoin,
         teamReject: teamReject,
+        getResult:getResult,
         teamAccept: teamAccept
     }
 };

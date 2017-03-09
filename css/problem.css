@@ -2,7 +2,13 @@
 /* COLORS */
 #problem {
   background-color: #ffffff;
-  padding: 20px; }
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-bottom: 75px;
+  margin-right: 10% !important;
+  margin-left: 10% !important;
+  width: 80%; }
   #problem .ui.header {
     background-color: #f2f2f2;
     font-family: 'yekan'; }
@@ -29,3 +35,5 @@
     overflow: hidden;
     position: absolute;
     z-index: -1; }
+  #problem .centeredBtn {
+    margin-top: 0 !important; }

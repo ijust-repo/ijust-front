@@ -18,21 +18,25 @@ var ProblemsCtrl = function ($scope, $rootScope, ContestModel, UserModel, $state
 
     $scope.mapToString = function (num) {
       switch (num) {
-          case 1 : return 'A' ;
+          case 0 : return 'A' ;
               break;
-          case 2 : return 'B' ;
+          case 1 : return 'B' ;
               break;
-          case 3 : return 'C' ;
+          case 2 : return 'C' ;
               break ;
-          case 4 : return 'D' ;
+          case 3 : return 'D' ;
               break ;
-          case 5 : return 'E' ;
+          case 4 : return 'E' ;
               break;
-          case 6 : return 'F' ;
+          case 5 : return 'F' ;
               break ;
-          case 7 : return 'G' ;
+          case 6 : return 'G' ;
               break ;
-          case 8 : return 'H' ;
+          case 7 : return 'H' ;
+              break;
+          case 8 : return 'I' ;
+              break;
+          case 9 : return 'J' ;
               break;
           default : return num ;
       }

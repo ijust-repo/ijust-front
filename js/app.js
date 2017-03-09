@@ -2,7 +2,7 @@ var ijust = angular.module("ijust",
     [
         'ui.router', "ngStorage", "ngFileUpload", "ngCookies",
         "mtNotify",
-        "userModule", "teamModule" , "contestModule"
+        "userModule", "teamModule" , "contestModule" , "submissionModule"
     ])
 
     .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
@@ -29,8 +29,8 @@ var ijust = angular.module("ijust",
                 templateUrl: '/templates/contestInfo.html' ,
                 controller : 'ContestInfoCtrl'
             })
-            .state('rank_list' , {
-                url : '/contest/:contestName/rank_list' ,
+            .state('contest.rankList' , {
+                url : '/rank_list' ,
                 templateUrl: '/templates/rankList.html' ,
                 controller : 'RankListCtrl'
             })
