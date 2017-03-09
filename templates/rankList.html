@@ -23,7 +23,7 @@
                 <td>{{team.solved_count}}</td>
                 <td>{{team.penalty}}</td>
                 <!--<td ng-repeat="t in team.problems_list " ng-class="{'positive': t.solved ,'negative': !t.solved}">-->
-                <td ng-repeat="t in team " ng-class="{'positive': t.solved==true ,'negative': t.solved==false , 'unknown': t.solved=='unknown'}">
+                <td ng-repeat="t in team.problems " ng-class="{'positive': t.solved==true ,'negative': t.solved==false , 'unknown': t.solved=='unknown'}">
                     <i class="checkmark icon" ng-show="t.solved==true"></i>
                     <i class="attention icon" ng-show="t.solved==false"></i>
                     <span ng-show="t.solved != 'unknown'">Failed : {{t.failed_tries}}</span>
