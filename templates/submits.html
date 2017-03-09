@@ -17,7 +17,11 @@
             <tbody>
             <tr ng-repeat="t in submitsInfo">
                 <td>{{t.problem.title}}</td>
-                <td>{{t.status}}</td>
+                <td ng-class="{'positive': t.status=='Accepted' ,'negative': t.status=='WrongAnswer' , 'unknown': t.status !='Accepted' && 'WrongAnswer'}">
+                    <i class="checkmark icon" ng-show="t.status=='Accepted'"></i>
+                    <i class="attention icon" ng-show="t.status=='WrongAnswer'"></i>
+                    {{t.status}}
+                </td>
                 <td>{{t.reason}}</td>
             </tr>
             </tbody>
