@@ -27,7 +27,7 @@ var RankListCtrl = function ($scope , $rootScope , SubmissionModel , ContestMode
             teamProblem = resultObj[team].problems ;
             for(var i = 0 ; i<problemsList.length ; i++){
                 if(!teamProblem[problemsList[i].id]){
-                    teamProblem[problemsList[i].id] = {solved:false};
+                    teamProblem[problemsList[i].id] = {solved:"unknown"};
                 }
             }
             resultObj[team].problems = teamProblem ;
@@ -35,25 +35,12 @@ var RankListCtrl = function ($scope , $rootScope , SubmissionModel , ContestMode
         return resultObj ;
     };
 
-    $scope.getKeys = function (Object) {
-        if(!Object.keys) Object.keys = function(o){
-            if (o !== Object(o))
-                throw new TypeError('Object.keys called on non-object');
-            var ret=[],p;
-            for(p in o) if(Object.prototype.hasOwnProperty.call(o,p)) ret.push(p);
-            return ret;
+    $scope.getTeamName = function (id) {
+        for (var i=0; i<$scope.result.teams.length ; i++){
+            if($scope.result.teams[i].id == id){
+                return $scope.result.teams[i].name ;
+            }
         }
-    };
-
-    $scope.findTeam = function(resultObj , teamObj , outObj) {
-        var finded ;
-        console.log($scope.getKeys(resultObj));
-        for (var i=0 ; i< resultObj.length ; i++){
-            console.log(resultObj[i]);
-            finded = teamObj[team];
-            outObj[finded] = resultObj[team] ;
-        }
-        console.log(outObj);
     };
 
     // ContestModel.getContestInfoByName($scope.contestName , function (data , status) {
