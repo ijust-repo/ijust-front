@@ -4,7 +4,8 @@ var SubmitsCtrl = function ($scope , $rootScope , SubmissionModel) {
     SubmissionModel.getAllSubmissionInContest($rootScope.myTeam.id , $rootScope.contestId , function (data,status) {
         if (status){
             console.log(data);
-            $scope.submitsInfo = data ;
+            $scope.submitsInfo = data.submissions ;
+            $rootScope.notifyLoader = false ;
         }
     })
 };
