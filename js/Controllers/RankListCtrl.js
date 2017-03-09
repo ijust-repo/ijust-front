@@ -16,30 +16,29 @@ var RankListCtrl = function ($scope , $rootScope , SubmissionModel , ContestMode
             // $scope.problemsKeys = Object.keys(data.problems);
             // $scope.teamsKeys = Object.keys(data.teams);
             // $scope.findTeam(data.result , data.teams , $scope.rankList)
-            $scope.result.result = $scope.fillTheBlanks($scope.result.result , $scope.result.problems);
+            // $scope.result.result = $scope.fillTheBlanks($scope.result.result , $scope.result.problems);
             console.log($scope.result);
-            if($scope.result.result){
-                for(var obj in $scope.result.result){
-                    $scope.problems = $scope.result.result[obj].problems ;
-                    break;
-                }
-            }
+            // if($scope.result.result){
+            //     for(var obj in $scope.result.result){
+            //         $scope.problems = $scope.result.result[obj].problems ;
+            //         break;
+            //     }
+            // }
         }
     });
-
-    $scope.fillTheBlanks = function (resultObj , problemsList) {
-        var teamProblem ;
-        for (var team in resultObj){
-            teamProblem = resultObj[team].problems ;
-            for(var i = 0 ; i<problemsList.length ; i++){
-                if(!teamProblem[problemsList[i].id]){
-                    teamProblem[problemsList[i].id] = {solved:"unknown"};
-                }
-            }
-            resultObj[team].problems = teamProblem ;
-        }
-        return resultObj ;
-    };
+    //
+    // $scope.fillTheBlanks = function (resultList , problemsObj) {
+    //     for(var i=0 ; i<resultList.length ; i++){
+    //         var ii = resultList[i].problems ;
+    //         for(var problemId in problemsObj){
+    //             for(var j=0 ; j< ii ; j++){
+    //                 if (!problemId == ii[j]){
+    //                     // resultList[i].problems[j] =
+    //                 }
+    //             }
+    //         }
+    //     }
+    // };
 
     $scope.getTeamName = function (id) {
         for (var i=0; i<$scope.result.teams.length ; i++){

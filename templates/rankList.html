@@ -13,13 +13,13 @@
                 <th>Team Name</th>
                 <th>Solved Problems</th>
                 <th>Penalty</th>
-                <th ng-repeat="(n,m) in problems">{{getProblemName(n)}}</th>
+                <th ng-repeat="problem in result.result[0].problems">{{problem.title}}</th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="(key,team) in result.result">
+            <tr ng-repeat="team in result.result">
                 <td>{{$index+1}}</td>
-                <td><a>{{getTeamName(key)}}</a></td>
+                <td><a>{{team.team_name}}</a></td>
                 <td>{{team.solved_count}}</td>
                 <td>{{team.penalty}}</td>
                 <!--<td ng-repeat="t in team.problems_list " ng-class="{'positive': t.solved ,'negative': !t.solved}">-->
