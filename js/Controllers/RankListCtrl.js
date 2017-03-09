@@ -3,7 +3,7 @@ var RankListCtrl = function ($scope , $rootScope , SubmissionModel , ContestMode
     $scope.rankList = {} ;
     $scope.result = {};
     $scope.problemNumbers = [];
-
+    $scope.problems = {} ;
     $scope.resultKeys =[];
     $scope.problemsKeys=[];
     $scope.teamsKeys=[];
@@ -18,6 +18,12 @@ var RankListCtrl = function ($scope , $rootScope , SubmissionModel , ContestMode
             // $scope.findTeam(data.result , data.teams , $scope.rankList)
             $scope.result.result = $scope.fillTheBlanks($scope.result.result , $scope.result.problems);
             console.log($scope.result);
+            if($scope.result.result){
+                for(var obj in $scope.result.result){
+                    $scope.problems = $scope.result.result[obj].problems ;
+                    break;
+                }
+            }
         }
     });
 
@@ -39,6 +45,14 @@ var RankListCtrl = function ($scope , $rootScope , SubmissionModel , ContestMode
         for (var i=0; i<$scope.result.teams.length ; i++){
             if($scope.result.teams[i].id == id){
                 return $scope.result.teams[i].name ;
+            }
+        }
+    };
+
+    $scope.getProblemName=function(id) {
+        for (var i=0; i<$scope.result.problems.length ; i++){
+            if($scope.result.problems[i].id == id){
+                return $scope.result.problems[i].title ;
             }
         }
     };

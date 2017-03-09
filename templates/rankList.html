@@ -13,7 +13,7 @@
                 <th>Team Name</th>
                 <th>Solved Problems</th>
                 <th>Penalty</th>
-                <th ng-repeat="n in result.problems">Problem {{mapToString($index)}}</th>
+                <th ng-repeat="(n,m) in problems">{{getProblemName(n)}}</th>
             </tr>
             </thead>
             <tbody>
