@@ -20,12 +20,13 @@
                 </tr>
             </tbody>
         </table>
-        <div class="ui segment body">
-            <p>
-                {{problemInfo.body}}
-            </p>
-            <iframe ng-src="{{bodyUrl}}"
-                    style="width:600px; height:500px;" frameborder="0"></iframe>
+        <div class="ui segment body" style="text-align: center">
+            <!--<p>-->
+                <!--{{problemInfo.body}}-->
+            <!--</p>-->
+            <!--<iframe ng-src="{{bodyUrl}}"-->
+                    <!--style="width:600px; height:500px;"></iframe>-->
+            <a ng-href="{{bodyUrl}}" style="text-align: center">{{bodyUrl}}</a>
         </div>
         <div class="ui segment grid container">
             <div class="three column row">
