@@ -6,12 +6,12 @@
         <!--<div class="centeredBtn">-->
         <div ui-view></div>
         <div ng-repeat="problem in problemsInfo" class="ui stacked segment four wide column box">
-            <a class="ui teal ribbon label">{{mapToString(problem.order)}}</a>
+            <a class="ui teal ribbon label">{{$index}}</a>
             <div class="textContainer">
                 <p class="text">{{problem.title}}</p>
             </div>
             <!--<a class="ui blue ribbon label" style="margin-top: 15px">Show</a>-->
-            <a class="ui blue button centeredBtn" ui-sref="problem({contestId:contestId , teamId:teamId , problemId:problem.id})">show</a>
+            <a class="ui blue button centeredBtn" ui-sref="contest.problems.problem({problemId:problem.id})">show</a>
         </div>
         <div class="sixteen wide column" style="position: absolute;top: -55px;" ng-show="isOwner||isAdmin">
             <button class="ui orange right labeled icon button" style="float: right;margin-right: -10px" ui-sref="contest.problems.addProblem">

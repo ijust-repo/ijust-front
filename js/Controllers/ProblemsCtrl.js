@@ -6,7 +6,6 @@ var ProblemsCtrl = function ($scope, $rootScope, ContestModel, UserModel, $state
     ContestModel.getProblemsList($rootScope.contestId ,function (data, status) {
         if (status) {
             $rootScope.problemsInfo = data.problems ;
-            console.log(data);
             if($rootScope.problemsInfo.length==0){
                 $rootScope.showProblemsEmptyError = true;
             }

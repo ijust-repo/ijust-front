@@ -38,7 +38,7 @@
                     <input type="number" placeholder="Space Limit" ng-model="problemInfo.space_limit">
                 </div>
             </div>
-            <div style="width: 100% ; height: 40px; position: relative">
+            <div class="btnContainer">
                 <button class="ui positive button centeredBtn" type="submit" ng-click="createProblem()" ng-show="!buttonLoader">create</button>
                 <button class="ui positive loading button centeredBtn" type="submit" ng-click="createProblem()" ng-show="buttonLoader">create</button>
             </div>
@@ -48,11 +48,18 @@
         </div>
 
         <div class="" ng-if="show=='body'">
-            <button class="ui blue button centeredBtn" type="file" ngf-select="uploadBody($file, $invalidFiles)"
-                    accept="pdf/*"
-                    ng-show="!buttonLoader">upload pdf</button>
-            <button class="ui blue loading button centeredBtn" ng-show="!buttonLoader">upload pdf</button>
+            <div style="width: 100% ; height: 40px; position: relative" class="btnContainer">
+                <button class="ui blue button centeredBtn" type="file" ngf-select="uploadBody($file, $invalidFiles)"
+                        ng-show="!buttonLoader">upload pdf</button>
+                <button class="ui blue loading button centeredBtn" ng-show="buttonLoader">upload pdf</button>
+            </div>
         </div>
-        <div class="" ng-if="show=='test'"></div>
+        <div class="" ng-if="show=='test'">
+            <div style="width: 100% ; height: 40px; position: relative" class="btnContainer">
+                <button class="ui blue button centeredBtn" type="file" ngf-select="uploadTestCase($file, $invalidFiles)"
+                        ng-show="!buttonLoader">upload zip</button>
+                <button class="ui blue loading button centeredBtn" ng-show="buttonLoader">upload zip</button>
+            </div>
+        </div>
     </div>
 </div>

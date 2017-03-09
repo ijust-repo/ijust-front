@@ -9,13 +9,6 @@ var ContestCtrl = function ($scope , mtNotifyService , $stateParams , $location 
     $scope.successJoinTeam = false ;
     $scope.rejectJoinTeam = false ;
 
-    // user states on the contest
-    $rootScope.isJoined = 0 ;
-    $rootScope.isOwner = false ;
-    $rootScope.isAdmin = false ;
-    $rootScope.isNew = false ;
-    $rootScope.problemShow = false ;
-
     // to join
     $scope.myTeams = [];
     $scope.pendingTeams={};

@@ -49,8 +49,8 @@ var ijust = angular.module("ijust",
                 templateUrl: '/templates/addProblem.html' ,
                 controller : 'addProblemCtrl'
             })
-            .state('problem' , {
-                url : '/contest/:contestId/:teamId/problems/:problemId' ,
+            .state('contest.problems.problem' , {
+                url : '/problem/:problemId' ,
                 templateUrl: '/templates/problem.html' ,
                 controller : 'ProblemCtrl'
             })

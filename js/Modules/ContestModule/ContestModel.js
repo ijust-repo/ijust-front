@@ -354,8 +354,8 @@ var ContestModel = function ($http, Constants) {
 
     };
 
-    var problemUploadBody = function (contestId, problemId, FILE , callback) {
-        $http.post(Constants.server + Constants.version + 'contest/' + contestId + '/problem/' + problemId + '/body',FILE)
+    var problemUploadBody = function (contestId, problemId, FormData , callback) {
+        $http.post(Constants.server + Constants.version + 'contest/' + contestId + '/problem/' + problemId + '/body',FormData)
             .success(function (data, status) {
                 callback(data, true);
             })
