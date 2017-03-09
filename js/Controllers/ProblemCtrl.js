@@ -11,7 +11,7 @@ var ProblemCtrl = function ($scope , $rootScope , Temp , ContestModel , Submissi
         'c++11' : 1,
         'python 2.x' : 2,
         'python 3.x' : 3,
-        'java' : 4
+        'java8' : 4
     };
     $scope.fileType = "";
     $scope.fileAsString = "";
