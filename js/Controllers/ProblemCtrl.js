@@ -15,7 +15,7 @@ var ProblemCtrl = function ($scope , $rootScope , Temp , ContestModel , Submissi
     $scope.problemInfo = {} ;
     $scope.isCompile = false ;
     $scope.isEdit = false ;
-
+    $scope.bodyUrl = '';
     $scope.showSubmitError = true ;
     $scope.submitError = '';
 
@@ -70,6 +70,7 @@ var ProblemCtrl = function ($scope , $rootScope , Temp , ContestModel , Submissi
         $scope.prog_lang=$scope.fileTypes[ft] ;
     };
 
+    $scope.bodyUrl = 'http://docs.google.com/gview?url=https://ijust.ir/static/' + $scope.problemId + '.pdf&embedded=true';
     // ContestModel.problemDownloadBody($rootScope.contestId, $scope.problemId , function (data, status) {
     //     if (status) {
     //         console.log(data);

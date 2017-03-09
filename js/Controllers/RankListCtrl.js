@@ -4,13 +4,57 @@ var RankListCtrl = function ($scope , $rootScope , SubmissionModel , ContestMode
     $scope.result = {};
     $scope.problemNumbers = [];
 
+    $scope.resultKeys =[];
+    $scope.problemsKeys=[];
+    $scope.teamsKeys=[];
+
     ContestModel.getResult($rootScope.contestId,function (data,status) {
         if(status){
-            console.log(data);
             $scope.result = data ;
             $rootScope.notifyLoader = false;
+            // $scope.resultKeys = Object.keys(data.result);
+            // $scope.problemsKeys = Object.keys(data.problems);
+            // $scope.teamsKeys = Object.keys(data.teams);
+            // $scope.findTeam(data.result , data.teams , $scope.rankList)
+            $scope.result.result = $scope.fillTheBlanks($scope.result.result , $scope.result.problems);
+            console.log($scope.result);
         }
     });
+
+    $scope.fillTheBlanks = function (resultObj , problemsList) {
+        var teamProblem ;
+        for (var team in resultObj){
+            teamProblem = resultObj[team].problems ;
+            for(var i = 0 ; i<problemsList.length ; i++){
+                if(!teamProblem[problemsList[i].id]){
+                    teamProblem[problemsList[i].id] = {solved:false};
+                }
+            }
+            resultObj[team].problems = teamProblem ;
+        }
+        return resultObj ;
+    };
+
+    $scope.getKeys = function (Object) {
+        if(!Object.keys) Object.keys = function(o){
+            if (o !== Object(o))
+                throw new TypeError('Object.keys called on non-object');
+            var ret=[],p;
+            for(p in o) if(Object.prototype.hasOwnProperty.call(o,p)) ret.push(p);
+            return ret;
+        }
+    };
+
+    $scope.findTeam = function(resultObj , teamObj , outObj) {
+        var finded ;
+        console.log($scope.getKeys(resultObj));
+        for (var i=0 ; i< resultObj.length ; i++){
+            console.log(resultObj[i]);
+            finded = teamObj[team];
+            outObj[finded] = resultObj[team] ;
+        }
+        console.log(outObj);
+    };
 
     // ContestModel.getContestInfoByName($scope.contestName , function (data , status) {
     //     if(status){
