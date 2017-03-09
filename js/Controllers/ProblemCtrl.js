@@ -1,6 +1,9 @@
 var ProblemCtrl = function ($scope , $rootScope , Temp , ContestModel , SubmissionModel
     , $stateParams , Constants , Upload , $timeout , $state) {
 
+    if($scope.problemId){
+        delete $scope.problemId;
+    }
     $scope.problemId = $stateParams.problemId;
     $scope.fileTypeList = ['c++' ,'c++11','python 2.x','python 3.x','java8'];
     $scope.fileTypes = {

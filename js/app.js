@@ -34,10 +34,10 @@ var ijust = angular.module("ijust",
                 templateUrl: '/templates/rankList.html' ,
                 controller : 'RankListCtrl'
             })
-            .state('submitted' , {
-                url : '/contest/:contestName/submitted' ,
-                templateUrl: '/templates/submitted.html' ,
-                controller : 'RankListCtrl'
+            .state('contest.submits' , {
+                url : '/submits' ,
+                templateUrl: '/templates/submits.html' ,
+                controller : 'SubmitsCtrl'
             })
             .state('contest.problems' , {
                 url : '/problems' ,

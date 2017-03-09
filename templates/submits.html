@@ -1,0 +1,30 @@
+<div class="ui container" id="rankList">
+    <div class="ui active inverted dimmer" ng-show="$root.notifyLoader">
+        <div class="ui text massive loader">Loading</div>
+    </div>
+    <h3 class="ui top attached header centered">
+        Your Submits
+    </h3>
+    <div class="ui attached rankList segment">
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th>Team Name</th>
+                <th ng-repeat="n in problemNumbers">Problem {{n}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><a>{{myTeamObj.team.name}}</a></td>
+                <!--<td ng-repeat="t in team.problems_list " ng-class="{'positive': t.solved ,'negative': !t.solved}">-->
+                <td ng-repeat="t in myTeamObj.problems_list" ng-class="{'positive': t.solved==true ,'negative': t.solved==false , 'unknown': t.solved=='unknown'}">
+                    <i class="checkmark icon" ng-show="t.solved==true"></i>
+                    <i class="attention icon" ng-show="t.solved==false"></i>
+                    <span ng-repeat="tf in t.failed_tries_reason" ng-show="t.solved==false">{{tf}},</span>
+                    <span ng-show="t.solved==true">accepted</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
