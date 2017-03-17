@@ -13,29 +13,30 @@
                 <th>Team Name</th>
                 <th>Solved Problems</th>
                 <th>Penalty</th>
-                <th ng-repeat="problem in result.result[0].problems">{{problem.title}}</th>
+                <th ng-repeat="p in problems">{{p.title}}</th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="team in result.result">
+            <tr ng-repeat="team in result.teams">
                 <td>{{$index+1}}</td>
-                <td><a>{{team.team_name}}</a></td>
+                <td><a>{{team.name}}</a></td>
                 <td>{{team.solved_count}}</td>
                 <td>{{team.penalty}}</td>
-                <!--<td ng-repeat="t in team.problems_list " ng-class="{'positive': t.solved ,'negative': !t.solved}">-->
-                <td ng-repeat="t in team.problems " ng-class="{'positive': t.solved==true ,'negative': t.solved==false , 'unknown': t.solved=='unknown'}">
-                    <i class="checkmark icon" ng-show="t.solved==true"></i>
-                    <i class="attention icon" ng-show="t.solved==false"></i>
-                    <span ng-show="t.solved != 'unknown'">Failed : {{t.failed_tries}}</span>
-                    <span ng-show="t.solved == 'unknown'">--</span>
+                <td ng-repeat="problem in team.problems track by $index"
+                    data-tooltip="Failed Tries : {{problem.failed_tries}} | Penalty : {{problem.penalty}} | Submitted at : {{$parent.getTime(problem.submitted_at)}}"
+                    data-variation="huge"
+                    ng-class="{'positive': problem.solved==true ,'negative': problem.solved==false}">
+                    <i class="checkmark icon" ng-show="problem.solved==true"></i>
+                    <i class="attention icon" ng-show="problem.solved==false"></i>
+                    <!--<i class="remove icon removeIcon" ng-show="problem.solved=='unknown'"></i>-->
+                    <span ng-show="problem.solved == true">{{problem.penalty}}</span>
+                    <!--<span ng-show="problem.solved == true">Failed:{{problem.failed_tries}}</span>-->
+                    <!--<span ng-show="problem.solved == false">Penalty:{{problem.penalty}}</span>-->
+                    <span ng-show="problem.solved == false">-{{problem.failed_tries}}</span>
+                    <!--<span ng-show="problem.solved == 'unknown'">&#45;&#45;</span>-->
                 </td>
             </tr>
             </tbody>
         </table>
-        <!--<div class="ui one column centered grid">-->
-        <!--<div class="column">-->
-        <!--<button class=" ui blue centeredBtn button">Create Contest</button>-->
-        <!--</div>-->
-        <!--</div>-->
     </div>
 </div>

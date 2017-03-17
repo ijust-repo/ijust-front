@@ -74,17 +74,16 @@ var ProblemCtrl = function ($scope , $rootScope , Temp , ContestModel , Submissi
         $scope.prog_lang=$scope.fileTypes[ft] ;
     };
 
-    $scope.bodyUrl = 'https://ijust.ir/static/' + $scope.problemId + '.pdf';
-    // ContestModel.problemDownloadBody($rootScope.contestId, $scope.problemId , function (data, status) {
-    //     if (status) {
-    //         console.log(data);
-    //         $scope.problemInfo.body = data ;
-    //         $rootScope.notifyLoader = false;
-    //     }
-    //     else {
-    //         //nth
-    //     }
-    // });
+    // $scope.bodyUrl = 'https://ijust.ir/static/' + $scope.problemId + '.pdf';
+    ContestModel.problemDownloadBody($rootScope.contestId, $scope.problemId , function (data, status) {
+        if (status) {
+            $("#problem_body").attr('src',"data:application/pdf;base64," + data);
+            $rootScope.notifyLoader = false;
+        }
+        else {
+            //nth
+        }
+    });
 
     // $scope.uploadFiles = function (file, errFiles) {
     //     $scope.f = file;
