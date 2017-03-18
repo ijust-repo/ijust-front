@@ -53,7 +53,7 @@
                 <td ng-if="contest.is_active"><i class="large green checkmark icon"></i></td>
                 <td ng-if="!contest.is_active"><i class="large red close icon"></i></td>
                 <td ng-class="{  'negative': (contest.joining_status.status=='0') && !(contest.is_admin||contest.is_owner) ,
-                                 'pending': (contest.joining_status.status=='1') && !(contest.is_admin||contest.is_owner)  ,
+                                 'warning': (contest.joining_status.status=='1') && !(contest.is_admin||contest.is_owner)  ,
                                  'positive': (contest.joining_status.status=='2') && !(contest.is_admin||contest.is_owner) ,
                                  'admin':contest.is_admin ,
                                  'owner':contest.is_owner  }">
