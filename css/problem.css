@@ -21,7 +21,6 @@
     background-size: 400px 300px;
     background-color: #1f6dc7; }
     #problem .body .iframeHolder iframe {
-      display: none;
       width: 100%;
       min-height: 500px; }
   #problem .pre {
