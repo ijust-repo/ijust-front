@@ -4,11 +4,11 @@
   background-color: #ffffff;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding-bottom: 100px; }
+  box-sizing: border-box; }
   #problem .ui.header {
     background-color: #f2f2f2;
-    font-family: 'yekan'; }
+    font-family: 'yekan';
+    margin-top: 10px !important; }
   #problem table th, #problem table td {
     text-align: center; }
   #problem table td {
@@ -34,3 +34,20 @@
     z-index: -1; }
   #problem .centeredBtn {
     margin-top: 0 !important; }
+  #problem .ui.large.step, #problem .ui.large.steps .step {
+    height: 125px; }
+  #problem .ui.steps .step .title ~ .description {
+    position: relative; }
+    #problem .ui.steps .step .title ~ .description .button {
+      position: absolute;
+      float: left;
+      left: 50%;
+      top: -10px;
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+      transform: translateX(-50%); }
+  #problem .ui.steps .step .title {
+    position: relative;
+    top: -20px; }

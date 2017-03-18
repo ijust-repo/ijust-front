@@ -1,10 +1,21 @@
 /* Variables */
 /* COLORS */
 #problems {
-  background-color: #ffffff;
-  padding: 20px; }
+  background-color: #ffffff; }
   #problems .ui.header {
-    background-color: #f2f2f2; }
+    background-color: #f2f2f2;
+    margin-top: 0;
+    position: relative; }
+    #problems .ui.header .headerBtns {
+      float: right;
+      position: absolute;
+      top: 5px;
+      right: 5px; }
+      #problems .ui.header .headerBtns .button {
+        position: relative; }
+      #problems .ui.header .headerBtns .toggleIcon {
+        float: right;
+        cursor: pointer; }
   #problems table th, #problems table td {
     text-align: center; }
   #problems .ui.grid > .row > .ui.segment.column, #problems .ui.grid > .ui.segment.column, #problems .ui.page.grid.segment {
@@ -16,7 +27,7 @@
       position: relative;
       text-align: center;
       margin-top: -25px;
-      font-size: 1.5em; }
+      font-size: 1.2em; }
     #problems .box .button {
       margin-top: 10px; }
   #problems .ui.error.visible.message {
@@ -27,3 +38,30 @@
     width: 90%;
     margin-right: 5%;
     margin-left: 5%; }
+  #problems .searchBox {
+    width: 100%; }
+  #problems hr {
+    outline: none;
+    border: 1px solid #d4d4d5 !important;
+    border-top: none;
+    width: 100%; }
+  #problems .stacked.segment {
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s; }
+    #problems .stacked.segment:hover {
+      background-color: #e8e8e8; }
+      #problems .stacked.segment:hover p {
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -ms-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+        -webkit-transform: scale(1.2, 1.2);
+        -moz-transform: scale(1.2, 1.2);
+        -ms-transform: scale(1.2, 1.2);
+        -o-transform: scale(1.2, 1.2);
+        transform: scale(1.2, 1.2); }

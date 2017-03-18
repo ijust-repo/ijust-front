@@ -1,6 +1,10 @@
 @import "variables";
 #addProblem{
   padding: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 90%;margin-right: 5%;margin-left: 5%;
   .ui.three.top.attached.steps{
     margin-top: 14px;
   }

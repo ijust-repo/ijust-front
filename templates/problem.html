@@ -1,11 +1,11 @@
-<div id="problem">
+<div id="problem" class="animated fadeIn">
     <div class="ui active inverted dimmer" ng-show="$root.notifyLoader">
         <div class="ui text massive loader">Loading</div>
     </div>
     <h3 class="ui top attached header centered">
         {{problemInfo.title}}
     </h3>
-    <div class="ui attached rankList segment">
+    <div class="ui attached problem loading segment">
         <table class="ui celled table">
             <thead>
                 <tr>
@@ -15,8 +15,8 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{problemInfo.time_limit}} ms</td>
-                    <td>{{problemInfo.space_limit}} kb</td>
+                    <td>{{problemInfo.time_limit}} s</td>
+                    <td>{{problemInfo.space_limit}} mb</td>
                 </tr>
             </tbody>
         </table>
@@ -31,21 +31,35 @@
             </div>
             <a ng-href="{{bodyUrl}}" style="text-align: center">{{bodyUrl}}</a>
         </div>
-        <div class="ui segment grid container">
-            <div class="three column row">
-                <div class="column">
-                    <div class="ui dropdown blue button fileTypesDropDown centeredBtn"
-                         style="height: 37px;padding: 11px;z-index: +99999;">
-                        <div class="text">File Type</div>
-                        <i class="dropdown icon"></i>
-                        <div class="menu">
-                            <div class="item" ng-repeat="ft in fileTypeList" ng-click="getFileType(ft)">{{ft}}</div>
+        <div class="ui segment centered grid container">
+            <div class="column row">
+                <div>
+                    <div class="ui ordered large steps">
+                        <div class="step">
+                            <div class="content">
+                                <div class="title">Choose your programming language</div>
+                                <div class="description">
+                                    <div class="ui bottom left pointing dropdown blue button fileTypesDropDown centeredBtn"
+                                         style="height: 37px;padding: 11px;z-index: +99999;">
+                                        <div class="text">File Type</div>
+                                        <i class="dropdown icon"></i>
+                                        <div class="menu">
+                                            <div class="item" ng-repeat="ft in fileTypeList" ng-click="getFileType(ft)">{{ft}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="active step">
+                            <div class="content">
+                                <div class="title">Upload your program file</div>
+                                <div class="description">
+                                    <button class="ui blue button centeredBtn" ng-show="!buttonLoader" type="file" ngf-select="upload($file, $invalidFiles)">upload</button>
+                                    <button class="ui blue loading button centeredBtn" ng-show="buttonLoader">upload</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="column">
-                    <button class="ui blue button centeredBtn" ng-show="!buttonLoader" type="file" ngf-select="upload($file, $invalidFiles)">upload</button>
-                    <button class="ui blue loading button centeredBtn" ng-show="buttonLoader">upload pdf</button>
                 </div>
             </div>
         </div>

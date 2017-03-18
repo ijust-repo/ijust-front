@@ -1,17 +1,17 @@
 var ProblemCtrl = function ($scope , $rootScope , Temp , ContestModel , SubmissionModel
-    , $stateParams , Constants , Upload , $timeout , $state) {
+    , $stateParams , Constants , Upload , $timeout , $location) {
 
     if($scope.problemId){
         delete $scope.problemId;
     }
     $scope.problemId = $stateParams.problemId;
-    $scope.fileTypeList = ['c++' ,'c++11','python 2.x','python 3.x','java8'];
+    $scope.fileTypeList = ['c++' ,'c++ 11','python 2.x','python 3.x','java 8'];
     $scope.fileTypes = {
         'c++' : 0,
-        'c++11' : 1,
+        'c++ 11' : 1,
         'python 2.x' : 2,
         'python 3.x' : 3,
-        'java8' : 4
+        'java 8' : 4
     };
     $scope.fileType = "";
     $scope.fileAsString = "";
@@ -21,13 +21,15 @@ var ProblemCtrl = function ($scope , $rootScope , Temp , ContestModel , Submissi
     $scope.isEdit = false ;
     $scope.bodyUrl = '';
     $scope.showSubmitError = true ;
-    $scope.submitError = '';
+    $scope.submitError = false;
+    $scope.errorMsg = '';
 
     ContestModel.getProblemInfo($rootScope.contestId, $scope.problemId , function (data, status) {
         if (status) {
             console.log(data);
             $scope.problemInfo = data ;
             $rootScope.notifyLoader = false;
+            $('.problem').removeClass('loading');
         }
         else {
             //nth
@@ -56,14 +58,15 @@ var ProblemCtrl = function ($scope , $rootScope , Temp , ContestModel , Submissi
                 $timeout(function () {
                     file.result = response.data;
                     $scope.buttonLoader = false;
-                    $scope.isCompile=true;
-                    if (response.status >= 400)
+                    if (response.status >= 400){
                         $scope.errorMsg = response.status + ': ' + response.data;
+                        $scope.submitError = true ;}
                     else if (response.status==200){
-                        $('.test').removeClass('active');
-                        $('.test').addClass('completed');
-                        var infoPath = "/contest/"+$rootScope.contestId+"/problems";
-                        $location.path(infoPath);
+                        // $('.test').removeClass('active');
+                        // $('.test').addClass('completed');
+                        // var infoPath = "/contest/"+$rootScope.contestId+"/problems";
+                        // $location.path(infoPath);
+                        $scope.isCompile=true;
                     }
                 }, 500);
             });

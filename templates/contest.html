@@ -24,9 +24,9 @@
             <i class="browser icon"></i>
             Submits
         </a>
-        <a class="item teamButton" ng-show="$root.isAdmin||$root.isOwner">
+        <a class="item" ng-show="$root.isAdmin||$root.isOwner">
             <i class="users icon"></i>
-            <div class="floating ui orange label">{{pendingTeamsNumber}}</div>
+            <div class="floating ui circular orange label teamButton">{{pendingTeamsNumber}}</div>
             Teams
         </a>
         <!--<div style="position: absolute ; right: 0;">-->
@@ -56,7 +56,8 @@
                 <tr>
                     <th>Name</th>
                     <th>Admin</th>
-                    <th>Members</th>
+                    <th>Member1</th>
+                    <th>Member2</th>
                     <th>Action</th>
                     <!--<th></th>-->
                 </tr>
@@ -65,9 +66,13 @@
                 <tr ng-repeat="pt in pendingTeams">
                     <td>{{pt.name}}</td>
                     <td>{{pt.owner.username}}</td>
-                    <td ng-repeat="m in pt.members">
-                        <span class="ui label">{{m.username}}</span>
-                    </td>
+                    <td ng-if="pt.members[0]">{{pt.members[0].username}}</td>
+                    <td ng-if="!pt.members[0]">----</td>
+                    <td ng-if="pt.members[1]">{{pt.members[0].username}}</td>
+                    <td ng-if="!pt.members[1]">----</td>
+                    <!--<td ng-repeat="m in pt.members">-->
+                        <!--<span class="ui label">{{m.username}}</span>-->
+                    <!--</td>-->
                     <td>
                         <div class="ui buttons">
                             <button class="ui green button" ng-click="acceptJoinRequest(pt.id)">Accept</button>

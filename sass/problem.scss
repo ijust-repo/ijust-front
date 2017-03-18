@@ -5,7 +5,8 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  padding-bottom: 100px;
+  //padding-bottom: 100px;
+  //padding-bottom: 20px;
   //margin: {
   //  right: 10% !important;
   //  left: 10% !important;
@@ -16,6 +17,7 @@
   .ui.header{
     background-color: $lightGray;
     font-family: 'yekan';
+    margin-top: 10px !important;
   }
   table{
     th , td{
@@ -68,5 +70,27 @@
   }
   .centeredBtn{
     margin-top: 0!important;
+  }
+  .ui.large.step, .ui.large.steps .step {
+    //font-size: 1.14285714rem;
+    height: 125px;
+  }
+  .ui.steps .step .title~.description{
+    position: relative;
+    .button{
+      position: absolute;
+      float: left;
+      left:50%;
+      top: -10px;
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+      transform: translateX(-50%);
+    }
+  }
+  .ui.steps .step .title{
+    position: relative;
+    top: -20px;
   }
 }

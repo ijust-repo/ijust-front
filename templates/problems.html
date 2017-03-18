@@ -1,26 +1,34 @@
 <div id="problems">
+    <div class="ui active inverted dimmer" ng-show="$root.notifyLoader">
+        <div class="ui text massive loader">Loading</div>
+    </div>
     <h3 class="ui top attached header centered">
-        Problems
-    </h3>
-    <div class="ui attached problemsList loading segment centered grid container">
-        <!--<div class="centeredBtn">-->
-        <div ui-view id="addProblemView"></div>
-        <div ng-repeat="problem in problemsInfo" class="ui stacked segment four wide column box">
-            <a class="ui teal ribbon label">{{mapToString($index)}}</a>
-            <div class="textContainer">
-                <p class="text">{{problem.title}}</p>
+        <span>Problems</span>
+        <div class="headerBtns">
+            <div class="ui icon button toggleIcon" data-content="Add users to your feed">
+                <i class="minus icon"></i>
             </div>
-            <!--<a class="ui blue ribbon label" style="margin-top: 15px">Show</a>-->
-            <a class="ui blue button centeredBtn" ui-sref="contest.problems.problem({problemId:problem.id})">show</a>
-        </div>
-        <div class="sixteen wide column" style="position: absolute;top: -55px;" ng-show="isOwner||isAdmin">
-            <button class="ui orange right labeled icon button" style="float: right;margin-right: -10px" ui-sref="contest.problems.addProblem">
+            <button ng-show="isOwner||isAdmin" class="ui orange right labeled icon button" style="float: right;" ui-sref="contest.problems.addProblem">
                 <i class="right plus icon"></i>
                 Add Problem
             </button>
+        </div>
+    </h3>
+    <div class="ui attached segment centered grid container problemsList">
+        <!--<hr>-->
+        <div ng-repeat="problem in problemsInfo"
+             ui-sref="contest.problems.problem({problemId:problem.id})"
+             class="ui stacked segment three wide column box animated flipInY">
+            <a class="ui teal ribbon label">{{mapToString($index)}}</a>
+            <div class="ui top attached label"></div>
+            <div class="ui bottom attached label"></div>
+            <div class="textContainer">
+                <p class="text">{{problem.title}}</p>
+            </div>
         </div>
         <div ng-show="showProblemsEmptyError" class="ui error visible message ten wide column">
             <p>there is no problem</p>
         </div>
     </div>
+    <div ui-view></div>
 </div>

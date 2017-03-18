@@ -1,15 +1,32 @@
-var ProblemsCtrl = function ($scope, $rootScope, ContestModel, UserModel, $stateParams , Temp) {
+var ProblemsCtrl = function ($scope, $rootScope, ContestModel) {
 
     $rootScope.problemsInfo = {} ;
     $scope.showProblemsEmptyError = false ;
+    $rootScope.notifyLoader = true;
+
+    var toggleState = [1];
+    $('.toggleIcon').on('click',function () {
+        if(toggleState[0]){
+            $('.problemsList').slideToggle();
+            $('.toggleIcon i').removeClass('minus').addClass('caret down');
+            toggleState.pop();
+        }
+        else {
+            $('.problemsList').slideToggle();
+            $('.toggleIcon i').removeClass('caret down').addClass('minus');
+            toggleState.push(1);
+        }
+    });
 
     ContestModel.getProblemsList($rootScope.contestId ,function (data, status) {
         if (status) {
             $rootScope.problemsInfo = data.problems ;
+            console.log(data);
             if($rootScope.problemsInfo.length==0){
                 $rootScope.showProblemsEmptyError = true;
             }
-            $('.problemsList').removeClass('loading');
+            // $('.problemsList').removeClass('loading');
+            $rootScope.notifyLoader = false;
         }
         else {
             //nth

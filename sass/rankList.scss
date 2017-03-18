@@ -2,10 +2,12 @@
 
 #rankList {
   background-color: $white;
-  padding: 20px;
+  //padding: 20px;
+  //padding-top: 0 !important;
   //min-height: calc(100vh - 75px);
   .ui.header{
     background-color: $lightGray;
+    margin-top: 0 !important;
   }
   .rankList{
     th , td{

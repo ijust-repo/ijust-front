@@ -2,10 +2,29 @@
 
 #problems {
   background-color: $white;
-  padding: 20px;
+  //padding: 20px;
+  //padding-top: 0 !important;
   //min-height: calc(100vh - 75px);
   .ui.header{
     background-color: $lightGray;
+    margin-top: 0 ;
+    position: relative;
+    .headerBtns{
+      float: right;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      .button{
+        position: relative;
+        //right: 10px;
+      }
+      .toggleIcon{
+        //font-size: 2rem;
+        float: right;
+        //line-height: 38px;
+        cursor: pointer;
+      }
+    }
   }
   table{
     th , td{
@@ -35,7 +54,7 @@
       //transform: translateY(-30%);
       text-align: center;
       margin-top: -25px;
-      font-size: 1.5em;
+      font-size: 1.2em;
     }
     .button{
       margin-top: 10px;
@@ -50,5 +69,38 @@
   }
   #addProblemView{
     width: 90%;margin-right: 5%;margin-left: 5%
+  }
+  .searchBox{
+    width: 100%;
+  }
+  hr{
+    //border: none;
+    outline:none;
+    border:1px solid #d4d4d5 !important;
+    border-top:none;
+    width:100%;
+  }
+  .stacked.segment {
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    &:hover{
+      background-color: #e8e8e8;
+      p{
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -ms-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+        -webkit-transform: scale(1.2,1.2);
+        -moz-transform: scale(1.2,1.2);
+        -ms-transform: scale(1.2,1.2);
+        -o-transform: scale(1.2,1.2);
+        transform: scale(1.2,1.2);
+      }
+    }
   }
 }
