@@ -40,6 +40,7 @@
                 <th>Owner</th>
                 <th>Start Time</th>
                 <th>End Time</th>
+                <th>Teams</th>
                 <th>active</th>
                 <th>status</th>
             </tr>
@@ -50,6 +51,7 @@
                 <td>{{contest.owner.username}}</td>
                 <td>{{$parent.getDate(contest.starts_at)}}</td>
                 <td>{{$parent.getDate(contest.ends_at)}}</td>
+                <td data-tooltip="Pending : {{contest.pending_teams_num}}" data-inverted="">{{contest.accepted_teams_num}}</td>
                 <td ng-if="contest.is_active"><i class="large green checkmark icon"></i></td>
                 <td ng-if="!contest.is_active"><i class="large red close icon"></i></td>
                 <td ng-class="{  'negative': (contest.joining_status.status=='0') && !(contest.is_admin||contest.is_owner) ,
@@ -82,6 +84,7 @@
                 <th>Owner</th>
                 <th>Start Time</th>
                 <th>End Time</th>
+                <th>Teams</th>
                 <th>active</th>
             </tr>
             </thead>
@@ -91,6 +94,7 @@
                 <td>{{contest.owner.username}}</td>
                 <td>{{$parent.getDate(contest.starts_at)}}</td>
                 <td>{{$parent.getDate(contest.ends_at)}}</td>
+                <td data-tooltip="Pending : {{contest.pending_teams_num}}" data-inverted="">{{contest.accepted_teams_num}}</td>
                 <td ng-if="contest.is_active">
                     <i class="large green checkmark icon"></i>
                 </td>
@@ -116,6 +120,7 @@
                 <th>Owner</th>
                 <th>Start Time</th>
                 <th>End Time</th>
+                <th>Teams</th>
                 <th>active</th>
             </tr>
             </thead>
@@ -125,6 +130,7 @@
                 <td>{{ac.owner.username}}</td>
                 <td>{{$parent.getDate(ac.starts_at)}}</td>
                 <td>{{$parent.getDate(ac.ends_at)}}</td>
+                <td data-tooltip="Pending : {{contest.pending_teams_num}}" data-inverted="">{{contest.accepted_teams_num}}</td>
                 <td ng-if="ac.is_active">
                     <i class="large green checkmark icon"></i>
                 </td>
