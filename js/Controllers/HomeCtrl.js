@@ -1,4 +1,4 @@
-var HomeCtrl = function ( $scope , mtNotifyService , ContestModel , TeamModel , $rootScope) {
+var HomeCtrl = function ( $scope , mtNotifyService , ContestModel , TeamModel , $rootScope ,$timeout) {
 
     $rootScope.notifyLoader = true ;
     $scope.allContetsEmptyError = false;
@@ -12,8 +12,8 @@ var HomeCtrl = function ( $scope , mtNotifyService , ContestModel , TeamModel , 
 
     TeamModel.getMyTeams(function (data, status) {
         if (status){
-            $rootScope.myTeams=data.owner_teams;
-            $rootScope.myTeams.concat(data.member_teams);
+            console.log('my teams:',data);
+            $rootScope.myTeams=$.merge(data.member_teams,data.owner_teams); // jQuery function ( should be solved somehow better )
             if ($rootScope.myTeams.length==0){
                 $rootScope.teamsEmptyError = true ;
             }

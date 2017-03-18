@@ -4,8 +4,13 @@ var RootCtrl = function ($scope, $rootScope, UserModel,
 
     $scope.newTeamInfo = {};
     $scope.newTeamInfo.members = [];
-    $scope.showCreateTeamError = false;
-    $scope.showCreateTeamSuccess = false;
+    $scope.init_CreateTeam = function () {
+        $scope.showCreateTeamError = false;
+        $scope.showCreateTeamSuccess = false;
+        $scope.createTeamError = "";
+        $scope.createTeamSuccess = "";
+    };
+    $scope.init_CreateTeam();
     $rootScope.userInfo = {};
 
     if (!$localStorage.token) {
@@ -48,6 +53,7 @@ var RootCtrl = function ($scope, $rootScope, UserModel,
                 $scope.showCreateTeamError = true;
                 $scope.createTeamError = data.error;
                 $scope.newTeamInfo = {};
+                console.log(data);
             }
         })
     };
@@ -108,6 +114,7 @@ var RootCtrl = function ($scope, $rootScope, UserModel,
     };
 
     $('#createTeam').on('click', function () {
+        $scope.init_CreateTeam();
         $('.small.modal')
             .modal('show')
         ;

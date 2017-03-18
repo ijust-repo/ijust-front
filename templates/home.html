@@ -52,10 +52,16 @@
                 <td>{{$parent.getDate(contest.ends_at)}}</td>
                 <td ng-if="contest.is_active"><i class="large green checkmark icon"></i></td>
                 <td ng-if="!contest.is_active"><i class="large red close icon"></i></td>
-                <td ng-class="{'negative': contest.joining_status.status == '0' ,'pending': contest.joining_status.status == '1'  , 'positive': contest.joining_status.status == '2' }">
-                    <span ng-if="contest.joining_status.status == '0'"><i class="icon close"></i>not joined</span>
-                    <span ng-if="contest.joining_status.status == '1'"><i class="icon attention"></i>pending</span>
-                    <span ng-if="contest.joining_status.status == '2'"><i class="icon checkmark"></i>joined</span>
+                <td ng-class="{  'negative': (contest.joining_status.status=='0') && !(contest.is_admin||contest.is_owner) ,
+                                 'pending': (contest.joining_status.status=='1') && !(contest.is_admin||contest.is_owner)  ,
+                                 'positive': (contest.joining_status.status=='2') && !(contest.is_admin||contest.is_owner) ,
+                                 'admin':contest.is_admin ,
+                                 'owner':contest.is_owner  }">
+                    <span ng-if="(contest.joining_status.status == '0') && !(contest.is_admin||contest.is_owner)"><i class="icon close"></i>not joined</span>
+                    <span ng-if="(contest.joining_status.status == '1') && !(contest.is_admin||contest.is_owner)"><i class="icon attention"></i>pending</span>
+                    <span ng-if="(contest.joining_status.status == '2') && !(contest.is_admin||contest.is_owner)"><i class="icon checkmark"></i>joined</span>
+                    <span ng-if="contest.is_admin"><i class="icon empty star"></i>admin</span>
+                    <span ng-if="contest.is_owner"><i class="icon star"></i>owner</span>
                 </td>
             </tr>
             </tbody>
