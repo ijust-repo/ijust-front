@@ -6,12 +6,12 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding-bottom: 100px;
-  margin: {
-    right: 10% !important;
-    left: 10% !important;
-  };
+  //margin: {
+  //  right: 10% !important;
+  //  left: 10% !important;
+  //};
   //width:calc(100% - 40px);
-  width: 80%;
+  //width: 80%;
   //min-height: calc(100vh - 75px);
   .ui.header{
     background-color: $lightGray;
@@ -26,17 +26,23 @@
     }
   }
   .body{
-    direction: rtl;
-    text-align: justify;
-    font-size: 1.1em;
-    word-spacing: 4px;
-    font-family: 'yekan';
-    padding: {
-      right: 30px;
-      left: 30px;
-    };
     p{
       line-height: 30px;
+    }
+    //.ui.loading.segment:before{
+    //  z-index: -1 !important;
+    //}
+    .iframeHolder{
+      height: 500px;
+      background:url(../img/loading.gif) center center no-repeat;
+      background-size: 400px 300px;
+      background-color: #1f6dc7;
+      iframe{
+        display: none;
+        width: 100%;
+        min-height: 500px;
+        //z-index: +1000;
+      }
     }
   }
   .pre{

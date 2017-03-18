@@ -28,4 +28,11 @@
   .ui.error.visible.message{
     margin-top: 0 !important;
   }
+  .ui.table td.owner, .ui.table tr.owner{
+    //color: #a333c8;
+    color: #2185d0;
+  }
+  .ui.table td.admin, .ui.table tr.admin{
+    color: #2185d0;
+  }
 }

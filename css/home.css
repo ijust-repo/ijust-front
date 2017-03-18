@@ -25,3 +25,9 @@
 
 #home .ui.error.visible.message {
   margin-top: 0 !important; }
+
+#home .ui.table td.owner, #home .ui.table tr.owner {
+  color: #2185d0; }
+
+#home .ui.table td.admin, #home .ui.table tr.admin {
+  color: #2185d0; }

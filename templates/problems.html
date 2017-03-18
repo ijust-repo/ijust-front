@@ -4,7 +4,7 @@
     </h3>
     <div class="ui attached problemsList loading segment centered grid container">
         <!--<div class="centeredBtn">-->
-        <div ui-view></div>
+        <div ui-view id="addProblemView"></div>
         <div ng-repeat="problem in problemsInfo" class="ui stacked segment four wide column box">
             <a class="ui teal ribbon label">{{mapToString($index)}}</a>
             <div class="textContainer">
