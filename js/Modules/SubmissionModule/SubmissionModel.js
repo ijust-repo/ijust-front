@@ -1,6 +1,6 @@
 var SubmissionModel = function ($http, Constants) {
-    var getAllSubmissionInContest = function (teamId, contestId, callback) {
-        $http.get(Constants.server + Constants.version + 'submission/team/' + teamId + '/contest/' + contestId)
+    var getAllSubmissionInContest = function (contestId, teamId, callback) {
+        $http.get(Constants.server + Constants.version + 'submission/contest/' + contestId + '/team/' + teamId)
             .success(function (data, status) {
                 callback(data, true);
             })

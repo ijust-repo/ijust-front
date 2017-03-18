@@ -1,7 +1,4 @@
 <div class="ui container" id="contest">
-    <div class="ui active inverted dimmer" ng-show="$root.notifyLoader">
-        <div class="ui text massive loader">Loading</div>
-    </div>
     <div class="ui one column centered grid labeled icon massive menu" style="position: relative">
         <a class="item" style="border-left: 1px solid rgba(34,36,38,.1);"
            ng-if="$root.isAdmin||$root.isOwner||($root.isJoined==2 && $root.contestInfo.is_active)"
@@ -24,7 +21,7 @@
             <i class="browser icon"></i>
             Submits
         </a>
-        <a class="item" ng-show="$root.isAdmin||$root.isOwner">
+        <a class="item" ng-show="$root.isAdmin||$root.isOwner" ui-sref="contest.teams" ui-sref-active="active">
             <i class="users icon"></i>
             <div class="floating ui circular orange label teamButton">{{pendingTeamsNumber}}</div>
             Teams

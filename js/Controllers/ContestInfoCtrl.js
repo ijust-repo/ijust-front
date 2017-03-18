@@ -1,6 +1,7 @@
 var ContestInfoCtrl = function ($scope, mtNotifyService, $stateParams,
                                 ContestModel, TeamModel, $rootScope) {
 
+    $rootScope.notifyLoader = true;
     // user states on the contest
     $rootScope.isJoined = 0 ;
     $rootScope.isOwner = false ;
@@ -15,7 +16,8 @@ var ContestInfoCtrl = function ($scope, mtNotifyService, $stateParams,
             $rootScope.isJoined = data.joining_status.status;
             $rootScope.myTeam = data.joining_status.team;
             $rootScope.notifyLoader = false;
-            $('.thisContest').removeClass('loading');
+            // $('.thisContest').removeClass('loading');
+            $rootScope.notifyLoader = false;
         }
     });
 

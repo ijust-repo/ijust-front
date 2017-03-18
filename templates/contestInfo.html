@@ -1,8 +1,11 @@
 <div id="contestInfo">
+    <div class="ui active inverted dimmer" ng-show="$root.notifyLoader">
+        <div class="ui text massive loader">Loading</div>
+    </div>
     <h3 class="ui top attached header centered">
         Contest Info
     </h3>
-    <div class="ui attached thisContest loading segment">
+    <div class="ui attached thisContest segment">
         <table class="ui celled table">
             <thead>
             <tr>

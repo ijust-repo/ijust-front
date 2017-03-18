@@ -29,6 +29,11 @@ var ijust = angular.module("ijust",
                 templateUrl: '/templates/contestInfo.html' ,
                 controller : 'ContestInfoCtrl'
             })
+            .state('contest.teams' , {
+                url : '/teams' ,
+                templateUrl: '/templates/contestTeams.html' ,
+                controller : 'ContestTeamsCtrl'
+            })
             .state('contest.rankList' , {
                 url : '/rank_list' ,
                 templateUrl: '/templates/rankList.html' ,
