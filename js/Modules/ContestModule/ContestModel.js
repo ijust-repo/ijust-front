@@ -375,6 +375,16 @@ var ContestModel = function ($http, Constants) {
             })
     };
 
+        var getAcceptedTeams = function (contestId, callback) {
+        $http.get(Constants.server + Constants.version + 'contest/' + contestId + '/accepted_teams')
+            .success(function (data , status) {
+                callback(data,true);
+            })
+            .error(function (data, status) {
+                callback(data,false);
+            })
+    };
+
     var teamGetList = function (contestId, callback) {
         $http.get(Constants.server + Constants.version + 'contest/' + contestId + '/team')
             .success(function (data, status) {
@@ -511,6 +521,7 @@ var ContestModel = function ($http, Constants) {
         problemDownloadBody:problemDownloadBody,
         problemUploadBody:problemUploadBody,
         getPendingTeams:getPendingTeams,
+        getAcceptedTeams:getAcceptedTeams,
         teamGetList: teamGetList,
         teamJoin: teamJoin,
         teamUnJoin: teamUnJoin,

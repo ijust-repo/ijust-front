@@ -2,4 +2,105 @@
     <div class="ui active inverted dimmer" ng-show="$root.notifyLoader">
         <div class="ui text massive loader">Loading</div>
     </div>
+    <div class="ui top attached header centered">
+        Joined Teams
+    </div>
+    <div class="ui attached segment">
+        <div class="ui negative message" ng-if="joinedTeamsNumber == 0">
+            <div class="header" style="text-align: center">
+                No Team's Joined
+            </div>
+        </div>
+        <table class="ui celled table" ng-if="joinedTeamsNumber != 0">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Admin</th>
+                <th>Member1</th>
+                <th>Member2</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="team in joinedTeams">
+                <td>{{team.name}}</td>
+                <td>{{team.owner.username}}</td>
+                <td ng-if="team.members[0]">{{team.members[0].username}}</td>
+                <td ng-if="!team.members[0]">----</td>
+                <td ng-if="team.members[1]">{{team.members[0].username}}</td>
+                <td ng-if="!team.members[1]">----</td>
+                <!--<td ng-repeat="m in pt.members">-->
+                <!--<span class="ui label">{{m.username}}</span>-->
+                <!--</td>-->
+                <td>
+                    <button class="ui orange labeled icon button" ng-click="remove(pt.id)">
+                        <i class="remove icon"></i>
+                        Remove
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="ui success message" ng-show="successJoinTeam">
+            <div class="header">
+                team joined successfully.
+            </div>
+        </div>
+        <div class="ui error message" ng-show="rejectJoinTeam">
+            <div class="header">
+                team rejected successfully.
+            </div>
+        </div>
+    </div>
+    <div class="ui top attached header centered">
+        Pending Teams
+    </div>
+    <div class="ui attached segment">
+        <div class="ui negative message" ng-if="pendingTeamsNumber == 0">
+            <div class="header" style="text-align: center">
+                No Team's Request to Join
+            </div>
+        </div>
+        <table class="ui celled table" ng-if="pendingTeamsNumber != 0">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Admin</th>
+                <th>Member1</th>
+                <th>Member2</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="pt in pendingTeams">
+                <td>{{pt.name}}</td>
+                <td>{{pt.owner.username}}</td>
+                <td ng-if="pt.members[0]">{{pt.members[0].username}}</td>
+                <td ng-if="!pt.members[0]">----</td>
+                <td ng-if="pt.members[1]">{{pt.members[0].username}}</td>
+                <td ng-if="!pt.members[1]">----</td>
+                <!--<td ng-repeat="m in pt.members">-->
+                <!--<span class="ui label">{{m.username}}</span>-->
+                <!--</td>-->
+                <td>
+                    <div class="ui buttons">
+                        <button class="ui green button" ng-click="acceptJoinRequest(pt.id)">Accept</button>
+                        <div class="or"></div>
+                        <button class="ui red button" ng-click="rejectJoinRequest(pt.id)">Reject</button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="ui success message" ng-show="successJoinTeam">
+            <div class="header">
+                team joined successfully.
+            </div>
+        </div>
+        <div class="ui error message" ng-show="rejectJoinTeam">
+            <div class="header">
+                team rejected successfully.
+            </div>
+        </div>
+    </div>
 </div>

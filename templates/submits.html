@@ -10,6 +10,8 @@
             <thead>
             <tr>
                 <th>Problem</th>
+                <th>Submitted By</th>
+                <th>File Name</th>
                 <th>Status</th>
                 <th>Reason</th>
             </tr>
@@ -17,6 +19,8 @@
             <tbody>
             <tr ng-repeat="t in submitsInfo">
                 <td>{{t.problem.title}}</td>
+                <td>{{t.user.username}}</td>
+                <td>{{t.filename}}</td>
                 <td ng-class="{'positive': t.status=='Accepted' ,'negative': t.status=='WrongAnswer' , 'unknown': t.status !='Accepted' && 'WrongAnswer'}">
                     <i class="checkmark icon" ng-show="t.status=='Accepted'"></i>
                     <i class="attention icon" ng-show="t.status=='WrongAnswer'"></i>
