@@ -54,6 +54,7 @@ var LandingCtrl = function ($scope , UserModel , $cookies ,
         UserModel.login( $scope.LoginInfo , function (data , status) {
             if (status){
                 $localStorage.token = data.token ;
+                $rootScope.userInfo.username = $scope.LoginInfo.login ;
                 $rootScope.isAuthenticated = true ;
                 $state.go('home');
                 mtNotifyService.unLoad();
@@ -92,6 +93,7 @@ var LandingCtrl = function ($scope , UserModel , $cookies ,
            if(status) {
                $scope.LoginInfo.login = $scope.signUpInfo.username ;
                $scope.LoginInfo.password = $scope.signUpInfo.password ;
+               $rootScope.userInfo.username = $scope.signUpInfo.username ;
                $scope.login();
                mtNotifyService.unLoad()
            }

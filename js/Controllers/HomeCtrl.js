@@ -1,4 +1,4 @@
-var HomeCtrl = function ( $scope , mtNotifyService , ContestModel , TeamModel , $rootScope ) {
+var HomeCtrl = function ( $scope , mtNotifyService , ContestModel , TeamModel , $rootScope , $localStorage ) {
 
     $rootScope.notifyLoader = true ;
     $scope.allContetsEmptyError = false;
@@ -8,7 +8,9 @@ var HomeCtrl = function ( $scope , mtNotifyService , ContestModel , TeamModel , 
     $scope.ownedContets = {} ;
     $scope.adminContets = {} ;
     $scope.contestsList = {} ;
-    $rootScope.myTeams = [] ;
+    // $rootScope.myTeams = [] ;
+    $rootScope.myTeams = [];
+    $localStorage.myTeams = [] ;
 
     TeamModel.getMyTeams(function (data, status) {
         if (status){
@@ -16,8 +18,9 @@ var HomeCtrl = function ( $scope , mtNotifyService , ContestModel , TeamModel , 
             if ($rootScope.myTeams.length==0){
                 $rootScope.teamsEmptyError = true ;
             }
+            $localStorage.myTeams = $rootScope.myTeams ;
             $('.teamInfo').removeClass('loading');
-            console.log('my teams:',$scope.myTeams);
+            console.log('my teams:',$rootScope.myTeams);
             $rootScope.notifyLoader = false ;
         }
     });

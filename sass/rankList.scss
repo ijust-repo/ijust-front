@@ -13,6 +13,15 @@
     th , td{
       text-align: center;
     }
+    td{
+      span.reason{
+        max-width: 200px;
+        display:inline-block;
+        white-space: nowrap;
+        overflow:hidden !important;
+        text-overflow: ellipsis;
+      }
+    }
     .positive {
       background-color: lighten(#21BA45,50%)!important;
       color: darken(#21BA45,10%) !important;

@@ -10,7 +10,7 @@ var ContestCtrl = function ($scope , mtNotifyService , $stateParams , $location 
     $scope.rejectJoinTeam = false ;
 
     // to join
-    $scope.myTeams = [];
+    $rootScope.myTeams = [];
     $scope.pendingTeams={};
     $scope.showSuccessJoinMsg = false ;
     $scope.showErrorJoinMsg = false ;

@@ -21,12 +21,12 @@
                 <td>{{t.problem.title}}</td>
                 <td>{{t.user.username}}</td>
                 <td>{{t.filename}}</td>
-                <td ng-class="{'positive': t.status=='Accepted' ,'negative': t.status=='WrongAnswer' , 'unknown': t.status !='Accepted' && 'WrongAnswer'}">
+                <td ng-class="{'positive': t.status=='Accepted' ,'negative': t.status=='WrongAnswer' , 'negative': t.status !='Accepted' && 'WrongAnswer'}">
                     <i class="checkmark icon" ng-show="t.status=='Accepted'"></i>
                     <i class="attention icon" ng-show="t.status=='WrongAnswer'"></i>
                     {{t.status}}
                 </td>
-                <td>{{t.reason}}</td>
+                <td><span ng-class="{'reason': t.status=='CompileError'}">{{t.reason}}</span></td>
             </tr>
             </tbody>
         </table>

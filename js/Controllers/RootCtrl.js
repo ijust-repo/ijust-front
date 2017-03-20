@@ -30,6 +30,7 @@ var RootCtrl = function ($scope, $rootScope, UserModel,
                 $rootScope.isAuthenticated = false;
                 delete $localStorage.token;
                 delete $rootScope.userInfo;
+                delete  $localStorage.myTeams;
                 setTimeout($scope.logOutLoader = false, 1000);
                 $state.go('/');
             }
@@ -45,6 +46,7 @@ var RootCtrl = function ($scope, $rootScope, UserModel,
                 $scope.createTeamSuccess = "Your Team Created Successfully";
                 $scope.newTeamInfo = {};
                 $rootScope.myTeams.push(data);
+                // $localStorage.myTeams.push(data);
                 $rootScope.teamsEmptyError = false;
                 console.log($rootScope.myTeams);
             }
