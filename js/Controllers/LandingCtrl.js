@@ -6,6 +6,7 @@ var LandingCtrl = function ($scope , UserModel , $cookies ,
     // if($rootScope.isAuthenticated && $localStorage.token){
     //     $state.go('home');
     // }
+    $rootScope.userInfo = {} ;
     UserModel.getMyInfo(function (data , status) {
         if (status){
             $rootScope.isAuthenticated = true ;
@@ -47,7 +48,7 @@ var LandingCtrl = function ($scope , UserModel , $cookies ,
             mtNotifyService.show("Please enter Username/E-mail" , 0);
             return;
         }
-        if (($scope.LoginInfo.username) && !($scope.LoginInfo.password)) {
+        if (($scope.LoginInfo.login) && !($scope.LoginInfo.password)) {
             mtNotifyService.show("Please enter Password" , 0);
             return;
         }

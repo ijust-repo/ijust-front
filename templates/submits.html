@@ -13,7 +13,6 @@
                 <th>Submitted By</th>
                 <th>File Name</th>
                 <th>Status</th>
-                <th>Reason</th>
             </tr>
             </thead>
             <tbody>
@@ -24,9 +23,14 @@
                 <td ng-class="{'positive': t.status=='Accepted' ,'negative': t.status=='WrongAnswer' , 'negative': t.status !='Accepted' && 'WrongAnswer'}">
                     <i class="checkmark icon" ng-show="t.status=='Accepted'"></i>
                     <i class="attention icon" ng-show="t.status=='WrongAnswer'"></i>
-                    {{t.status}}
+                    <span>{{t.status}}</span>
+                    <button ng-show="t.status !='Accepted'" class="ui right labeled basic grey icon button absRight"
+                            data-tooltip="{{t.reason}}" data-inverted="" data-position="top right" data-variation="wide">
+                        <i class="hand pointer icon"></i>
+                        reason
+                    </button>
                 </td>
-                <td><span ng-class="{'reason': t.status=='CompileError'}">{{t.reason}}</span></td>
+                <!--<td><span ng-class="{'reason': t.status=='CompileError'}">{{t.reason}}</span></td>-->
             </tr>
             </tbody>
         </table>

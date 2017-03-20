@@ -21,6 +21,13 @@
         overflow:hidden !important;
         text-overflow: ellipsis;
       }
+      position: relative;
+      line-height: 2.8;
+      padding: 10px !important;
+      max-width: 150px;
+      .absRight{
+        float: right;
+      }
     }
     .positive {
       background-color: lighten(#21BA45,50%)!important;

@@ -28,12 +28,8 @@
                     ng-class="{'positive': problem.solved==true ,'negative': problem.solved==false}">
                     <i class="checkmark icon" ng-show="problem.solved==true"></i>
                     <i class="attention icon" ng-show="problem.solved==false"></i>
-                    <!--<i class="remove icon removeIcon" ng-show="problem.solved=='unknown'"></i>-->
                     <span ng-show="problem.solved == true">{{problem.penalty}}</span>
-                    <!--<span ng-show="problem.solved == true">Failed:{{problem.failed_tries}}</span>-->
-                    <!--<span ng-show="problem.solved == false">Penalty:{{problem.penalty}}</span>-->
                     <span ng-show="problem.solved == false">-{{problem.failed_tries}}</span>
-                    <!--<span ng-show="problem.solved == 'unknown'">&#45;&#45;</span>-->
                 </td>
             </tr>
             </tbody>
