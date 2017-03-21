@@ -95,28 +95,19 @@ var UserModel = function ($http, Constants) {
             })
     };
 
-    // var getUserTeams = function (id, callback) {
-    //     $http.get(Constants.server + 'user/' + id + '/teams/')
-    //         .success(function (data, status) {
-    //             callback(data, true);
-    //         })
-    //         .error(function (data, status) {
-    //             callback(data, false);
-    //         })
-    // };
-
-    // var getUserTeamByContestId = function (userId, contestId, callback) {
-    //     $http.get(Constants.server + 'user/' + userId + '/contest/' + contestId + '/')
-    //         .success(function (data, status) {
-    //             callback(data, true);
-    //         })
-    //         .error(function (data, status) {
-    //             callback(data, false);
-    //         })
-    // };
+    var loginWithToken = function (token,callback) {
+        $http.post(Constants.server + Constants.version + 'user/login_with_token',token)
+            .success(function (data, status) {
+                callback(data, true)
+            })
+            .error(function (data, status) {
+                callback(data, false)
+            })
+    };
 
     return {
         login: login,
+        loginWithToken: loginWithToken,
         signUp: signUp,
         logOut: logOut,
         getUserProfile: getUserProfile,

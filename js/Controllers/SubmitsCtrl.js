@@ -14,7 +14,10 @@ var SubmitsCtrl = function ($scope , $rootScope , SubmissionModel , SubmissionSe
     catch (e){
         // console.log(e);
     }
-    $scope.showCode = function (sid,lang) {
+    $scope.showCode = function (sid,lang,name) {
+        $('#codeDiv').slideDown(1000);
+        $('#codeDiv .segment').addClass('loading');
+        $scope.problemName = name ;
         if($scope.code){
             $scope.code = "" ;
             // $('pre').append($('<code>{{code}}</code>'))
@@ -22,15 +25,13 @@ var SubmitsCtrl = function ($scope , $rootScope , SubmissionModel , SubmissionSe
         $('pre code').empty();
         SubmissionModel.downloadCode(sid,function (data,status) {
             if (status){
-                console.log(data[0],data[1]);
                 $scope.code = data ;
-                console.log(SubmissionServices.getLang(lang));
-                console.log(lang);
                 $('pre code').append(data);
                 $timeout(function () {
                     $('pre code').each(function(i, block) {
                         hljs.highlightBlock(block);
                     });
+                    $('#codeDiv .segment').removeClass('loading');
                 },500);
                 // $('pre code').addClass(SubmissionServices.getLang(lang)).each(function(i, block) {
                 //     hljs.highlightBlock(block);
@@ -43,7 +44,10 @@ var SubmitsCtrl = function ($scope , $rootScope , SubmissionModel , SubmissionSe
                 //
             }
         })
-    }
+    };
+    $('#closeCodeDiv').on('click',function () {
+        $('#codeDiv').slideUp();
+    });
 };
 
 ijust.controller('SubmitsCtrl' , SubmitsCtrl);

@@ -7,16 +7,18 @@ var LandingCtrl = function ($scope , UserModel , $cookies ,
     //     $state.go('home');
     // }
     $rootScope.userInfo = {} ;
-    UserModel.getMyInfo(function (data , status) {
-        if (status){
-            $rootScope.isAuthenticated = true ;
-            $state.go('home');
-        }
-        else{
-            delete $localStorage.token;
-            $rootScope.isAuthenticated = false;
-        }
-    });
+    if($localStorage.token){
+        UserModel.loginWithToken({'Access-Token':$localStorage.token},function (data , status) {
+            if (status){
+                $rootScope.isAuthenticated = true ;
+                $state.go('home');
+            }
+            else{
+                delete $localStorage.token;
+                $rootScope.isAuthenticated = false;
+            }
+        });
+    }
 
     // make page ready
     mtNotifyService.unLoad();
