@@ -6,6 +6,21 @@
         Your Submits
     </h3>
     <div class="ui attached rankList segment">
+        <h3 class="ui top attached header centered">
+            <span>Problems</span>
+            <div class="headerBtns">
+                <div class="ui icon button toggleIcon" data-content="Add users to your feed">
+                    <i class="minus icon"></i>
+                </div>
+            </div>
+        </h3>
+        <div class="ui attached segment centered grid container">
+            <pre>
+                <code>
+                    <!--{{code}}-->
+                </code>
+            </pre>
+        </div>
         <table class="ui celled table">
             <thead>
             <tr>
@@ -13,24 +28,32 @@
                 <th>Submitted By</th>
                 <th>File Name</th>
                 <th>Status</th>
+                <th>Time</th>
             </tr>
             </thead>
             <tbody>
             <tr ng-repeat="t in submitsInfo">
                 <td>{{t.problem.title}}</td>
                 <td>{{t.user.username}}</td>
-                <td>{{t.filename}}</td>
+                <td>
+                    <span>{{t.filename}}</span>
+                    <button class="ui basic grey icon button absRight" ng-click="showCode(t.id,t.prog_lang)">
+                        <i class="copy icon"></i>
+                    </button>
+                </td>
                 <td ng-class="{'positive': t.status=='Accepted' ,'negative': t.status=='WrongAnswer' , 'negative': t.status !='Accepted' && 'WrongAnswer'}">
                     <i class="checkmark icon" ng-show="t.status=='Accepted'"></i>
                     <i class="attention icon" ng-show="t.status=='WrongAnswer'"></i>
                     <span>{{t.status}}</span>
                     <button ng-show="t.status !='Accepted'" class="ui right labeled basic grey icon button absRight"
-                            data-tooltip="{{t.reason}}" data-inverted="" data-position="top right" data-variation="wide">
+                            data-tooltip="{{t.reason}}" data-inverted="" data-position="top right"
+                            data-variation="wide">
                         <i class="hand pointer icon"></i>
                         reason
                     </button>
                 </td>
                 <!--<td><span ng-class="{'reason': t.status=='CompileError'}">{{t.reason}}</span></td>-->
+                <td>{{$parent.getTime(t.submitted_at)}}</td>
             </tr>
             </tbody>
         </table>

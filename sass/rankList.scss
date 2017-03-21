@@ -8,6 +8,22 @@
   .ui.header{
     background-color: $lightGray;
     margin-top: 0 !important;
+    .headerBtns{
+      float: right;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      .button{
+        position: relative;
+        //right: 10px;
+      }
+      .toggleIcon{
+        //font-size: 2rem;
+        float: right;
+        //line-height: 38px;
+        cursor: pointer;
+      }
+    }
   }
   .rankList{
     th , td{
@@ -40,6 +56,25 @@
     .unknown {
       background-color: transparent;
       border:none !important;
+    }
+  }
+  pre , code {
+    width: 100%;
+    height:100%;
+    margin: 0;
+    padding: 0;
+    max-height: 500px;
+    overflow: auto;
+    pre , code{
+      text-align: left;
+      padding: 45px;
+      padding-right: 75px;
+      width: 100%;
+      height: 100%;
+      //text-indent: -123px;
+      span:first-child{
+        //text-indent: -123px;
+      }
     }
   }
 }

@@ -5,6 +5,16 @@
   #rankList .ui.header {
     background-color: #f2f2f2;
     margin-top: 0 !important; }
+    #rankList .ui.header .headerBtns {
+      float: right;
+      position: absolute;
+      top: 5px;
+      right: 5px; }
+      #rankList .ui.header .headerBtns .button {
+        position: relative; }
+      #rankList .ui.header .headerBtns .toggleIcon {
+        float: right;
+        cursor: pointer; }
   #rankList .rankList th, #rankList .rankList td {
     text-align: center; }
   #rankList .rankList td {
@@ -29,3 +39,16 @@
   #rankList .rankList .unknown {
     background-color: transparent;
     border: none !important; }
+  #rankList pre, #rankList code {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    max-height: 500px;
+    overflow: auto; }
+    #rankList pre pre, #rankList pre code, #rankList code pre, #rankList code code {
+      text-align: left;
+      padding: 45px;
+      padding-right: 75px;
+      width: 100%;
+      height: 100%; }

@@ -18,13 +18,18 @@ var ContestCtrl = function ($scope , mtNotifyService , $stateParams , $location 
     var infoPath = "/contest/"+$rootScope.contestId+"/info";
     $location.path(infoPath);
 
-    ContestModel.getPendingTeams($rootScope.contestId,function (data, status) {
-        if (status){
-            $scope.pendingTeams=data.pending_teams;
-            $scope.pendingTeamsNumber = $scope.pendingTeams.length;
-            console.log(data);
-        }
-    });
+    try {
+        ContestModel.getPendingTeams($rootScope.contestId,function (data, status) {
+            if (status){
+                $scope.pendingTeams=data.pending_teams;
+                $scope.pendingTeamsNumber = $scope.pendingTeams.length;
+                console.log(data);
+            }
+        });
+    }
+    catch (e){
+        // console.log(e);
+    }
 
     $scope.acceptJoinRequest = function (teamId) {
         // $scope.isShowPendingLoading= true ;
