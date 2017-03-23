@@ -28,15 +28,17 @@
             <tr>
                 <th>Problem</th>
                 <th>Submitted By</th>
-                <th>File Name</th>
-                <th>Status</th>
                 <th>Time</th>
+                <th>File Name</th>
+                <th>File Type</th>
+                <th>Status</th>
             </tr>
             </thead>
             <tbody>
             <tr ng-repeat="t in submitsInfo">
                 <td>{{t.problem.title}}</td>
                 <td>{{t.user.username}}</td>
+                <td>{{$parent.getTime(t.submitted_at)}}</td>
                 <td>
                     <span>{{t.filename}}</span>
                     <button class="ui basic grey icon button absRight"
@@ -44,6 +46,7 @@
                         <i class="copy icon"></i>
                     </button>
                 </td>
+                <td>{{t.prog_lang}}</td>
                 <td ng-class="{'positive': t.status=='Accepted' ,'negative': t.status=='WrongAnswer' , 'negative': t.status !='Accepted' && 'WrongAnswer'}">
                     <i class="checkmark icon" ng-show="t.status=='Accepted'"></i>
                     <i class="attention icon" ng-show="t.status=='WrongAnswer'"></i>
@@ -61,7 +64,6 @@
                     </button>
                 </td>
                 <!--<td><span ng-class="{'reason': t.status=='CompileError'}">{{t.reason}}</span></td>-->
-                <td>{{$parent.getTime(t.submitted_at)}}</td>
             </tr>
             </tbody>
         </table>

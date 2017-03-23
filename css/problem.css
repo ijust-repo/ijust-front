@@ -47,9 +47,13 @@
       -moz-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
       -o-transform: translateX(-50%);
-      transform: translateX(-50%); }
+      transform: translateX(-50%);
+      text-align: center; }
   #problem .ui.steps .step .title {
     position: relative;
     top: -20px; }
   #problem .fileTypesDropDown {
-    min-width: 100px; }
+    min-width: 120px; }
+  #problem .ui.dropdown > .dropdown.icon {
+    width: auto;
+    float: right; }

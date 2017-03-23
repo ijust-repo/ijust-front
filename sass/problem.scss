@@ -87,6 +87,7 @@
       -ms-transform: translateX(-50%);
       -o-transform: translateX(-50%);
       transform: translateX(-50%);
+      text-align: center;
     }
   }
   .ui.steps .step .title{
@@ -94,6 +95,10 @@
     top: -20px;
   }
   .fileTypesDropDown{
-    min-width:100px;
+    min-width:120px;
+  }
+  .ui.dropdown>.dropdown.icon {
+    width: auto;
+    float: right;
   }
 }

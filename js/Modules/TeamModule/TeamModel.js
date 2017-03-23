@@ -58,7 +58,7 @@ var TeamModel = function ($http, Constants) {
     };
 
     var editTeam = function (teamID, JSON, callback) {
-        $http.put(Constants.server + Constants.version + 'team/' + teamID)
+        $http.put(Constants.server + Constants.version + 'team/' + teamID , JSON)
             .success(function (data, status) {
                 callback(data, true);
             })
@@ -81,44 +81,22 @@ var TeamModel = function ($http, Constants) {
             })
     };
 
-    //create new team
-    // var createTeam = function ( JSON , callback) {
-    //     $http.post(Constants.server + "team/create/" , JSON)
-    //         .success(function (data, status) {
-    //             callback(data, true);
-    //         })
-    //         .error(function (data, status) {
-    //             // var msg ;
-    //             // switch (status){
-    //             //     case 406 :
-    //             //         msg = "Number of members must be under three!" ;
-    //             //         break;
-    //             //     case 409 :
-    //             //         msg = "name of team already exists" ;
-    //             //         break;
-    //             //     default :
-    //             //         msg = data
-    //             // }
-    //             callback(data, false);
-    //         })
-    // };
-    //111
-    // var joinRequest = function (JSON , callback) {
-    //     $http.post(Constants.server + 'team/join_request/' , JSON)
-    //         .success(function (data , status) {
-    //             callback(data , true);
-    //         })
-    //         .error(function (data , status) {
-    //             callback(data , false);
-    //         })
-    // };
+    var deleteTeam = function (teamId , callback) {
+        $http.delete(Constants.server + Constants.version + 'team/' + teamId)
+            .success(function (data,status) {
+                callback(data,true);
+            })
+            .error(function (data,status) {
+                callback(data,false);
+            })
+    };
 
     return {
         getMyTeams: getMyTeams,
         getTeamInfo: getTeamInfo,
         createTeam: createTeam,
-        editTeam: editTeam
-        // joinRequest : joinRequest
+        editTeam: editTeam,
+        deleteTeam : deleteTeam
     }
 };
 

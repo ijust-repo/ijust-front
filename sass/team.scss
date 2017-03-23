@@ -12,4 +12,17 @@
   .ui.error.visible.message{
     margin-top: 0 !important;
   }
+  .ui.header{
+    background-color: #F2F2F2;
+  }
+  .ui.two.buttons {
+    width: 200px !important;
+    position: relative;
+    left: calc(100% - 198px);
+  }
+  .ui.basic.modal .content {
+    h1,h2,h3,h4{
+      text-align: center;
+    }
+  }
 }

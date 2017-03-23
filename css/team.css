@@ -8,3 +8,11 @@
     position: relative; }
   #team .ui.error.visible.message {
     margin-top: 0 !important; }
+  #team .ui.header {
+    background-color: #F2F2F2; }
+  #team .ui.two.buttons {
+    width: 200px !important;
+    position: relative;
+    left: calc(100% - 198px); }
+  #team .ui.basic.modal .content h1, #team .ui.basic.modal .content h2, #team .ui.basic.modal .content h3, #team .ui.basic.modal .content h4 {
+    text-align: center; }
