@@ -77,7 +77,7 @@ var TeamModel = function ($http, Constants) {
                 } else{
                     msg = "خطای نا شناخته"
                 }
-                callback(msg, false);
+                callback(data, status);
             })
     };
 

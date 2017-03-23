@@ -10,27 +10,52 @@
             <thead>
             <tr>
                 <th>Name</th>
-                <th>Owner</th>
-                <th>Members</th>
+                <th ng-show="!isEdit">Owner</th>
+                <th ng-show="isEdit">first member</th>
+                <th ng-show="!isEdit">Members</th>
+                <th ng-show="isEdit">second member</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td>{{teamInfo.name}}</td>
-                <td>{{teamInfo.owner.username}}</td>
-                <td><span ng-repeat="tm in teamInfo.members">{{tm.username}},</span></td>
+                <td ng-show="!isEdit">{{teamInfo.name}}</td>
+                <td ng-show="isEdit">
+                    <div class="ui input editName">
+                        <input type="text" placeholder="team name" ng-model="editTeamInfo.name">
+                    </div>
+                </td>
+                <td ng-show="!isEdit">{{teamInfo.owner.username}}</td>
+                <td ng-show="isEdit">
+                    <div class="ui input editMem">
+                        <input type="text" placeholder="first member" ng-model="editTeamInfo.members[0].username">
+                    </div>
+                </td>
+                <td ng-show="!isEdit"><span ng-repeat="tm in teamInfo.members">{{tm.username}},</span></td>
+                <td ng-show="isEdit">
+                    <div class="ui input editMem">
+                        <input type="text" placeholder="second member" ng-model="editTeamInfo.members[1].username">
+                    </div>
+                </td>
             </tr>
             </tbody>
         </table>
     </div>
-    <div class="ui small two bottom attached buttons" ng-show="isOwner">
-        <div class="ui orange right icon basic button">
+    <div class="ui small two bottom attached buttons" ng-show="isOwner&&!isEdit">
+        <div class="ui orange right icon basic button" ng-click="goToEdit()">
             Edit
             <i class="setting icon"></i>
         </div>
         <div class="ui red right icon basic button" id="showDeleteModal">
             Delete
             <i class="remove icon"></i>
+        </div>
+    </div>
+    <div class="ui small two bottom attached buttons" ng-show="isOwner&&isEdit">
+        <div class="ui negative right basic button" ng-click="isEdit=false">
+            Cancel
+        </div>
+        <div class="ui positive right button" id="submitBtn" ng-click="editTeam()">
+            Update
         </div>
     </div>
     <h3 class="ui top attached header centered">
