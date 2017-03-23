@@ -1,4 +1,4 @@
-var addProblemCtrl = function ($scope, $rootScope, ContestModel , Constants,Upload,$timeout) {
+var addProblemCtrl = function ($scope, $rootScope, ContestModel , Constants,Upload,$timeout,$location) {
     $scope.show = 'create';
     $scope.problemInfo = {};
     $scope.buttonLoader = false;
@@ -6,15 +6,13 @@ var addProblemCtrl = function ($scope, $rootScope, ContestModel , Constants,Uplo
     $scope.showProblemCreateError = false;
     $scope.createProblem = function () {
         $scope.buttonLoader = true;
-        // console.log($rootScope.problemsInfo.problems);
         ContestModel.createProblem($rootScope.contestId, $scope.problemInfo, function (data, status) {
             if (status) {
                 $scope.buttonLoader = false;
                 $rootScope.problemsInfo.push(data);
                 $scope.problemId = data.id;
                 $scope.show = 'body';
-                $('.create').removeClass('active');
-                $('.create').addClass('completed');
+                $('.create').removeClass('active').addClass('completed');
                 $('.body').addClass('active');
             }
             else {
@@ -52,8 +50,7 @@ var addProblemCtrl = function ($scope, $rootScope, ContestModel , Constants,Uplo
                     if (response.status >= 400)
                         $scope.errorMsg = response.status + ': ' + response.data;
                     else if (response.status==200){
-                        $('.body').removeClass('active');
-                        $('.body').addClass('completed');
+                        $('.body').removeClass('active').addClass('completed');
                         $('.test').addClass('active');
                         $scope.show = 'test';
                     }
@@ -82,8 +79,7 @@ var addProblemCtrl = function ($scope, $rootScope, ContestModel , Constants,Uplo
                     if (response.status >= 400)
                         $scope.errorMsg = response.status + ': ' + response.data;
                     else if (response.status==200){
-                        $('.test').removeClass('active');
-                        $('.test').addClass('completed');
+                        $('.test').removeClass('active').addClass('completed');
                         var infoPath = "/contest/"+$rootScope.contestId+"/problems";
                         $location.path(infoPath);
                     }

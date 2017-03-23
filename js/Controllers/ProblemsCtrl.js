@@ -7,12 +7,12 @@ var ProblemsCtrl = function ($scope, $rootScope, ContestModel) {
     var toggleState = [1];
     $('.toggleIcon').on('click',function () {
         if(toggleState[0]){
-            $('.problemsList').slideToggle();
+            $('.problemsList').stop().slideToggle();
             $('.toggleIcon i').removeClass('minus').addClass('caret down');
             toggleState.pop();
         }
         else {
-            $('.problemsList').slideToggle();
+            $('.problemsList').stop().slideToggle();
             $('.toggleIcon i').removeClass('caret down').addClass('minus');
             toggleState.push(1);
         }

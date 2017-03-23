@@ -7,7 +7,7 @@ var SubmissionServices = function () {
         'Java8' : 'java'
     };
     var getLang = function (lang) {
-        return langObj[lang];
+        return 'language-' + langObj[lang];
     };
 
     return{

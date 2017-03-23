@@ -13,10 +13,10 @@
                 </div>
             </div>
             <h3 class="ui top attached header centered">
-                <span>{{problemName}}</span>
+                <span>{{problemName}} -> {{filename}}</span>
             </h3>
             <div class="ui attached segment centered grid container">
-                <pre>
+                <pre class="line-numbers">
                     <code>
                         <!--{{code}}-->
                     </code>
@@ -40,7 +40,7 @@
                 <td>
                     <span>{{t.filename}}</span>
                     <button class="ui basic grey icon button absRight"
-                            ng-click="showCode(t.id,t.prog_lang,t.problem.title)">
+                            ng-click="showCode(t.id,t.prog_lang,t.problem.title,t.filename)">
                         <i class="copy icon"></i>
                     </button>
                 </td>
@@ -48,9 +48,14 @@
                     <i class="checkmark icon" ng-show="t.status=='Accepted'"></i>
                     <i class="attention icon" ng-show="t.status=='WrongAnswer'"></i>
                     <span>{{t.status}}</span>
-                    <button ng-show="t.status !='Accepted'" class="ui right labeled basic grey icon button absRight"
+                    <button ng-show="(t.status != 'Accepted') && (t.status !='CompileError')" class="ui right basic grey button absRight"
                             data-tooltip="{{t.reason}}" data-inverted="" data-position="top right"
                             data-variation="wide">
+                        reason
+                    </button>
+                    <button ng-show="t.status =='CompileError'"
+                            ng-click="showReasonModal(t.problem.title,t.filename,t.status,t.reason)"
+                            class="ui right labeled basic grey icon button absRight">
                         <i class="hand pointer icon"></i>
                         reason
                     </button>
@@ -60,5 +65,14 @@
             </tr>
             </tbody>
         </table>
+    </div>
+    <div id="reasonModal" class="ui small modal">
+        <i class="close icon"></i>
+        <div class="header">
+            {{reason.problem}} -> {{reason.filename}} -> {{reason.status}}
+        </div>
+        <div class="content">
+            {{reason.reason}}
+        </div>
     </div>
 </div>

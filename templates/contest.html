@@ -16,7 +16,7 @@
              icon"></i>
             Info
         </a>
-        <a class="item" ng-show="$root.isJoined==2"
+        <a class="item" ng-show="$root.isAdmin||$root.isOwner||$root.isJoined==2"
            ui-sref="contest.submits"  ui-sref-active="active">
             <i class="browser icon"></i>
             Submits

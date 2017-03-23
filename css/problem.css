@@ -51,3 +51,5 @@
   #problem .ui.steps .step .title {
     position: relative;
     top: -20px; }
+  #problem .fileTypesDropDown {
+    min-width: 100px; }

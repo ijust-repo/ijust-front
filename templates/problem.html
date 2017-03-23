@@ -37,7 +37,7 @@
                     <div class="ui ordered large steps">
                         <div class="step">
                             <div class="content">
-                                <div class="title">Choose your programming language</div>
+                                <div class="title">programming language</div>
                                 <div class="description">
                                     <div class="ui bottom left pointing dropdown blue button fileTypesDropDown centeredBtn"
                                          style="height: 37px;padding: 11px;z-index: +99999;">
@@ -52,9 +52,18 @@
                         </div>
                         <div class="active step">
                             <div class="content">
-                                <div class="title">Upload your program file</div>
+                                <div class="title">upload program file</div>
                                 <div class="description">
-                                    <button class="ui blue button centeredBtn" ng-show="!buttonLoader" type="file" ngf-select="upload($file, $invalidFiles)">upload</button>
+                                    <button class="ui blue button centeredBtn" type="file" ngf-select="upload($file, $invalidFiles)">upload</button>
+                                    <!--<button class="ui blue loading button centeredBtn" ng-show="buttonLoader">upload</button>-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="content">
+                                <div class="title">submit your code</div>
+                                <div class="description">
+                                    <button class="ui blue button centeredBtn" ng-show="!buttonLoader" ng-click="submit()">submit</button>
                                     <button class="ui blue loading button centeredBtn" ng-show="buttonLoader">upload</button>
                                 </div>
                             </div>
