@@ -25,11 +25,25 @@
     #problems .box .textContainer {
       width: 100%;
       position: relative;
+      /* padding-top: 10px; */
+      padding-bottom: 10px;
       text-align: center;
-      margin-top: -25px;
+      margin-top: -10px;
       font-size: 1.2em; }
-    #problems .box .button {
-      margin-top: 10px; }
+  #problems .ui.ribbon.label {
+    top: 13px; }
+  #problems .ui.two.buttons {
+    top: -2px; }
+    #problems .ui.two.buttons .button {
+      text-align: center; }
+  #problems .menu {
+    z-index: +9999; }
+    #problems .menu #editProblemBtn {
+      margin-top: 0 !important;
+      border-radius: .28571429rem !important; }
+  #problems i.wrench.icon {
+    width: 100%;
+    height: 100%; }
   #problems .ui.error.visible.message {
     margin-bottom: 14px !important;
     padding-right: 20px;
@@ -51,7 +65,8 @@
     -moz-transition: all 0.3s;
     -ms-transition: all 0.3s;
     -o-transition: all 0.3s;
-    transition: all 0.3s; }
+    transition: all 0.3s;
+    margin-bottom: 0; }
     #problems .stacked.segment:hover {
       background-color: #e8e8e8; }
       #problems .stacked.segment:hover p {
@@ -65,3 +80,8 @@
         -ms-transform: scale(1.2, 1.2);
         -o-transform: scale(1.2, 1.2);
         transform: scale(1.2, 1.2); }
+    #problems .stacked.segment .ddBtn {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      z-index: +1; }

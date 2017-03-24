@@ -24,6 +24,7 @@ var RootCtrl = function ($scope, $rootScope, UserModel,
     });
 
     $scope.logOut = function () {
+        $('#logOutBtn').addClass('loading');
         $scope.logOutLoader = true;
         UserModel.logOut(function (data, status) {
             if (status) {
@@ -33,6 +34,7 @@ var RootCtrl = function ($scope, $rootScope, UserModel,
                 delete  $localStorage.myTeams;
                 setTimeout($scope.logOutLoader = false, 1000);
                 $state.go('/');
+                $('#logOutBtn').removeClass('loading');
             }
         });
     };

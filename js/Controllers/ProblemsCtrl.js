@@ -1,8 +1,9 @@
-var ProblemsCtrl = function ($scope, $rootScope, ContestModel) {
+var ProblemsCtrl = function ($scope, $rootScope, ContestModel,$state) {
 
-    $rootScope.problemsInfo = {} ;
+    $rootScope.problemsInfo = [] ;
     $scope.showProblemsEmptyError = false ;
     $rootScope.notifyLoader = true;
+    $scope.editProblemInfo = {};
 
     var toggleState = [1];
     $('.toggleIcon').on('click',function () {
@@ -33,6 +34,22 @@ var ProblemsCtrl = function ($scope, $rootScope, ContestModel) {
         }
     });
 
+    $scope.showDropDown = function (id,index) {
+        $('.ui.dropdown')
+            .dropdown()
+        ;
+        $scope.editProblem = function () {
+            $('#'+id).addClass('loading');
+            ContestModel.editProblem($rootScope.contestId,id,$scope.editProblemInfo,function (data,status) {
+                if(status){
+                    $state.go('contest.problems');
+                    $scope.problemsInfo[index].title = $scope.editProblemInfo.title ;
+                    $('#'+id).removeClass('loading');
+                }
+            })
+        }
+    };
+
     $scope.mapToString = function (num) {
       switch (num) {
           case 0 : return 'A' ;
@@ -57,7 +74,7 @@ var ProblemsCtrl = function ($scope, $rootScope, ContestModel) {
               break;
           default : return num ;
       }
-    }
+    };
 
 };
 

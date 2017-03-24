@@ -6,6 +6,7 @@ var ContestInfoCtrl = function ($scope, mtNotifyService, $stateParams,
     $rootScope.isJoined = 0 ;
     $rootScope.isOwner = false ;
     $rootScope.isAdmin = false ;
+    $rootScope.isEnded = false ;
     $rootScope.myTeam = {};
     $rootScope.myTeams = $localStorage.myTeams ;
     ContestModel.getContestInfoById($rootScope.contestId , function (data, status) {
@@ -14,6 +15,7 @@ var ContestInfoCtrl = function ($scope, mtNotifyService, $stateParams,
             $rootScope.contestInfo = data ;
             $rootScope.isOwner = data.is_owner ;
             $rootScope.isAdmin = data.is_admin ;
+            $rootScope.isEnded = data.is_ended ;
             $rootScope.isJoined = data.joining_status.status;
             if($rootScope.isOwner||$rootScope.isAdmin){
                 $rootScope.myTeam.id = null ;

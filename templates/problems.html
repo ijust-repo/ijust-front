@@ -15,15 +15,41 @@
         </div>
     </h3>
     <div class="ui attached segment centered grid container problemsList">
-        <!--<hr>-->
-        <div ng-repeat="problem in problemsInfo"
-             ui-sref="contest.problems.problem({problemId:problem.id})"
-             class="ui stacked segment three wide column box animated flipInY">
-            <a class="ui teal ribbon label">{{mapToString($index)}}</a>
-            <div class="ui top attached label"></div>
-            <div class="ui bottom attached label"></div>
-            <div class="textContainer">
-                <p class="text">{{problem.title}}</p>
+        <div ng-repeat="problem in problemsInfo" class=" four wide column box animated flipInY">
+            <div id="{{problem.id}}" class="ui stacked segment" ui-sref="contest.problems.problem({problemId:problem.id})">
+                <a class="ui teal ribbon label">{{mapToString($index)}}</a>
+                <div class="ui top attached label"></div>
+                <div class="ui bottom attached label"></div>
+                <div class="textContainer">
+                    <p class="text">{{problem.title}}</p>
+                </div>
+            </div>
+            <div class="ui two bottom attached buttons" ng-show="$root.isOwner||$root.asAdmin">
+                <div class="ui icon bottom left pointing dropdown button editProblemBtn" ng-click="showDropDown(problem.id,$index)">
+                    <i class="wrench icon" ng-click="showDropDown(problem.id,$index)"></i>
+                    <div class="menu">
+                        <div class="header">
+                            Edit Problem
+                        </div>
+                        <div class="ui left icon input">
+                            <i class="font icon"></i>
+                            <input type="text" placeholder="name" ng-model="editProblemInfo.title">
+                        </div>
+                        <div class="ui left icon input">
+                            <i class="hourglass end icon"></i>
+                            <input type="number" placeholder="time" ng-model="editProblemInfo.time_limit">
+                        </div>
+                        <div class="ui left icon input">
+                            <i class="database icon"></i>
+                            <input type="number" placeholder="memory" ng-model="editProblemInfo.space_limit">
+                        </div>
+                        <div class="divider"></div>
+                        <div class="item">
+                            <button class="ui positive button centeredBtn" id="editProblemBtn" ng-click="editProblem()">Update</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui icon button" ng-click="deleteProblem(problem.id)"><i class="remove icon"></i></div>
             </div>
         </div>
         <div ng-show="showProblemsEmptyError" class="ui error visible message ten wide column">

@@ -316,19 +316,7 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else if (status == 404) {
-                    msg = "کانتست یا سوال مورد نطر یافت نشد"
-                } else if (status == 403) {
-                    msg = "شما مجاز به دیدن سوال نیستید"
-                } else if (status == 400) {
-                    msg = "لطفا دوباره تلاش کنید"
-                } else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(status, false);
             })
 
     };

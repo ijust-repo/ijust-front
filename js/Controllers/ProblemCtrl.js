@@ -113,7 +113,6 @@ var ProblemCtrl = function ($scope , $rootScope , Temp , ContestModel , Submissi
         .dropdown()
     ;
 
-
 };
 
 ijust.controller('ProblemCtrl' , ProblemCtrl);

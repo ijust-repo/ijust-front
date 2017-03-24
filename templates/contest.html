@@ -1,12 +1,12 @@
 <div class="ui container" id="contest">
     <div class="ui one column centered grid labeled icon massive menu" style="position: relative">
         <a class="item" style="border-left: 1px solid rgba(34,36,38,.1);"
-           ng-if="$root.isAdmin||$root.isOwner||($root.isJoined==2 && $root.contestInfo.is_active)"
+           ng-if="$root.isAdmin||$root.isOwner||($root.isJoined==2 && $root.contestInfo.is_active)||$root.isEnded"
            ui-sref="contest.problems"  ui-sref-active="active">
             <i class="copy icon"></i>
             Problems
         </a>
-        <a class="item" ng-show="$root.isAdmin||$root.isOwner||$root.isJoined==2"
+        <a class="item" ng-show="$root.isAdmin||$root.isOwner||$root.isJoined==2||$root.isEnded"
            ui-sref="contest.rankList"  ui-sref-active="active">
             <i class="ordered list icon"></i>
             Rank List

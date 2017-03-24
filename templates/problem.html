@@ -31,7 +31,7 @@
             </div>
             <a ng-href="{{bodyUrl}}" style="text-align: center">{{bodyUrl}}</a>
         </div>
-        <div class="ui segment centered grid container">
+        <div class="ui segment centered grid container" ng-show="($root.isJoined==2 && !$root.isEnded)||$root.isOwner||$root.isAdmin">
             <div class="column row">
                 <div>
                     <div class="ui ordered large steps">
