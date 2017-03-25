@@ -4,6 +4,7 @@ var addProblemCtrl = function ($scope, $rootScope, ContestModel , Constants,Uplo
     $scope.buttonLoader = false;
     $scope.problemId = 0;
     $scope.showProblemCreateError = false;
+
     $scope.createProblem = function () {
         $scope.buttonLoader = true;
         ContestModel.createProblem($rootScope.contestId, $scope.problemInfo, function (data, status) {

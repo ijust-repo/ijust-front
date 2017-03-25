@@ -65,6 +65,17 @@
       margin-top: 0 !important;
       border-radius:.28571429rem !important;
     }
+    .item{
+      &.upload{
+        padding: 20px !important;
+      }
+    }
+  }
+  .ui.dropdown .menu .menu{
+    left: 7px !important;
+    .item{
+      padding: 5px !important;
+    }
   }
   i.wrench.icon{
     width: 100%;

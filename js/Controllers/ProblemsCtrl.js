@@ -1,4 +1,4 @@
-var ProblemsCtrl = function ($scope, $rootScope, ContestModel,$state) {
+var ProblemsCtrl = function ($scope, $rootScope, ContestModel,$state,Upload,Constants,$timeout) {
 
     $rootScope.problemsInfo = [] ;
     $scope.showProblemsEmptyError = false ;
@@ -74,6 +74,72 @@ var ProblemsCtrl = function ($scope, $rootScope, ContestModel,$state) {
                     alert(data.errors);
                 }
             })
+        }
+    };
+
+    $scope.uploadBody = function (file, errFiles,id) {
+        $scope.f = file;
+        $scope.errFile = errFiles && errFiles[0];
+        if (file) {
+            $('#'+id).addClass('loading');
+            console.log(file);
+            formData = [
+                {
+                    body:file
+                }
+            ] ;
+            console.log(formData);
+            file.upload = Upload.upload({
+                method: "POST",
+                url: Constants.server + Constants.version + 'contest/' + $rootScope.contestId + '/problem/' + id +'/body',
+                data: {body:file}
+            });
+
+            file.upload.then(function (response) {
+                console.log(response);
+                $timeout(function () {
+                    file.result = response.data;
+                    $scope.buttonLoader = false;
+                    if (response.status >= 400){
+                        $('#'+id).removeClass('loading');
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                        alert($scope.errorMsg);
+                    }
+                    else if (response.status==200){
+                        $('#'+id).removeClass('loading');
+                    }
+                }, 500);
+            });
+            // file.upload();
+        }
+    };
+
+    $scope.uploadTestCase = function (file, errFiles,id) {
+        $scope.f = file;
+        $scope.errFile = errFiles && errFiles[0];
+        if (file) {
+            $('#'+id).addClass('loading');
+            console.log(file);
+            file.upload = Upload.upload({
+                method: "POST",
+                url: Constants.server + Constants.version + 'contest/' + $rootScope.contestId + '/problem/' + id + '/testcase',
+                data: {testcase:file}
+            });
+
+            file.upload.then(function (response) {
+                $timeout(function () {
+                    file.result = response.data;
+                    $scope.buttonLoader = false;
+                    if (response.status >= 400){
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                        alert($scope.errorMsg);
+                        $('#'+id).removeClass('loading');
+                    }
+                    else if (response.status==200){
+                        $('#'+id).removeClass('loading');
+                    }
+                }, 500);
+            });
         }
     };
 

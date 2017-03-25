@@ -41,16 +41,35 @@
                         </div>
                         <div class="ui left icon input">
                             <i class="hourglass end icon"></i>
-                            <input type="number" placeholder="time" ng-model="editProblemInfo.time_limit">
+                            <input type="number" placeholder="time limit" ng-model="editProblemInfo.time_limit">
                         </div>
                         <div class="ui left icon input">
                             <i class="database icon"></i>
-                            <input type="number" placeholder="memory" ng-model="editProblemInfo.space_limit">
+                            <input type="number" placeholder="memory limit" ng-model="editProblemInfo.space_limit">
                         </div>
                         <div class="divider"></div>
                         <div class="item">
-                            <button class="ui positive button centeredBtn" id="editProblemBtn" ng-click="editProblem()">Update</button>
+                            <button class="ui positive button centeredBtn" id="editProblemBtn" ng-click="editProblem()">Update Info</button>
                         </div>
+                        <div class="item upload">
+                            <i class="dropdown icon"></i>
+                            <span class="text">upload body & test case</span>
+                            <div class="menu transition visible">
+                                <div class="item">
+                                    <button class="ui primary button" type="file" ngf-select="uploadBody($file, $invalidFiles,problem.id)">select .pdf</button>
+                                    <button class="ui primary button" type="file" ngf-select="uploadTestCase($file, $invalidFiles,problem.id)">select .zip</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="item upload">-->
+                            <!--<i class="dropdown icon"></i>-->
+                            <!--<span class="text">Upload test case</span>-->
+                            <!--<div class="menu">-->
+                                <!--<div class="item">-->
+                                    <!--<button class="ui button">select .zip</button>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
                     </div>
                 </div>
                 <div class="ui icon button" ng-click="showDeleteProblemModal(problem.id,$index,problem.title)"><i class="remove icon"></i></div>

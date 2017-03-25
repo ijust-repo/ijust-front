@@ -41,6 +41,12 @@
     #problems .menu #editProblemBtn {
       margin-top: 0 !important;
       border-radius: .28571429rem !important; }
+    #problems .menu .item.upload {
+      padding: 20px !important; }
+  #problems .ui.dropdown .menu .menu {
+    left: 7px !important; }
+    #problems .ui.dropdown .menu .menu .item {
+      padding: 5px !important; }
   #problems i.wrench.icon {
     width: 100%;
     height: 100%; }
