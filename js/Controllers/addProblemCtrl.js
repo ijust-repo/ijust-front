@@ -12,6 +12,9 @@ var addProblemCtrl = function ($scope, $rootScope, ContestModel , Constants,Uplo
                 $rootScope.problemsInfo.push(data);
                 $scope.problemId = data.id;
                 $scope.show = 'body';
+                if($rootScope.problemsInfo.length!=0){
+                    $rootScope.showProblemsEmptyError = false;
+                }
                 $('.create').removeClass('active').addClass('completed');
                 $('.body').addClass('active');
             }

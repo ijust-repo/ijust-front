@@ -4,6 +4,7 @@ var ProblemsCtrl = function ($scope, $rootScope, ContestModel,$state) {
     $scope.showProblemsEmptyError = false ;
     $rootScope.notifyLoader = true;
     $scope.editProblemInfo = {};
+    $scope.problemName = '';
 
     var toggleState = [1];
     $('.toggleIcon').on('click',function () {
@@ -34,6 +35,29 @@ var ProblemsCtrl = function ($scope, $rootScope, ContestModel,$state) {
         }
     });
 
+    $scope.showDeleteProblemModal = function (id,index,name) {
+        $scope.problemName = name ;
+        $('#deleteModal')
+            .modal('show')
+        ;
+        $scope.deleteProblem = function () {
+            $('#'+id).addClass('loading');
+            ContestModel.deleteProblem($rootScope.contestId,id,function (data,status) {
+                if(status){
+                    $state.go('contest.problems');
+                    $scope.problemsInfo.splice(index,1);
+                    if($rootScope.problemsInfo.length==0){
+                        $rootScope.showProblemsEmptyError = true;
+                    }
+                    $('#'+id).removeClass('loading');
+                }
+                else {
+                    alert(data.errors)
+                }
+            })
+        }
+    };
+
     $scope.showDropDown = function (id,index) {
         $('.ui.dropdown')
             .dropdown()
@@ -45,6 +69,9 @@ var ProblemsCtrl = function ($scope, $rootScope, ContestModel,$state) {
                     $state.go('contest.problems');
                     $scope.problemsInfo[index].title = $scope.editProblemInfo.title ;
                     $('#'+id).removeClass('loading');
+                }
+                else{
+                    alert(data.errors);
                 }
             })
         }

@@ -8,7 +8,11 @@
             <div class="ui icon button toggleIcon" data-content="Add users to your feed">
                 <i class="minus icon"></i>
             </div>
-            <button ng-show="isOwner||isAdmin" class="ui orange right labeled icon button" style="float: right;" ui-sref="contest.problems.addProblem">
+            <button ng-show="isOwner||isAdmin"
+                    class="ui orange right labeled icon button animated"
+                    style="float: right;"
+                    ng-class="{'tada':$root.showProblemsEmptyError}"
+                    ui-sref="contest.problems.addProblem">
                 <i class="right plus icon"></i>
                 Add Problem
             </button>
@@ -49,11 +53,27 @@
                         </div>
                     </div>
                 </div>
-                <div class="ui icon button" ng-click="deleteProblem(problem.id)"><i class="remove icon"></i></div>
+                <div class="ui icon button" ng-click="showDeleteProblemModal(problem.id,$index,problem.title)"><i class="remove icon"></i></div>
             </div>
         </div>
-        <div ng-show="showProblemsEmptyError" class="ui error visible message ten wide column">
+        <div ng-show="$root.showProblemsEmptyError" id="emptyError" class="ui error visible message ten wide column">
             <p>there is no problem</p>
+        </div>
+        <div class="ui basic modal" id="deleteModal">
+            <div class="ui icon header">
+                <i class="archive icon"></i>
+                <h1>Are you Sure to Delete "{{problemName}}" ?</h1>
+            </div>
+            <div class="actions">
+                <div class="ui red basic cancel inverted button">
+                    <i class="remove icon"></i>
+                    No
+                </div>
+                <div class="ui green ok inverted button" ng-click="deleteProblem()">
+                    <i class="checkmark icon"></i>
+                    Yes
+                </div>
+            </div>
         </div>
     </div>
     <div ui-view></div>
