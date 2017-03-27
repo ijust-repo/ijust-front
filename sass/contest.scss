@@ -15,4 +15,7 @@
     .centeredBtn {
         margin-top: 20px;
     }
+    .ui.menu .item>.floating.label {
+        z-index: 0;
+    }
 }

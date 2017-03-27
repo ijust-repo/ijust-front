@@ -12,7 +12,8 @@
       top: 5px;
       right: 5px; }
       #problems .ui.header .headerBtns .button {
-        position: relative; }
+        position: relative;
+        z-index: 0; }
       #problems .ui.header .headerBtns .toggleIcon {
         float: right;
         cursor: pointer; }

@@ -9,3 +9,5 @@
     text-align: center; }
   #contest .centeredBtn {
     margin-top: 20px; }
+  #contest .ui.menu .item > .floating.label {
+    z-index: 0; }
