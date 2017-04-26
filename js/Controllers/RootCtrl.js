@@ -39,6 +39,15 @@ var RootCtrl = function ($scope, $rootScope, UserModel,
         });
     };
 
+    $scope.emptyTeamInfo = function () {
+        $scope.showCreateTeamError = false;
+        $scope.showCreateTeamSuccess = false;
+        $scope.createTeamError = "";
+        $scope.createTeamSuccess = "";
+        $scope.newTeamInfo = {};
+        $scope.newTeamInfo.members = [];
+    };
+
     $scope.createTeam = function () {
         console.log($scope.newTeamInfo);
         TeamModel.createTeam($scope.newTeamInfo, function (data, status) {
