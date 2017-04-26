@@ -15,6 +15,7 @@ var TeamCtrl = function ($scope , mtNotifyService , TeamModel , ContestModel , $
         if (status) {
             $scope.teamInfo = data ;
             $scope.editTeamInfo = jQuery.extend(true,{}, $scope.teamInfo); // should be solved somehow good
+            console.log($scope.editTeamInfo,'ds');
             if($scope.teamInfo.owner.username == $rootScope.userInfo.username){
                 $scope.isOwner = true ;
             }
@@ -38,6 +39,7 @@ var TeamCtrl = function ($scope , mtNotifyService , TeamModel , ContestModel , $
 
     $scope.goToEdit = function () {
         $scope.isEdit = true ;
+        $scope.editTeamInfo = jQuery.extend(true,{}, $scope.teamInfo); // should be solved somehow good
         $('.editMem').removeClass('error');
         $('.editName').removeClass('error');
     };
