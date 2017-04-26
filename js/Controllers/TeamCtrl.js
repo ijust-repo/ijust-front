@@ -68,6 +68,7 @@ var TeamCtrl = function ($scope , mtNotifyService , TeamModel , ContestModel , $
                 $('#submitBtn').removeClass('loading');
             }
             else {
+                console.log(data);
                 $('#submitBtn').removeClass('loading');
                 if(status==404){
                     $('.editMem').addClass('error');

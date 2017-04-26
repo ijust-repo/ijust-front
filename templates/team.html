@@ -33,7 +33,7 @@
                 <td ng-show="!isEdit"><span ng-repeat="tm in teamInfo.members">{{tm.username}},</span></td>
                 <td ng-show="isEdit">
                     <div class="ui input editMem">
-                        <input type="text" placeholder="second member" ng-model="editTeamInfo.members[1].username">
+                        <input type="text" placeholder="second member" ng-model="editTeamInfo.members[1].username" ng-disabled="!editTeamInfo.members[0].username">
                     </div>
                 </td>
             </tr>

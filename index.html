@@ -154,7 +154,7 @@
                 <div class="field">
                     <label>Member2</label>
                     <div class="ui labeled input">
-                        <input type="text" placeholder="second member is optional" ng-model="newTeamInfo.members[1]">
+                        <input type="text" placeholder="second member is optional" ng-model="newTeamInfo.members[1]" ng-disabled="!newTeamInfo.members[0]">
                     </div>
                 </div>
                 <div class="ui negative message" ng-show="showCreateTeamError">

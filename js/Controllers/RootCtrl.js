@@ -66,6 +66,7 @@ var RootCtrl = function ($scope, $rootScope, UserModel,
                 $scope.showCreateTeamError = true;
                 $scope.createTeamError = data.error;
                 $scope.newTeamInfo = {};
+                $scope.newTeamInfo.members = [];
                 console.log(data);
             }
         })
