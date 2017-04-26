@@ -156,7 +156,7 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(status, false);
+                callback(data, false);
             })
 
     };
