@@ -5,19 +5,7 @@ var SubmissionModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 400) {
-                    msg = "لطفا دوباره تلاش کنید"
-                } else if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else if (status == 403) {
-                    msg = "شما عضو این تیم نیستید"
-                } else if (status == 404) {
-                    msg = "تیم یا مسابقه مورد نظر یافت نشد"
-                } else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -27,19 +15,7 @@ var SubmissionModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 400) {
-                    msg = "لطفا دوباره تلاش کنید"
-                } else if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else if (status == 403) {
-                    msg = "شما عضو این تیم نیستید"
-                } else if (status == 404) {
-                    msg = "تیم یا مسابقه مورد نظر یافت نشد"
-                } else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -49,19 +25,7 @@ var SubmissionModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 400) {
-                    msg = "لطفا دوباره تلاش کنید"
-                } else if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else if (status == 403) {
-                    msg = "شما عضو این تیم نیستید"
-                } else if (status == 404) {
-                    msg = "تیم یا مسابقه مورد نظر یافت نشد"
-                } else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
     var downloadCode = function (submissionId, callback) {
@@ -70,17 +34,7 @@ var SubmissionModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else if (status == 403) {
-                    msg = "شما عضو این تیم نیستید"
-                } else if (status == 404) {
-                    msg = "کد مورد نظر یافت نشد"
-                } else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
     return {

@@ -6,19 +6,6 @@ var UserModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 404) {
-                    msg = "this account does not exist"
-                }
-                else if (status == 400) {
-                    msg = "please try later"
-                }
-                else if (status == 406) {
-                    msg = "username or password is wrong"
-                }
-                else {
-                    msg = "unknown error , please try later"
-                }
                 callback(data, false);
             })
     };
@@ -29,15 +16,6 @@ var UserModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 400) {
-                    msg = "please try later"
-                } else if (status == 409) {
-                    msg = "this username or email already exist"
-                }
-                else {
-                    msg = "unknown error , please try later"
-                }
                 callback(data, false);
             })
     };
