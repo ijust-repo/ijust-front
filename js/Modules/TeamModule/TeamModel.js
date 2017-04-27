@@ -5,13 +5,7 @@ var TeamModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است."
-                } else {
-                    msg = "خطای نا شناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -21,15 +15,7 @@ var TeamModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است."
-                }else if( status == 404 ){
-                    msg = "تیم مورد نظر یافت نشد"
-                } else{
-                    msg = "خطای نا شناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -39,20 +25,6 @@ var TeamModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 400) {
-                    msg = "لطفا دوباره تلاش کنید"
-                }else if( status == 401 ){
-                    msg = "نشست شما به پایان رسیده است"
-                } else if( status == 404 ){
-                    msg = "اعضای تیم یافت نشدند"
-                } else if( status == 406 ){
-                    msg = "متاسفانه،شما نمیتوانید تیم بیشتری بسازید"
-                } else if( status == 409 ){
-                    msg = "تیم مورد نظر وجود دارد"
-                } else{
-                    msg = "خطای نا شناخته"
-                }
                 callback(data, false);
             })
     };
@@ -63,20 +35,6 @@ var TeamModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 400) {
-                    msg = "لطفا دوباره تلاش کنید"
-                }else if( status == 401 ){
-                    msg = "نشست شما به پایان رسیده است"
-                } else if( status == 403 ){
-                    msg = "شما مدیر این تیم نیستید . اجازه ویرایش آن را ندارید"
-                } else if( status == 404 ){
-                    msg = "تیم یا اعضای آن وجود ندارند"
-                } else if( status == 409 ){
-                    msg = "تیم مورد نظر وجود دارد"
-                } else{
-                    msg = "خطای نا شناخته"
-                }
                 callback(data, status);
             })
     };

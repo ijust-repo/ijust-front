@@ -1,9 +1,11 @@
-var addProblemCtrl = function ($scope, $rootScope, ContestModel , Constants,Upload,$timeout,$location) {
+var addProblemCtrl = function ($scope, $rootScope, ContestModel, Constants, Upload, $timeout, $location) {
     $scope.show = 'create';
     $scope.problemInfo = {};
     $scope.buttonLoader = false;
     $scope.problemId = 0;
     $scope.showProblemCreateError = false;
+    $scope.showUploadBodyError = false;
+    $scope.showUploadTestCaseError = false;
 
     $scope.createProblem = function () {
         $scope.buttonLoader = true;
@@ -13,13 +15,14 @@ var addProblemCtrl = function ($scope, $rootScope, ContestModel , Constants,Uplo
                 $rootScope.problemsInfo.push(data);
                 $scope.problemId = data.id;
                 $scope.show = 'body';
-                if($rootScope.problemsInfo.length!=0){
+                if ($rootScope.problemsInfo.length != 0) {
                     $rootScope.showProblemsEmptyError = false;
                 }
                 $('.create').removeClass('active').addClass('completed');
                 $('.body').addClass('active');
             }
             else {
+                $scope.buttonLoader = false;
                 $scope.showProblemCreateError = true;
                 $scope.problemCreateError = data.error;
             }
@@ -36,14 +39,14 @@ var addProblemCtrl = function ($scope, $rootScope, ContestModel , Constants,Uplo
             // formData.append("body",file ,'fileName');
             formData = [
                 {
-                    body:file
+                    body: file
                 }
-            ] ;
+            ];
             console.log(formData);
             file.upload = Upload.upload({
                 method: "POST",
-                url: Constants.server + Constants.version + 'contest/' + $rootScope.contestId + '/problem/' + $scope.problemId +'/body',
-                data: {body:file}
+                url: Constants.server + Constants.version + 'contest/' + $rootScope.contestId + '/problem/' + $scope.problemId + '/body',
+                data: {body: file}
             });
 
             file.upload.then(function (response) {
@@ -53,12 +56,17 @@ var addProblemCtrl = function ($scope, $rootScope, ContestModel , Constants,Uplo
                     $scope.buttonLoader = false;
                     if (response.status >= 400)
                         $scope.errorMsg = response.status + ': ' + response.data;
-                    else if (response.status==200){
+                    else if (response.status == 200) {
                         $('.body').removeClass('active').addClass('completed');
                         $('.test').addClass('active');
                         $scope.show = 'test';
                     }
                 }, 500);
+            }, function (response) {
+                console.log(response);
+                $scope.buttonLoader = false;
+                $scope.showUploadBodyError = true;
+                $scope.uploadBodyError = response.data.error;
             });
             // file.upload();
         }
@@ -73,7 +81,7 @@ var addProblemCtrl = function ($scope, $rootScope, ContestModel , Constants,Uplo
             file.upload = Upload.upload({
                 method: "POST",
                 url: Constants.server + Constants.version + 'contest/' + $rootScope.contestId + '/problem/' + $scope.problemId + '/testcase',
-                data: {testcase:file}
+                data: {testcase: file}
             });
 
             file.upload.then(function (response) {
@@ -82,12 +90,16 @@ var addProblemCtrl = function ($scope, $rootScope, ContestModel , Constants,Uplo
                     $scope.buttonLoader = false;
                     if (response.status >= 400)
                         $scope.errorMsg = response.status + ': ' + response.data;
-                    else if (response.status==200){
+                    else if (response.status == 200) {
                         $('.test').removeClass('active').addClass('completed');
-                        var infoPath = "/contest/"+$rootScope.contestId+"/problems";
+                        var infoPath = "/contest/" + $rootScope.contestId + "/problems";
                         $location.path(infoPath);
                     }
                 }, 500);
+            },function (response) {
+                $scope.buttonLoader = false;
+                $scope.showUploadTestCaseError = true;
+                $scope.uploadTestCaseError = response.data.error;
             });
         }
     };

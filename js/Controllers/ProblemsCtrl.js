@@ -5,6 +5,7 @@ var ProblemsCtrl = function ($scope, $rootScope, ContestModel,$state,Upload,Cons
     $rootScope.notifyLoader = true;
     $scope.editProblemInfo = {};
     $scope.problemName = '';
+    $scope.showEditProblemError = false;
 
     var toggleState = [1];
     $('.toggleIcon').on('click',function () {
@@ -57,24 +58,32 @@ var ProblemsCtrl = function ($scope, $rootScope, ContestModel,$state,Upload,Cons
             })
         }
     };
-
     $scope.showDropDown = function (id,index) {
         $('.ui.dropdown')
             .dropdown()
         ;
+
+        $scope.showEditProblemError = false;
+        $scope.editProblemError = {};
         $scope.editProblem = function () {
             $('#'+id).addClass('loading');
             ContestModel.editProblem($rootScope.contestId,id,$scope.editProblemInfo,function (data,status) {
                 if(status){
                     $state.go('contest.problems');
-                    $scope.problemsInfo[index].title = $scope.editProblemInfo.title ;
+                    if( $scope.editProblemInfo.title)
+                        $scope.problemsInfo[index].title = $scope.editProblemInfo.title ;
                     $('#'+id).removeClass('loading');
+                    $scope.editProblemInfo = {};
                 }
                 else{
-                    alert(data.errors);
+                  $scope.showEditProblemError = true;
+                  $scope.editProblemError = data.error;
+                  $('#'+id).removeClass('loading');
+                  $scope.editProblemInfo = {};
+                  //console.log($scope.editProblemError );
                 }
-            })
-        }
+            });
+        };
     };
 
     $scope.uploadBody = function (file, errFiles,id) {
@@ -109,6 +118,10 @@ var ProblemsCtrl = function ($scope, $rootScope, ContestModel,$state,Upload,Cons
                         $('#'+id).removeClass('loading');
                     }
                 }, 500);
+            },function (response) {
+                $scope.showEditProblemError = true;
+                $scope.editProblemError = response.data.error;
+                $('#'+id).removeClass('loading');
             });
             // file.upload();
         }
@@ -139,6 +152,10 @@ var ProblemsCtrl = function ($scope, $rootScope, ContestModel,$state,Upload,Cons
                         $('#'+id).removeClass('loading');
                     }
                 }, 500);
+            },function (response) {
+                $scope.showEditProblemError = true;
+                $scope.editProblemError = response.data.error;
+                $('#'+id).removeClass('loading');
             });
         }
     };

@@ -5,13 +5,7 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true)
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -21,19 +15,7 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 400) {
-                    msg = "لطفا دوباره تلاش کنید"
-                } else if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else if (status == 406) {
-                    msg = "زمان ها به درستی تنظیم نشده اند"
-                } else if (status == 409) {
-                    msg = "کانتست مورد نظر وجود دارد"
-                } else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -43,13 +25,7 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true)
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -59,13 +35,7 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true)
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -75,16 +45,7 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true)
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else if (status == 404) {
-                    msg = "تیم مورد نظر یافت نشد"
-                }
-                else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -94,16 +55,7 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else if (status == 404) {
-                    msg = "کانتست مورد نظر یافت نشد"
-                }
-                else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -113,23 +65,7 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 400) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else if (status == 401) {
-                    msg = "کانتست مورد نظر یافت نشد"
-                } else if (status == 403) {
-                    msg = "شما صاحب این کانتست نیستید"
-                } else if (status == 404) {
-                    msg = "کانتست مورد نظر یافت نشد"
-                } else if (status == 406) {
-                    msg = "زمان ها به درستی تنظیم نشده اند"
-                } else if (status == 409) {
-                    msg = "نام کانتست مورد نظر تکراری است"
-                } else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -139,18 +75,7 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else if (status == 403) {
-                    msg = "شما صاحب این کانتست نیستید"
-                } else if (status == 404) {
-                    msg = "کانتست مورد نظر یافت نشد"
-                }
-                else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -160,20 +85,7 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else if (status == 400) {
-                    msg = "لطفا دوباره تلاش کنید"
-                } else if (status == 403) {
-                    msg = "شما صاحب این کانتست نیستید"
-                } else if (status == 404) {
-                    msg = "کانتست یا کاربر مورد نظر یافت نشد"
-                }
-                else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -183,20 +95,7 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else if (status == 400) {
-                    msg = "لطفا دوباره تلاش کنید"
-                } else if (status == 403) {
-                    msg = "شما صاحب این کانتست نیستید"
-                } else if (status == 404) {
-                    msg = "کانتست یا کاربر مورد نظر یافت نشد"
-                }
-                else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -206,17 +105,6 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else if (status == 403) {
-                    msg = "شما اجازه مشاهده سوالات را ندارید"
-                } else if (status == 404) {
-                    msg = "کانتست  مورد نظر یافت نشد"
-                }
-                else {
-                    msg = "خطای ناشناخته"
-                }
                 callback(data, false);
             })
     };
@@ -227,21 +115,7 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else if (status == 400) {
-                    msg = "لطفا دوباره تلاش کنید"
-                } else if (status == 403) {
-                    msg = "شما صاحب کانتست نیستید"
-                } else if (status == 404) {
-                    msg = "کانتست  مورد نظر یافت نشد"
-                } else if (status == 406) {
-                    msg = "فرمت اوردر سحیح نمیباشد"
-                } else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -251,18 +125,6 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else if (status == 400) {
-                    msg = "لطفا دوباره تلاش کنید"
-                } else if (status == 403) {
-                    msg = "شما صاحب کانتست نیستید"
-                } else if (status == 404) {
-                    msg = "کانتست  مورد نظر یافت نشد"
-                } else {
-                    msg = "خطای ناشناخته"
-                }
                 callback(data, false);
             })
     };
@@ -273,19 +135,7 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else if (status == 404) {
-                    msg = "کانتست یا سوال مورد نطر یافت نشد"
-                } else if (status == 403) {
-                    msg = "شما صاحب کانتست نیستید"
-                } else if (status == 406) {
-                    msg = "کانتست شروع شده است"
-                } else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -295,17 +145,7 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else if (status == 404) {
-                    msg = "کانتست یا سوال مورد نطر یافت نشد"
-                } else if (status == 403) {
-                    msg = "شما مجاز به دیدن سوال نیستید"
-                } else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
 
     };
@@ -316,7 +156,7 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(status, false);
+                callback(data, false);
             })
 
     };
@@ -327,17 +167,7 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else if (status == 404) {
-                    msg = "کانتست یا سوال مورد نطر یافت نشد"
-                } else if (status == 403) {
-                    msg = "شما مجاز به دیدن سوال نیستید"
-                } else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
 
     };
@@ -363,7 +193,7 @@ var ContestModel = function ($http, Constants) {
             })
     };
 
-        var getAcceptedTeams = function (contestId, callback) {
+    var getAcceptedTeams = function (contestId, callback) {
         $http.get(Constants.server + Constants.version + 'contest/' + contestId + '/accepted_teams')
             .success(function (data , status) {
                 callback(data,true);
@@ -379,17 +209,7 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else if (status == 404) {
-                    msg = "کانتست  مورد نطر یافت نشد"
-                } else if (status == 403) {
-                    msg = "شما مجاز به دیدن سوال نیستید"
-                } else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -399,20 +219,6 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else if (status == 400) {
-                    msg = "لطفا دوباره تلاش کنید"
-                } else if (status == 403) {
-                    msg = "شما صاحب تیم نیستید"
-                } else if (status == 404) {
-                    msg = "کانتست یا تیم مورد نطر یافت نشد"
-                } else if (status == 409) {
-                    msg = "شما در این کانتست عضو بوده اید"
-                } else {
-                    msg = "خطای ناشناخته"
-                }
                 callback(data, false);
             })
     };
@@ -423,19 +229,7 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                } else if (status == 400) {
-                    msg = "لطفا دوباره تلاش کنید"
-                } else if (status == 403) {
-                    msg = "شما صاحب تیم نیستید"
-                } else if (status == 404) {
-                    msg = "کانتست یا تیم مورد نطر یافت نشد"
-                } else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -445,17 +239,7 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                }  else if (status == 403) {
-                    msg = "شما صاحب تیم نیستید"
-                } else if (status == 404) {
-                    msg = "کانتست یا تیم مورد نطر یافت نشد"
-                } else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
@@ -465,17 +249,7 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg;
-                if (status == 401) {
-                    msg = "نشست شما به پایان رسیده است"
-                }  else if (status == 403) {
-                    msg = "شما صاحب تیم نیستید"
-                } else if (status == 404) {
-                    msg = "کانتست یا تیم مورد نطر یافت نشد"
-                } else {
-                    msg = "خطای ناشناخته"
-                }
-                callback(msg, false);
+                callback(data, false);
             })
     };
 
