@@ -50,9 +50,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="active step">
+                        <div class="active step fileUpload">
                             <div class="content">
-                                <div class="title">upload program file</div>
+                                <div class="title">{{fileName||'upload program file'}}</div>
                                 <div class="description">
                                     <button class="ui blue button centeredBtn" type="file" ngf-select="upload($file, $invalidFiles)">upload</button>
                                     <!--<button class="ui blue loading button centeredBtn" ng-show="buttonLoader">upload</button>-->
@@ -72,13 +72,14 @@
                 </div>
             </div>
         </div>
-        <div class="ui icon message centeredBtn " style="max-width: 400px" ng-show="isCompile">
-            <i class="notched circle loading icon"></i>
+        <div id="submitMsg" class="ui positive icon message centeredBtn " style="max-width: 400px" ng-show="isCompile">
+            <i class="angellist icon"></i>
             <div class="content">
                 <div class="header">
-                    Go To Submits
+                    <!--Go To Submits-->
+                    your submission is pending
                 </div>
-                <p>your code is compiling now.</p>
+                <p>go to submits section to see result. <a ui-sref="contest.submits">click here</a></p>
             </div>
         </div>
     </div>

@@ -1,6 +1,7 @@
 ijust.constant("Constants", {
     // server : "https://ijust.ir/api/" ,
-    server : "http://test.ijust.ir/api/" ,
+    server : "https://acm.iust.ac.ir/api/" ,
+    // server : "http://test.ijust.ir/api/" ,
     // server : "http://172.17.8.120:8080/api/" ,
     version :"v1/",
 

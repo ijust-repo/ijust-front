@@ -1,5 +1,7 @@
 var ProblemCtrl = function ($scope , $rootScope , Temp , ContestModel , SubmissionModel
-    , $stateParams , Constants , Upload , $timeout) {
+    , $stateParams , Constants , Upload , $timeout , $anchorScroll , $location) {
+
+    $scope.fileName = undefined;
 
     if($scope.problemId){
         delete $scope.problemId;
@@ -38,6 +40,7 @@ var ProblemCtrl = function ($scope , $rootScope , Temp , ContestModel , Submissi
 
     $scope.upload = function (file, errFiles) {
         $scope.f = file;
+        $scope.fileName = file.name ;
         $scope.errFile = errFiles && errFiles[0];
         $scope.submit = function () {
             $scope.buttonLoader = true;
@@ -82,6 +85,8 @@ var ProblemCtrl = function ($scope , $rootScope , Temp , ContestModel , Submissi
                             $scope.errorMsg = response.status + ': ' + response.data;
                             $scope.submitError = true ;}
                         else if (response.status < 300){
+                            $location.hash('submitMsg');
+                            $anchorScroll();
                             $scope.isCompile=true;
                         }
                     }, 500);
