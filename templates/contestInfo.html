@@ -29,10 +29,14 @@
         </table>
         <div class="ui two column centered grid">
             <div class="ui column">
-                <button class="ui blue button centeredBtn"
-                        ng-show="(isOwner || isAdmin)&& !isEdit"
-                        ng-click="isEdit = true">Edit Information
-                </button>
+                <div ng-show="(isOwner || isAdmin)&& !isEdit" class="ui buttons centeredBtn">
+                    <button class="ui blue button"
+                            ng-click="isEdit = true">Edit Information
+                    </button>
+                    <button class="ui inverted red button" ng-click="showDeleteModal = true">
+                        Delete Contest
+                    </button>
+                </div>
                 <div ng-show="(isOwner || isAdmin)&& isEdit" class="ui buttons centeredBtn">
                     <button class="ui button" ng-click="isEdit = false">
                         cancel
