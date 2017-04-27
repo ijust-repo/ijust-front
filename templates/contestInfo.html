@@ -20,7 +20,7 @@
             <tr>
                 <td>{{contestInfo.name}}</td>
                 <td>{{contestInfo.owner.username}}</td>
-                <td>{{$parent.getDate(contestInfo.starts_at)}}</td> 
+                <td>{{$parent.getDate(contestInfo.starts_at)}}</td>
                 <td>
                     <span>{{$parent.getDate(contestInfo.ends_at)}}</span>
                 </td>
@@ -29,7 +29,18 @@
         </table>
         <div class="ui two column centered grid">
             <div class="ui column">
-                <button class="ui blue button centeredBtn" ng-show="isOwner && isAdmin">Edit Information</button>
+                <button class="ui blue button centeredBtn"
+                        ng-show="(isOwner || isAdmin)&& !isEdit"
+                        ng-click="isEdit = true">Edit Information
+                </button>
+                <div ng-show="(isOwner || isAdmin)&& isEdit" class="ui buttons centeredBtn">
+                    <button class="ui button" ng-click="isEdit = false">
+                        cancel
+                    </button>
+                    <button class="ui positive button" ng-click="editContest()">
+                        update
+                    </button>
+                </div>
                 <button class="ui orange right labeled icon button centeredBtn" id="cancelBtn" ng-show="isJoined==1">
                     <i class="right remove icon"></i>
                     cancel join request
@@ -53,9 +64,9 @@
             </div>
         </div>
         <!--<div class="ui positive message" ng-show="showSuccessJoinMsg">-->
-            <!--<div class="header" style="text-align: center">-->
-                <!--{{successJoinMsg}}-->
-            <!--</div>-->
+        <!--<div class="header" style="text-align: center">-->
+        <!--{{successJoinMsg}}-->
+        <!--</div>-->
         <!--</div>-->
         <div class="ui negative message" ng-show="showErrorJoinMsg">
             <div class="header" style="text-align: center">
@@ -69,7 +80,7 @@
             Are You Sure?
         </div>
         <!--<div class="content">-->
-            <!--<p>You</p>-->
+        <!--<p>You</p>-->
         <!--</div>-->
         <div class="actions">
             <div class="ui red basic cancel inverted button">

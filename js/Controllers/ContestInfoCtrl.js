@@ -7,6 +7,7 @@ var ContestInfoCtrl = function ($scope, mtNotifyService, $stateParams,
     $rootScope.isOwner = false ;
     $rootScope.isAdmin = false ;
     $rootScope.isEnded = false ;
+    $scope.isEdit = false;
     $rootScope.myTeam = {};
     $rootScope.myTeams = $localStorage.myTeams ;
     ContestModel.getContestInfoById($rootScope.contestId , function (data, status) {
