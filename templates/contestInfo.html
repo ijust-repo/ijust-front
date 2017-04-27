@@ -33,7 +33,7 @@
                     <button class="ui blue button"
                             ng-click="isEdit = true">Edit Information
                     </button>
-                    <button class="ui inverted red button" ng-click="showDeleteModal = true">
+                    <button class="ui inverted red button" ng-click="showDeleteModal()">
                         Delete Contest
                     </button>
                 </div>
@@ -92,6 +92,22 @@
                 No
             </div>
             <div class="ui green ok inverted button" id="confirmCancelBtn" ng-click="cancel()">
+                <i class="checkmark icon"></i>
+                Yes
+            </div>
+        </div>
+    </div>
+    <div class="ui basic modal" id="deleteModal">
+        <div class="ui icon header">
+            <i class="archive icon"></i>
+            <h1>Are you Sure to Delete this contest?</h1>
+        </div>
+        <div class="actions">
+            <div class="ui red basic cancel inverted button">
+                <i class="remove icon"></i>
+                No
+            </div>
+            <div class="ui green ok inverted button" ng-click="deleteContest()">
                 <i class="checkmark icon"></i>
                 Yes
             </div>

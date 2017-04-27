@@ -1,4 +1,4 @@
-var CreateContestCtrl = function ($scope , $rootScope , ContestModel) {
+var CreateContestCtrl = function ($scope , $rootScope , ContestModel,$location) {
     // $rootScope.notifyLoader = true ;
     $scope.contestInfo = {};
     $scope.showSuccessMsg = false ;
@@ -6,7 +6,8 @@ var CreateContestCtrl = function ($scope , $rootScope , ContestModel) {
     $scope.buttonLoader = false ;
     $scope.successMsg = "" ;
     $scope.errorMsg = "";
-
+    $scope.contestInfo.starts_at=rome(start);
+    $scope.contestInfo.ends_at=rome(end);
 
     function convertlocaltoUCP(date){
         var n_date=new Date(date);
@@ -27,9 +28,6 @@ var CreateContestCtrl = function ($scope , $rootScope , ContestModel) {
 
     $scope.create = function () {
 
-        $scope.contestInfo.starts_at=rome(start);
-        $scope.contestInfo.ends_at=rome(end);
-
         $scope.buttonLoader = true;
         if ($scope.contestInfo.starts_at.associated.value){
             $scope.contestInfo.starts_at = $scope.contestInfo.starts_at.associated.value ;
@@ -46,7 +44,7 @@ var CreateContestCtrl = function ($scope , $rootScope , ContestModel) {
                 $scope.showErrorMsg = false;
                 $scope.successMsg = "contest created successfully.";
                 $scope.buttonLoader = false ;
-                console.log(data);
+                $location.url('/contest/'+data.id);
             }
             else {
                 $scope.showErrorMsg = true ;

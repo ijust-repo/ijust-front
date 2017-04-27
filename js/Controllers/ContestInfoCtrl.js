@@ -1,4 +1,4 @@
-var ContestInfoCtrl = function ($scope, mtNotifyService, $stateParams, $interval,
+var ContestInfoCtrl = function ($scope, mtNotifyService, $stateParams, $interval,$state,
                                 ContestModel, TeamModel, $rootScope , $localStorage) {
 
     $rootScope.notifyLoader = true;
@@ -102,6 +102,19 @@ var ContestInfoCtrl = function ($scope, mtNotifyService, $stateParams, $interval
                 $('#cancelBtn').removeClass('loading');
             }
         })
+    };
+
+    $scope.showDeleteModal = function () {
+        $('#deleteModal')
+            .modal('show')
+        ;
+        $scope.deleteContest = function () {
+            ContestModel.deleteContest($rootScope.contestId ,function (data,status) {
+                if(status){
+                    $state.go('home');
+                }
+            })
+        }
     };
 
     $('#cancelBtn').on('click',function () {
