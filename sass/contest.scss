@@ -1,21 +1,46 @@
 @import "variables";
 
 #contest {
-    background-color: $white;
-    padding: 20px;
-    //min-height: calc(100vh - 75px);
-    .ui.header{
-        background-color: $lightGray;
+  background-color: $white;
+  padding: 20px;
+  //min-height: calc(100vh - 75px);
+  .ui.header {
+    background-color: $lightGray;
+  }
+  table {
+    th, td {
+      text-align: center;
     }
-    table{
-        th , td{
-            text-align: center;
+  }
+  .centeredBtn {
+    margin-top: 20px;
+  }
+  .ui.menu .item > .floating.label {
+    z-index: 0;
+  }
+  .item.timer {
+    .iconBox {
+      position: absolute;
+      top: 10px;
+      i {
+        height: 1em;
+        display: block;
+        font-size: 1.5em !important;
+        margin: 0 auto .5rem !important;
+      }
+    }
+    .textBox {
+      position: absolute;
+      top: 38px;
+      p {
+        margin: 0;
+        &:first-child {
+          font-size: 1.5rem;
         }
+        &:nth-child(2) {
+          font-size: 0.8rem;
+        }
+      }
     }
-    .centeredBtn {
-        margin-top: 20px;
-    }
-    .ui.menu .item>.floating.label {
-        z-index: 0;
-    }
+  }
 }

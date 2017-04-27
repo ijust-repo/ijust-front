@@ -11,3 +11,20 @@
     margin-top: 20px; }
   #contest .ui.menu .item > .floating.label {
     z-index: 0; }
+  #contest .item.timer .iconBox {
+    position: absolute;
+    top: 10px; }
+    #contest .item.timer .iconBox i {
+      height: 1em;
+      display: block;
+      font-size: 1.5em !important;
+      margin: 0 auto .5rem !important; }
+  #contest .item.timer .textBox {
+    position: absolute;
+    top: 38px; }
+    #contest .item.timer .textBox p {
+      margin: 0; }
+      #contest .item.timer .textBox p:first-child {
+        font-size: 1.5rem; }
+      #contest .item.timer .textBox p:nth-child(2) {
+        font-size: 0.8rem; }
