@@ -45,7 +45,7 @@ var ProblemCtrl = function ($scope, $rootScope, Temp, ContestModel, SubmissionMo
         $scope.errFile = errFiles && errFiles[0];
         $scope.submit = function () {
             $scope.buttonLoader = true;
-            if (file) {
+            if (file && $scope.prog_lang) {
                 console.log({
                     contest_id: $rootScope.contestId,
                     problem_id: $scope.problemId,
@@ -99,7 +99,7 @@ var ProblemCtrl = function ($scope, $rootScope, Temp, ContestModel, SubmissionMo
                 );
             }
             else {
-                $scope.errorMsg = 'no file selected';
+                $scope.errorMsg = 'no file or language selected';
                 $scope.submitError = true;
                 $scope.buttonLoader = true;
             }
