@@ -47,6 +47,10 @@ var ContestInfoCtrl = function ($scope, mtNotifyService, $stateParams, $interval
 
     // countdown Interval
     $scope.myInterval = $interval(function () {
+        $rootScope.timer = {
+            time : "",
+            status : ""
+        };
         var now = Date.parse(new Date())/1000 ;
         if($rootScope.contestInfo.starts_at > now){
             var t = $rootScope.contestInfo.starts_at - now;
@@ -118,7 +122,7 @@ var ContestInfoCtrl = function ($scope, mtNotifyService, $stateParams, $interval
     };
 
     $('#cancelBtn').on('click',function () {
-        $('.ui.basic.modal')
+        $('#cancelModal')
             .modal('show')
         ;
     });

@@ -51,7 +51,7 @@
                 </button>
                 <div class="ui dropdown blue button teamDropDown centeredBtn" id="joinBtn"
                      style="height: 39px;padding: 13px"
-                     ng-show="!isOwner && !isJoined"
+                     ng-show="!isOwner && !isAdmin && !isJoined"
                      data-tooltip="if you have not any team , create a team"
                      data-inverted="">
                     <div class="text">Join Contest</div>
@@ -78,7 +78,7 @@
             </div>
         </div>
     </div>
-    <div class="ui basic modal">
+    <div class="ui basic modal" id="cancelModal">
         <div class="ui icon header">
             <i class="sign out icon"></i>
             Are You Sure?

@@ -28,7 +28,7 @@
                     <p class="text">{{problem.title}}</p>
                 </div>
             </div>
-            <div class="ui two bottom attached buttons" ng-show="$root.isOwner||$root.asAdmin">
+            <div class="ui two bottom attached buttons" ng-show="$root.isOwner||$root.isAdmin">
                 <div class="ui icon bottom left pointing dropdown button editProblemBtn"  ng-click="showDropDown(problem.id,$index)">
                     <i class="wrench icon" ng-click="showDropDown(problem.id,$index)"></i>
                     <div class="menu">

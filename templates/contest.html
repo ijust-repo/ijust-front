@@ -26,7 +26,7 @@
             <div class="floating ui circular orange label teamButton">{{pendingTeamsNumber}}</div>
             <span ui-sref="contest.teams">Teams</span>
         </a>
-        <a class="item timer" ng-if="$root.timer.status != 'ended'">
+        <a class="item timer" ng-show="$root.timer.status != 'ended'">
             <div class="iconBox">
                 <i ng-if="$root.timer.status == 'to start'" class="hourglass empty icon"></i>
                 <i ng-if="$root.timer.status == 'to end'" class="hourglass end icon"></i>
@@ -36,7 +36,7 @@
                 <p>{{$root.timer.status}}</p>
             </div>
         </a>
-        <a class="item timer" ng-if="$root.timer.status == 'ended'">
+        <a class="item timer" ng-show="$root.timer.status == 'ended'">
             <i class="hourglass full icon"></i>
             <p>{{$root.timer.status}}</p>
         </a>
