@@ -1,4 +1,4 @@
-var CreateContestCtrl = function ($scope , $rootScope , ContestModel,$location) {
+var CreateContestCtrl = function ($scope , $rootScope , ContestModel,$location, Constants) {
     // $rootScope.notifyLoader = true ;
     $scope.contestInfo = {};
     $scope.showSuccessMsg = false ;
@@ -8,6 +8,7 @@ var CreateContestCtrl = function ($scope , $rootScope , ContestModel,$location) 
     $scope.errorMsg = "";
     $scope.contestInfo.starts_at=rome(start);
     $scope.contestInfo.ends_at=rome(end);
+    $scope.dataSiteKey = Constants.dataSiteKey;
 
     function convertlocaltoUCP(date){
         var n_date=new Date(date);
@@ -51,6 +52,8 @@ var CreateContestCtrl = function ($scope , $rootScope , ContestModel,$location) 
                 $scope.showSuccessMsg = false ;
                 $scope.errorMsg = data.error ;
                 $scope.buttonLoader = false ;
+                $scope.contestInfo.starts_at=rome(start);
+                $scope.contestInfo.ends_at=rome(end);
             }
         })
     };

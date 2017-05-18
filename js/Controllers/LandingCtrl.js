@@ -1,6 +1,6 @@
 var LandingCtrl = function ($scope , UserModel , $cookies ,
                             mtNotifyService , $rootScope ,
-                            $state , $localStorage ) {
+                            $state , $localStorage , Constants ) {
 
     // check for authentication
     // if($rootScope.isAuthenticated && $localStorage.token){
@@ -28,6 +28,7 @@ var LandingCtrl = function ($scope , UserModel , $cookies ,
     $scope.signUpInfo = {};
     $scope.isLoginBoxShow = true;
     $scope.isSignUpBoxShow = false;
+    $scope.dataSiteKey = Constants.dataSiteKey;
 
     $scope.showLoginBox = function () {
         $scope.isLoginBoxShow = true;
