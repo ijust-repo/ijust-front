@@ -101,4 +101,12 @@
     width: auto;
     float: right;
   }
+  .fileUpload{
+    min-width: 250px;
+    max-width: 350px;
+    overflow: hidden;
+    .title{
+      min-width: 160px;
+    }
+  }
 }

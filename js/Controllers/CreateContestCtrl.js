@@ -1,4 +1,4 @@
-var CreateContestCtrl = function ($scope , $rootScope , ContestModel) {
+var CreateContestCtrl = function ($scope , $rootScope , ContestModel,$location) {
     // $rootScope.notifyLoader = true ;
     $scope.contestInfo = {};
     $scope.showSuccessMsg = false ;
@@ -27,6 +27,7 @@ var CreateContestCtrl = function ($scope , $rootScope , ContestModel) {
     }
 
     $scope.create = function () {
+
         $scope.buttonLoader = true;
         if ($scope.contestInfo.starts_at.associated.value){
             $scope.contestInfo.starts_at = $scope.contestInfo.starts_at.associated.value ;
@@ -43,6 +44,7 @@ var CreateContestCtrl = function ($scope , $rootScope , ContestModel) {
                 $scope.showErrorMsg = false;
                 $scope.successMsg = "contest created successfully.";
                 $scope.buttonLoader = false ;
+                $location.url('/contest/'+data.id);
             }
             else {
                 $scope.showErrorMsg = true ;

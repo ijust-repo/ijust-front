@@ -19,6 +19,16 @@ var ContestModel = function ($http, Constants) {
             })
     };
 
+    var deleteContest = function (id, callback) {
+        $http.delete(Constants.server + Constants.version + 'contest/'+id)
+            .success(function (data, status) {
+                callback(data, true);
+            })
+            .error(function (data, status) {
+                callback(data, false);
+            })
+    };
+
     var getAdminContests = function (callback) {
         $http.get(Constants.server + Constants.version + 'contest/admin')
             .success(function (data, status) {
@@ -266,6 +276,7 @@ var ContestModel = function ($http, Constants) {
     return {
         getAllContestsList: getAllContestsList,
         createContest: createContest,
+        deleteContest:deleteContest,
         getAdminContests: getAdminContests,
         getOwnerContests: getOwnerContests,
         getContestsOfTeam: getContestsOfTeam,

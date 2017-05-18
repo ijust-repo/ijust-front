@@ -5,10 +5,10 @@ var RootCtrl = function ($scope, $rootScope, UserModel,
     $scope.newTeamInfo = {};
     $scope.newTeamInfo.members = [];
     $scope.init_CreateTeam = function () {
-        $scope.showCreateTeamError = false;
-        $scope.showCreateTeamSuccess = false;
-        $scope.createTeamError = "";
-        $scope.createTeamSuccess = "";
+        $rootScope.showCreateTeamError = false;
+        $rootScope.showCreateTeamSuccess = false;
+        $rootScope.createTeamError = "";
+        $rootScope.createTeamSuccess = "";
     };
     $scope.init_CreateTeam();
     $rootScope.userInfo = {};
@@ -52,9 +52,9 @@ var RootCtrl = function ($scope, $rootScope, UserModel,
         console.log($scope.newTeamInfo);
         TeamModel.createTeam($scope.newTeamInfo, function (data, status) {
             if (status) {
-                $scope.showCreateTeamError = false;
-                $scope.showCreateTeamSuccess = true;
-                $scope.createTeamSuccess = "Your Team Created Successfully";
+                $rootScope.showCreateTeamError = false;
+                $rootScope.showCreateTeamSuccess = true;
+                $rootScope.createTeamSuccess = "Your Team Created Successfully";
                 $scope.newTeamInfo = {};
                 $rootScope.myTeams.push(data);
                 // $localStorage.myTeams.push(data);
