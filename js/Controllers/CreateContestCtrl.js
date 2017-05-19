@@ -60,7 +60,7 @@ var CreateContestCtrl = function ($scope , $rootScope , ContestModel,$location, 
                 grecaptcha.reset();
                 $scope.showErrorMsg = true ;
                 $scope.showSuccessMsg = false ;
-                $scope.errorMsg = data.error ;
+                $scope.errorMsg = data ;
                 $scope.buttonLoader = false ;
                 $scope.contestInfo.starts_at=rome(start);
                 $scope.contestInfo.ends_at=rome(end);

@@ -5,7 +5,15 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true)
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -15,7 +23,24 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 400:
+                        msg = 'Bad request';
+                        break;
+                    case 406:
+                        msg = 'EndTime must be greater than StartTime and StartTime must be greater than CreationTime';
+                        break;
+                    case 409 :
+                        msg = 'Contest already exists';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -25,7 +50,21 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        msg = "You aren't owner of the contest";
+                        break;
+                    case 404:
+                        msg = 'Contest does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -35,7 +74,15 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true)
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -45,7 +92,15 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true)
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -55,7 +110,18 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true)
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 404:
+                        msg = 'Team does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -65,7 +131,18 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 404:
+                        msg = 'Contest does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -75,7 +152,30 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 400:
+                        msg = 'Bad request';
+                        break;
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        msg = "You aren't owner or admin of the contest";
+                        break;
+                    case 404:
+                        msg = 'Contest does not exist';
+                        break;
+                    case 406:
+                        msg = 'EndTime must be greater than StartTime and StartTime must be greater than CreationTime';
+                        break;
+                    case 409:
+                        msg = 'Contest name already exists';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -85,7 +185,21 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        msg = "You aren't owner of the contest";
+                        break;
+                    case 404:
+                        msg = 'Contest does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -95,7 +209,24 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 400:
+                        msg = 'Bad request';
+                        break;
+                    case 401:
+                        msg = ' Token is invalid or has expired';
+                        break;
+                    case 404:
+                        msg = "You aren't owner of the contest";
+                        break;
+                    case 403:
+                        msg = 'Contest or user does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -105,7 +236,24 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 400:
+                        msg = 'Bad request';
+                        break;
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        msg = "You aren't owner of the contest";
+                        break;
+                    case 404:
+                        msg = 'Contest or user does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -115,7 +263,21 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        msg = "You aren't allowed to see problems";
+                        break;
+                    case 404:
+                        msg = 'Contest does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -125,7 +287,27 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 400:
+                        msg = 'Bad request';
+                        break;
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        msg = "You aren't owner or admin of the contest";
+                        break;
+                    case 404:
+                        msg = 'Contest does not exist';
+                        break;
+                    case 406:
+                        msg = 'Bad order format';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -135,7 +317,27 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 400:
+                        msg = 'Bad request';
+                        break;
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        msg = " You aren't owner or admin of the contest";
+                        break;
+                    case 404:
+                        msg = 'Contest does not exist';
+                        break;
+                    case 406:
+                        msg = "You can't create more problems";
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -145,7 +347,21 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        msg = "You aren't owner or admin of the contest";
+                        break;
+                    case 404:
+                        msg = 'Contest or problem does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -155,7 +371,21 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        msg = "You aren't allowed to see problem";
+                        break;
+                    case 404:
+                        msg = 'Contest or problem does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
 
     };
@@ -166,7 +396,24 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 400:
+                        msg = 'Bad request';
+                        break;
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        msg = "You aren't owner or admin of the contest";
+                        break;
+                    case 404:
+                        msg = 'Contest or problem does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error';
+                }
+                callback(msg, false);
             })
 
     };
@@ -177,21 +424,43 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        msg = "You aren't allowed to see problem body";
+                        break;
+                    case 404:
+                        msg = 'Contest or problem does not exist, File does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error';
+                }
+                callback(msg, false);
             })
 
     };
 
-    var problemUploadBody = function (contestId, problemId, FormData , callback) {
-        $http.post(Constants.server + Constants.version + 'contest/' + contestId + '/problem/' + problemId + '/body',FormData)
-            .success(function (data, status) {
-                callback(data, true);
-            })
-            .error(function (data, status) {
-                callback(data, false);
-            })
-
-    };
+    // var problemUploadBody = function (contestId, problemId, FormData , callback) {
+    //     $http.post(Constants.server + Constants.version + 'contest/' + contestId + '/problem/' + problemId + '/body',FormData)
+    //         .success(function (data, status) {
+    //             callback(data, true);
+    //         })
+    //         .error(function (data, status) {
+    //             var msg ;
+    //             switch (status){
+    //                 case 401:
+    //                     msg = 'Token is invalid or has expired';
+    //                     break;
+    //                 default :
+    //                     msg = 'Unknown Error';
+    //             }
+    //             callback(msg, false);
+    //         })
+    //
+    // };
 
     var getPendingTeams = function (contestId, callback) {
         $http.get(Constants.server + Constants.version + 'contest/' + contestId + '/pending_teams')
@@ -199,7 +468,21 @@ var ContestModel = function ($http, Constants) {
                 callback(data,true);
             })
             .error(function (data, status) {
-                callback(data,false);
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        msg = "You aren't owner or admin of the contest";
+                        break;
+                    case 404:
+                        msg = 'Contest does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -209,7 +492,21 @@ var ContestModel = function ($http, Constants) {
                 callback(data,true);
             })
             .error(function (data, status) {
-                callback(data,false);
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        msg = "You aren't owner or admin of the contest";
+                        break;
+                    case 404:
+                        msg = 'Contest does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error';
+                }
+                callback(msg, false);
             })
     };
 
@@ -219,7 +516,27 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 400:
+                        msg = 'Bad request';
+                        break;
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        msg = "You aren't owner of the team";
+                        break;
+                    case 404:
+                        msg = 'Contest or Team does not exist';
+                        break;
+                    case 409:
+                        msg = 'You are already accepted';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -229,7 +546,27 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 400:
+                        msg = 'Bad request';
+                        break;
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        msg = "You aren't owner of the team";
+                        break;
+                    case 404:
+                        msg = 'Contest or Team does not exist';
+                        break;
+                    case 409:
+                        msg = 'You are already accepted';
+                        break;
+                    default :
+                        msg = 'Unknown Error';
+                }
+                callback(msg, false);
             })
     };
 
@@ -239,7 +576,24 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 400:
+                        msg = 'Bad request';
+                        break;
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        msg = "You aren't owner of the team";
+                        break;
+                    case 404:
+                        msg = 'Contest or Team does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -249,7 +603,21 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        msg = "You aren't owner or admin of the contest";
+                        break;
+                    case 404:
+                        msg = 'Contest or Team does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -259,7 +627,21 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        msg = "You aren't owner or admin of the contest";
+                        break;
+                    case 404:
+                        msg = 'Contest or Team does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error';
+                }
+                callback(msg, false);
             })
     };
 
@@ -269,7 +651,21 @@ var ContestModel = function ($http, Constants) {
                 callback(data,true);
             })
             .error(function (data,satus) {
-                callback(data,false)
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        msg = "You aren't owner or admin of the contest";
+                        break;
+                    case 404:
+                        msg = 'Contest or Team does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error';
+                }
+                callback(msg, false);
             })
     };
 
@@ -292,7 +688,7 @@ var ContestModel = function ($http, Constants) {
         getProblemInfo:getProblemInfo,
         editProblem:editProblem,
         problemDownloadBody:problemDownloadBody,
-        problemUploadBody:problemUploadBody,
+        // problemUploadBody:problemUploadBody,
         getPendingTeams:getPendingTeams,
         getAcceptedTeams:getAcceptedTeams,
         teamGetList: teamGetList,

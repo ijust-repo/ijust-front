@@ -87,7 +87,7 @@ var ContestInfoCtrl = function ($scope, mtNotifyService, $stateParams, $interval
             else {
                 $scope.showErrorJoinMsg = true;
                 $scope.showSuccessJoinMsg = false;
-                $scope.errorJoinMsg = data.error;
+                $scope.errorJoinMsg = data;
                 $('#joinBtn').removeClass('loading');
             }
         })

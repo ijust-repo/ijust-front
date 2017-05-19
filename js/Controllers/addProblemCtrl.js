@@ -24,7 +24,7 @@ var addProblemCtrl = function ($scope, $rootScope, ContestModel, Constants, Uplo
             else {
                 $scope.buttonLoader = false;
                 $scope.showProblemCreateError = true;
-                $scope.problemCreateError = data.error;
+                $scope.problemCreateError = data;
             }
         })
     };
@@ -65,8 +65,29 @@ var addProblemCtrl = function ($scope, $rootScope, ContestModel, Constants, Uplo
             }, function (response) {
                 console.log(response);
                 $scope.buttonLoader = false;
+                switch (response.status){
+                    case 400:
+                        $scope.uploadBodyError = 'Bad request';
+                        break;
+                    case 401:
+                        $scope.uploadBodyError = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        $scope.uploadBodyError = "You aren't owner or admin of the contest";
+                        break;
+                    case 404:
+                        $scope.uploadBodyError = 'Contest or problem does not exist';
+                        break;
+                    case 413:
+                        $scope.uploadBodyError = 'Request entity too large. (max size is 16M)';
+                        break;
+                    case 415:
+                        $scope.uploadBodyError = 'Supported file type is only application/pdf';
+                        break;
+                    default :
+                        $scope.uploadBodyError = 'Unknown Error!Type error';
+                }
                 $scope.showUploadBodyError = true;
-                $scope.uploadBodyError = response.data.error;
             });
             // file.upload();
         }
@@ -98,8 +119,29 @@ var addProblemCtrl = function ($scope, $rootScope, ContestModel, Constants, Uplo
                 }, 500);
             },function (response) {
                 $scope.buttonLoader = false;
+                switch (response.status){
+                    case 400:
+                        $scope.uploadTestCaseError = 'Bad request';
+                        break;
+                    case 401:
+                        $scope.uploadTestCaseError = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        $scope.uploadTestCaseError = "You aren't owner or admin of the contest";
+                        break;
+                    case 404:
+                        $scope.uploadTestCaseError = 'Contest or problem does not exist';
+                        break;
+                    case 413:
+                        $scope.uploadTestCaseError = 'Request entity too large. (max size is 16M)';
+                        break;
+                    case 415:
+                        $scope.uploadTestCaseError = 'Supported file type is only application/zip';
+                        break;
+                    default :
+                        $scope.uploadTestCaseError = 'Unknown Error!Type error';
+                }
                 $scope.showUploadTestCaseError = true;
-                $scope.uploadTestCaseError = response.data.error;
             });
         }
     };

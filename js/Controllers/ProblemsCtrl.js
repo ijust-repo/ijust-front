@@ -53,7 +53,7 @@ var ProblemsCtrl = function ($scope, $rootScope, ContestModel,$state,Upload,Cons
                     $('#'+id).removeClass('loading');
                 }
                 else {
-                    alert(data.errors)
+                    alert(data)
                 }
             })
         }
@@ -77,7 +77,7 @@ var ProblemsCtrl = function ($scope, $rootScope, ContestModel,$state,Upload,Cons
                 }
                 else{
                   $scope.showEditProblemError = true;
-                  $scope.editProblemError = data.error;
+                  $scope.editProblemError = data;
                   $('#'+id).removeClass('loading');
                   $scope.editProblemInfo = {};
                   //console.log($scope.editProblemError );
@@ -120,7 +120,28 @@ var ProblemsCtrl = function ($scope, $rootScope, ContestModel,$state,Upload,Cons
                 }, 500);
             },function (response) {
                 $scope.showEditProblemError = true;
-                $scope.editProblemError = response.data.error;
+                switch (response.status){
+                    case 400:
+                        $scope.editProblemError = 'Bad request';
+                        break;
+                    case 401:
+                        $scope.editProblemError = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        $scope.editProblemError = "You aren't owner or admin of the contest";
+                        break;
+                    case 404:
+                        $scope.editProblemError = 'Contest or problem does not exist';
+                        break;
+                    case 413:
+                        $scope.editProblemError = 'Request entity too large. (max size is 16M)';
+                        break;
+                    case 415:
+                        $scope.editProblemError = 'Supported file type is only application/pdf';
+                        break;
+                    default :
+                        $scope.editProblemError = 'Unknown Error!Type error';
+                }
                 $('#'+id).removeClass('loading');
             });
             // file.upload();
@@ -154,7 +175,28 @@ var ProblemsCtrl = function ($scope, $rootScope, ContestModel,$state,Upload,Cons
                 }, 500);
             },function (response) {
                 $scope.showEditProblemError = true;
-                $scope.editProblemError = response.data.error;
+                switch (response.status){
+                    case 400:
+                        $scope.editProblemError = 'Bad request';
+                        break;
+                    case 401:
+                        $scope.editProblemError = 'Token is invalid or has expired';
+                        break;
+                    case 403:
+                        $scope.editProblemError = "You aren't owner or admin of the contest";
+                        break;
+                    case 404:
+                        $scope.editProblemError = 'Contest or problem does not exist';
+                        break;
+                    case 413:
+                        $scope.editProblemError = 'Request entity too large. (max size is 16M)';
+                        break;
+                    case 415:
+                        $scope.editProblemError = 'Supported file type is only application/zip';
+                        break;
+                    default :
+                        $scope.editProblemError = 'Unknown Error!Type error';
+                }
                 $('#'+id).removeClass('loading');
             });
         }
