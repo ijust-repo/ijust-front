@@ -53,7 +53,7 @@ var TeamModel = function ($http, Constants) {
                         msg = 'Member does not exist';
                         break;
                     case 406:
-                        msg = 'You can't create more teams';
+                        msg = "You can't create more teams";
                         break;
                     case 409:
                         msg = 'Team already exists';

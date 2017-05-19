@@ -54,7 +54,7 @@ var RootCtrl = function ($scope, $rootScope, UserModel,
             if (status) {
                 $rootScope.showCreateTeamError = false;
                 $rootScope.showCreateTeamSuccess = true;
-                $rootScope.createTeamSuccess = "Your Team Created Successfully";
+                $rootScope.createTeamSuccess = "Your Team is Created Successfully";
                 $scope.newTeamInfo = {};
                 $rootScope.myTeams.push(data);
                 // $localStorage.myTeams.push(data);
@@ -64,7 +64,7 @@ var RootCtrl = function ($scope, $rootScope, UserModel,
             else {
                 $scope.showCreateTeamSuccess = false;
                 $scope.showCreateTeamError = true;
-                $scope.createTeamError = data.error;
+                $scope.createTeamError = data;
                 $scope.newTeamInfo = {};
                 $scope.newTeamInfo.members = [];
                 console.log(data);
