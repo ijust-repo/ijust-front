@@ -11,6 +11,9 @@ var SubmissionModel = function ($http, Constants) {
                         msg = 'Bad request';
                         break;
                     case 401:
+                        msg = "Token is invalid or has expired.please sign in again";
+                        break;
+                    case 403:
                         msg = "You aren't owner or member of the team Or You aren't owner or admin of the contest";
                         break;
                     case 404:
@@ -35,6 +38,9 @@ var SubmissionModel = function ($http, Constants) {
                         msg = 'Bad request';
                         break;
                     case 401:
+                        msg = "Token is invalid or has expired.please sign in again";
+                        break;
+                    case 403:
                         msg = "You aren't owner or member of the team Or You aren't owner or admin of the contest";
                         break;
                     case 404:
@@ -58,11 +64,14 @@ var SubmissionModel = function ($http, Constants) {
                     case 400:
                         msg = 'Bad request';
                         break;
-                    case 401:
+                    case 403:
                         msg = "You aren't owner or member of the team Or You aren't owner or admin of the contest";
                         break;
                     case 404:
                         msg = 'Team or contest does not exist';
+                        break;
+                    case 401:
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     default :
                         msg = 'Unknown Error!Try again';
@@ -79,14 +88,14 @@ var SubmissionModel = function ($http, Constants) {
             .error(function (data, status) {
                 var msg ;
                 switch (status){
-                    case 400:
-                        msg = 'Bad request';
-                        break;
-                    case 401:
+                    case 403:
                         msg = "You aren't owner or member of the team Or You aren't owner or admin of the contest";
                         break;
+                    case 401:
+                        msg = "Token is invalid or has expired.please sign in again";
+                        break;
                     case 404:
-                        msg = 'Team or contest does not exist';
+                        msg = 'Submission does not exist';
                         break;
                     default :
                         msg = 'Unknown Error!Try again';

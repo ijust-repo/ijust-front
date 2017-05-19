@@ -8,7 +8,7 @@ var TeamModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     default :
                         msg = 'Unknown Error!Try again';
@@ -26,7 +26,7 @@ var TeamModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 404:
                         msg = 'Team does not exist';
@@ -47,7 +47,7 @@ var TeamModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 404:
                         msg = 'Member does not exist';
@@ -77,7 +77,7 @@ var TeamModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 404:
                         msg = 'Team or Member does not exist';
@@ -107,7 +107,7 @@ var TeamModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 404:
                         msg = 'Team does not exist';

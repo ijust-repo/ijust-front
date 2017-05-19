@@ -6,7 +6,21 @@ var UserModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 404:
+                        msg = 'User does not exist';
+                        break;
+                    case 406:
+                        msg = 'Wrong password';
+                        break;
+                    case 400:
+                        msg = 'Bad request';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -16,7 +30,18 @@ var UserModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 400:
+                        msg = 'Bad request';
+                        break;
+                    case 409:
+                        msg = 'Email or username already exists';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -28,7 +53,7 @@ var UserModel = function ($http, Constants) {
             .error(function (data, status) {
                 var msg;
                 if (status == 401) {
-                    msg = "please sign in again"
+                    msg = "Token is invalid or has expired.please sign in again"
                 }
                 else {
                     msg = "unknown error , please try later"
@@ -45,9 +70,9 @@ var UserModel = function ($http, Constants) {
             .error(function (data, status) {
                 var msg;
                 if (status == 401) {
-                    msg = "please sign in again"
+                    msg = "Token is invalid or has expired.please sign in again"
                 } else if (status == 404) {
-                    msg = "this account does not exist"
+                    msg = "User does not exist"
                 } else {
                     msg = "unknown error , please try later"
                 }
@@ -63,7 +88,7 @@ var UserModel = function ($http, Constants) {
             .error(function (data, status) {
                 var msg;
                 if (status == 401) {
-                    msg = "please sign in again"
+                    msg = "Token is invalid or has expired.please sign in again"
                 } else if (status == 404) {
                     msg = "this account does not exist"
                 } else {
@@ -79,7 +104,13 @@ var UserModel = function ($http, Constants) {
                 callback(data, true)
             })
             .error(function (data, status) {
-                callback(data, false)
+                var msg;
+                if (status == 401) {
+                    msg = "Token is invalid or has expired.please sign in again"
+                } else {
+                    msg = "unknown error , please try later"
+                }
+                callback(msg, false);
             })
     };
 

@@ -8,7 +8,7 @@ var ContestModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     default :
                         msg = 'Unknown Error!Try again';
@@ -26,7 +26,7 @@ var ContestModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 400:
                         msg = 'Bad request';
@@ -53,7 +53,7 @@ var ContestModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 403:
                         msg = "You aren't owner of the contest";
@@ -77,7 +77,7 @@ var ContestModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     default :
                         msg = 'Unknown Error!Try again';
@@ -95,7 +95,7 @@ var ContestModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     default :
                         msg = 'Unknown Error!Try again';
@@ -113,7 +113,7 @@ var ContestModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 404:
                         msg = 'Team does not exist';
@@ -134,7 +134,7 @@ var ContestModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 404:
                         msg = 'Contest does not exist';
@@ -158,7 +158,7 @@ var ContestModel = function ($http, Constants) {
                         msg = 'Bad request';
                         break;
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 403:
                         msg = "You aren't owner or admin of the contest";
@@ -188,7 +188,7 @@ var ContestModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 403:
                         msg = "You aren't owner of the contest";
@@ -215,7 +215,7 @@ var ContestModel = function ($http, Constants) {
                         msg = 'Bad request';
                         break;
                     case 401:
-                        msg = ' Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 404:
                         msg = "You aren't owner of the contest";
@@ -242,7 +242,7 @@ var ContestModel = function ($http, Constants) {
                         msg = 'Bad request';
                         break;
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 403:
                         msg = "You aren't owner of the contest";
@@ -266,7 +266,7 @@ var ContestModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 403:
                         msg = "You aren't allowed to see problems";
@@ -293,7 +293,7 @@ var ContestModel = function ($http, Constants) {
                         msg = 'Bad request';
                         break;
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 403:
                         msg = "You aren't owner or admin of the contest";
@@ -323,7 +323,7 @@ var ContestModel = function ($http, Constants) {
                         msg = 'Bad request';
                         break;
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 403:
                         msg = " You aren't owner or admin of the contest";
@@ -350,7 +350,7 @@ var ContestModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 403:
                         msg = "You aren't owner or admin of the contest";
@@ -374,7 +374,7 @@ var ContestModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 403:
                         msg = "You aren't allowed to see problem";
@@ -402,7 +402,7 @@ var ContestModel = function ($http, Constants) {
                         msg = 'Bad request';
                         break;
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 403:
                         msg = "You aren't owner or admin of the contest";
@@ -427,7 +427,7 @@ var ContestModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 403:
                         msg = "You aren't allowed to see problem body";
@@ -471,7 +471,7 @@ var ContestModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 403:
                         msg = "You aren't owner or admin of the contest";
@@ -495,7 +495,7 @@ var ContestModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 403:
                         msg = "You aren't owner or admin of the contest";
@@ -522,7 +522,7 @@ var ContestModel = function ($http, Constants) {
                         msg = 'Bad request';
                         break;
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 403:
                         msg = "You aren't owner of the team";
@@ -552,7 +552,7 @@ var ContestModel = function ($http, Constants) {
                         msg = 'Bad request';
                         break;
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 403:
                         msg = "You aren't owner of the team";
@@ -582,7 +582,7 @@ var ContestModel = function ($http, Constants) {
                         msg = 'Bad request';
                         break;
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 403:
                         msg = "You aren't owner of the team";
@@ -606,7 +606,7 @@ var ContestModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 403:
                         msg = "You aren't owner or admin of the contest";
@@ -630,7 +630,7 @@ var ContestModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 403:
                         msg = "You aren't owner or admin of the contest";
@@ -654,7 +654,7 @@ var ContestModel = function ($http, Constants) {
                 var msg ;
                 switch (status){
                     case 401:
-                        msg = 'Token is invalid or has expired';
+                        msg = 'Token is invalid or has expired.please sign in again';
                         break;
                     case 403:
                         msg = "You aren't owner or admin of the contest";
