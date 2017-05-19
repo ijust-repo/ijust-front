@@ -90,7 +90,7 @@ var TeamCtrl = function ($scope , mtNotifyService , TeamModel , ContestModel , $
             else {
                 $scope.showDeleteTeamError = true ;
                 $scope.deleteTeamErrorMsg = data ;
-                alert(data);
+                // alert(data);
             }
         })
     };

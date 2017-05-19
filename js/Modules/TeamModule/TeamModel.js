@@ -5,7 +5,15 @@ var TeamModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -15,7 +23,18 @@ var TeamModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 404:
+                        msg = 'Team does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -25,7 +44,27 @@ var TeamModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 404:
+                        msg = 'Member does not exist';
+                        break;
+                    case 406:
+                        msg = 'You can't create more teams';
+                        break;
+                    case 409:
+                        msg = 'Team already exists';
+                        break;
+                    case 400:
+                        msg = 'Bad request';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -35,7 +74,27 @@ var TeamModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, status);
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 404:
+                        msg = 'Team or Member does not exist';
+                        break;
+                    case 403:
+                        msg = "You aren't owner of the team";
+                        break;
+                    case 409:
+                        msg = 'Team name already exists';
+                        break;
+                    case 400:
+                        msg = 'Bad request';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, status);
             })
     };
 
@@ -45,7 +104,24 @@ var TeamModel = function ($http, Constants) {
                 callback(data,true);
             })
             .error(function (data,status) {
-                callback(data,false);
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired';
+                        break;
+                    case 404:
+                        msg = 'Team does not exist';
+                        break;
+                    case 403:
+                        msg = "You aren't owner of the team";
+                        break;
+                    case 406:
+                        msg = 'The team has participated in a number of contests';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
