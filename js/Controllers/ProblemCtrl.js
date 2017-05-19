@@ -45,7 +45,7 @@ var ProblemCtrl = function ($scope, $rootScope, Temp, ContestModel, SubmissionMo
         $scope.errFile = errFiles && errFiles[0];
         $scope.submit = function () {
             $scope.buttonLoader = true;
-            if (file && $scope.prog_lang) {
+            if (file && $scope.prog_lang != undefined) {
                 console.log({
                     contest_id: $rootScope.contestId,
                     problem_id: $scope.problemId,

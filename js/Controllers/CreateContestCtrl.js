@@ -32,6 +32,7 @@ var CreateContestCtrl = function ($scope , $rootScope , ContestModel,$location, 
         $scope.buttonLoader = true;
         if ($scope.contestInfo.starts_at.associated.value){
             $scope.contestInfo.starts_at = $scope.contestInfo.starts_at.associated.value ;
+            alert($scope.contestInfo.starts_at);
             $scope.contestInfo.starts_at = convertlocaltoUCP($scope.contestInfo.starts_at);
         }
         if ($scope.contestInfo.ends_at.associated.value){
