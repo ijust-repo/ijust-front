@@ -102,6 +102,7 @@ var LandingCtrl = function ($scope , UserModel , $cookies ,
                mtNotifyService.unLoad()
            }
             else {
+               grecaptcha.reset();
                mtNotifyService.show(data , 0);
            }
         })
