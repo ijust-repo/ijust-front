@@ -411,7 +411,7 @@ var ContestModel = function ($http, Constants) {
                         msg = 'Contest or problem does not exist';
                         break;
                     default :
-                        msg = 'Unknown Error';
+                        msg = 'Unknown Error!Try again';
                 }
                 callback(msg, false);
             })
@@ -436,7 +436,7 @@ var ContestModel = function ($http, Constants) {
                         msg = 'Contest or problem does not exist, File does not exist';
                         break;
                     default :
-                        msg = 'Unknown Error';
+                        msg = 'Unknown Error!Try again';
                 }
                 callback(msg, false);
             })
@@ -504,7 +504,7 @@ var ContestModel = function ($http, Constants) {
                         msg = 'Contest does not exist';
                         break;
                     default :
-                        msg = 'Unknown Error';
+                        msg = 'Unknown Error!Try again';
                 }
                 callback(msg, false);
             })

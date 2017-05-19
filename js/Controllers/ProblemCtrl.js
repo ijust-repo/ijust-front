@@ -91,7 +91,31 @@ var ProblemCtrl = function ($scope, $rootScope, Temp, ContestModel, SubmissionMo
                     function (response) {
                         file.result = response.data;
                         $scope.buttonLoader = false;
-                        $scope.errorMsg = response.data.error;
+                        switch (response.status){
+                            case 400:
+                                $scope.errorMsg = 'Bad request';
+                                break;
+                            case 401:
+                                $scope.errorMsg = 'Token is invalid or has expired';
+                                break;
+                            case 403:
+                                $scope.errorMsg = "You aren't owner or member of the team Or You aren't owner or admin of the contest";
+                                break;
+                            case 404:
+                                $scope.errorMsg = 'Contest or problem does not exist';
+                                break;
+                            case 406:
+                                $scope.errorMsg = 'Contest has not started or has been finished Or You have too many pending submissions';
+                                break;
+                            case 413:
+                                $scope.errorMsg = 'Request entity too large. (max size is 16M)';
+                                break;
+                            case 415:
+                                $scope.errorMsg = 'Supported file type is only text/plain';
+                                break;
+                            default :
+                                $scope.errorMsg = 'Unknown Error!Type error';
+                        }
                         $scope.submitError = true;
                         $scope.isCompile = false;
 

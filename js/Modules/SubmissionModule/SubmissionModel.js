@@ -5,7 +5,21 @@ var SubmissionModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 400:
+                        msg = 'Bad request';
+                        break;
+                    case 401:
+                        msg = "You aren't owner or member of the team Or You aren't owner or admin of the contest";
+                        break;
+                    case 404:
+                        msg = 'Team or contest does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
@@ -15,26 +29,69 @@ var SubmissionModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 400:
+                        msg = 'Bad request';
+                        break;
+                    case 401:
+                        msg = "You aren't owner or member of the team Or You aren't owner or admin of the contest";
+                        break;
+                    case 404:
+                        msg = 'Team or contest does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
 
     var getAllSubmissionInContestOfProblem = function (teamId, contestId, problemId, callback) {
-        $http.get(Constants.server + Constants.version + 'submission/team/' + teamId + '/contest/' + contestId + '/problem/' + problemId)
+        $http.get(Constants.server + Constants.version + 'submission/contest/' + contestId + '/problem/' + problemId + '/team/' + teamId)
             .success(function (data, status) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 400:
+                        msg = 'Bad request';
+                        break;
+                    case 401:
+                        msg = "You aren't owner or member of the team Or You aren't owner or admin of the contest";
+                        break;
+                    case 404:
+                        msg = 'Team or contest does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
+
     var downloadCode = function (submissionId, callback) {
         $http.get(Constants.server + Constants.version + 'submission/' + submissionId + '/code')
             .success(function (data, status) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                callback(data, false);
+                var msg ;
+                switch (status){
+                    case 400:
+                        msg = 'Bad request';
+                        break;
+                    case 401:
+                        msg = "You aren't owner or member of the team Or You aren't owner or admin of the contest";
+                        break;
+                    case 404:
+                        msg = 'Team or contest does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error!Try again';
+                }
+                callback(msg, false);
             })
     };
     return {
