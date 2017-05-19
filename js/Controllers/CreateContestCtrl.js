@@ -49,6 +49,7 @@ var CreateContestCtrl = function ($scope , $rootScope , ContestModel,$location, 
                 $location.url('/contest/'+data.id);
             }
             else {
+                grecaptcha.reset();
                 $scope.showErrorMsg = true ;
                 $scope.showSuccessMsg = false ;
                 $scope.errorMsg = data.error ;
