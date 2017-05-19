@@ -32,7 +32,15 @@ var CreateContestCtrl = function ($scope , $rootScope , ContestModel,$location, 
         $scope.buttonLoader = true;
         if ($scope.contestInfo.starts_at.associated.value){
             $scope.contestInfo.starts_at = $scope.contestInfo.starts_at.associated.value ;
-            alert($scope.contestInfo.starts_at);
+            if($scope.contestInfo.starts_at == moment(new Date()).format("YYYY-MM-DD HH:mm") ){
+                $scope.showErrorMsg = true ;
+                $scope.showSuccessMsg = false ;
+                $scope.errorMsg = 'start time should at least one minute later than now' ;
+                $scope.buttonLoader = false ;
+                $scope.contestInfo.starts_at=rome(start);
+                $scope.contestInfo.ends_at=rome(end);
+                return;
+            }
             $scope.contestInfo.starts_at = convertlocaltoUCP($scope.contestInfo.starts_at);
         }
         if ($scope.contestInfo.ends_at.associated.value){
