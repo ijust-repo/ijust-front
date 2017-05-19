@@ -101,7 +101,7 @@ var ProblemCtrl = function ($scope, $rootScope, Temp, ContestModel, SubmissionMo
             else {
                 $scope.errorMsg = 'no file or language selected';
                 $scope.submitError = true;
-                $scope.buttonLoader = true;
+                $scope.buttonLoader = false;
             }
         }
     };
