@@ -35,7 +35,9 @@
             <div class="column row">
                 <div>
                     <div class="ui ordered large steps">
-                        <div class="step">
+                        <div class="step selectLang"
+                             onmouseover="$('.step.selectLang').addClass('active')"
+                             onmouseout="$('.step.selectLang').removeClass('active')">
                             <div class="content">
                                 <div class="title">programming language</div>
                                 <div class="description">
@@ -50,7 +52,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="active step fileUpload">
+                        <div class="step fileUpload"
+                             onmouseover="$('.step.fileUpload').addClass('active')"
+                             onmouseout="$('.step.fileUpload').removeClass('active')">
                             <div class="content">
                                 <div class="title">{{fileName||'upload program file'}}</div>
                                 <div class="description">
@@ -59,7 +63,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="step">
+                        <div class="step submit"
+                             onmouseover="$('.step.submit').addClass('active')"
+                             onmouseout="$('.step.submit').removeClass('active')">
                             <div class="content">
                                 <div class="title">submit your code</div>
                                 <div class="description">
