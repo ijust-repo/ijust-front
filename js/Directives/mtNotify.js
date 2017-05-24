@@ -1,41 +1,41 @@
 var mtNotify = angular.module("mtNotify" , [])
 .run(function ($rootScope ) {
-    $rootScope.notifyMessage = "عملیات انجام شد " ;
-    $rootScope.notifyDisplay = false   ;
-    $rootScope.notifyStatus = 1 ;
-    $rootScope.notifyLoader = false ;
+    $rootScope.mtNotifyMessage = " Done! " ;
+    $rootScope.mtNotifyDisplay = false   ;
+    $rootScope.mtNotifyStatus = 1 ;
+    $rootScope.mtNotifyLoader = false ;
  })
 .service("mtNotifyService" , function ($rootScope , $timeout ) {
-    var notifyTimeoutDuration = 4000 ;
+    var mtNotifyTimeoutDuration = 4000 ;
     var _wait = 0 ;
 
     var load = function ( wait) {
         if ( wait ) { _wait = wait ; }
-        $rootScope.notifyLoader = true ;
+        $rootScope.mtNotifyLoader = true ;
     } ;
     var unLoad = function () {
         if ( _wait > 0 ) {
             _wait -= 1 ;
         }
         if ( _wait == 0 ) {
-            //$rootScope.notifyLoader = false ;
-            $timeout(function(){$rootScope.notifyLoader = false}, 2000);
+            //$rootScope.mtNotifyLoader = false ;
+            $timeout(function(){$rootScope.mtNotifyLoader = false}, 2000);
         }
     } ;
 
     var show = function (msg , type ) {
-        $rootScope.notifyMessage = msg  ;
-        //$rootScope.notifyLoader = false ;
+        $rootScope.mtNotifyMessage = msg  ;
+        //$rootScope.mtNotifyLoader = false ;
         _wait = 0 ;
-        $timeout(function(){$rootScope.notifyLoader = false}, 100);
-        $rootScope.notifyStatus = type ;
-        $rootScope.notifyDisplay = true ; 
+        $timeout(function(){$rootScope.mtNotifyLoader = false}, 100);
+        $rootScope.mtNotifyStatus = type ;
+        $rootScope.mtNotifyDisplay = true ; 
        // $timeout(function () {
-       //     $rootScope.notifyDisplay = false
-       // } , notifyTimeoutDuration )
+       //     $rootScope.mtNotifyDisplay = false
+       // } , mtNotifyTimeoutDuration )
     } ;
     $rootScope.hideNotify = function () {
-        $rootScope.notifyDisplay = false
+        $rootScope.mtNotifyDisplay = false
     };
     return {
         show : show ,
@@ -45,7 +45,7 @@ var mtNotify = angular.module("mtNotify" , [])
 })
 .directive("mtNotify" , function () {
     return {
-        // templateUrl : "js/Directives/mtNotify.html" ,
+        templateUrl : "js/Directives/mtNotify.html" ,
         link : function ( scope , elem , attr ) {
         }
     }

@@ -1,12 +1,12 @@
 <div id="mtNotify"
-     ng-class="{show : $root.notifyDisplay , success : $root.notifyStatus , danger : !$root.notifyStatus }">
-    <div class="notify-status" style="width : 29% ; right : 0; ">
+     ng-class="{show : $root.mtNotifyDisplay , success : $root.mtNotifyStatus , danger : !$root.mtNotifyStatus }">
+    <div class="notify-status" >
 
-        <i ng-if="$root.notifyStatus" class="fa fa-check-square-o"></i>
-        <i ng-if="!$root.notifyStatus" class="fa fa-warning"></i>
+        <i ng-if="$root.mtNotifyStatus" class="status-icon checkmark icon"></i>
+        <i ng-if="!$root.mtNotifyStatus" class="status-icon warning icon"></i>
     </div>
-    <div class="notify-msg" style="width : 69% ; right : 30% ;">
-        {{ $root.notifyMessage }}
+    <div class="notify-msg josefinSlab">
+        {{ $root.mtNotifyMessage }}
     </div>
 </div>
 
@@ -14,11 +14,14 @@
 <style>
 
     #mtNotify div.notify-status i {
-        font-size: 32px ;
+        position: absolute;
+        right: 25px;
+        top: 15px;
+        font-size: 1.5rem;
     }
     #mtNotify.success {
         /*border-right : 3px solid #33CD5F ;*/
-        background-color: rgba(51,205,95,.8);
+        background-color: #21ba45;
     }
 
     #mtNotify.danger {
@@ -30,18 +33,14 @@
     }
 
     #mtNotify {
-        color : white ;
-        width : 20% ;
-        height : 100px ;
-        position : fixed  ;
+        color: white;
+        width: 100%;
+        height: 50px;
+        position: fixed;
         background: rgba(50, 50, 50, 0.86);
-        z-index : 10000 ;
-        left : 40% ;
-        bottom : -150px  ;
-        display : inline-block ;
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-
+        z-index: 10000;
+        display: inline-block;
+        bottom: -50px;
         -webkit-transition: all .3s ease;
         -moz-transition: all .3s ease;
         -ms-transition: all .3s ease;
@@ -51,10 +50,13 @@
 
 
     div#mtNotify  div {
-        position : absolute ;
-        height : 50% ;
-        top : 39% ;
-
+        /*position : absolute ;*/
+        /*height : 50% ;*/
+        /*top : 39% ;*/
+        text-align: center;
+        padding:5px;
+        font-weight: 700;
+        font-size: 1.2rem;
     }
 
     .notify-loader {
