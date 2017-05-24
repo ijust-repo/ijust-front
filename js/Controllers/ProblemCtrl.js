@@ -43,90 +43,93 @@ var ProblemCtrl = function ($scope, $rootScope, Temp, ContestModel, SubmissionMo
         $scope.f = file;
         $scope.fileName = file.name;
         $scope.errFile = errFiles && errFiles[0];
-        $scope.submit = function () {
-            $scope.buttonLoader = true;
-            if (file && $scope.prog_lang != undefined) {
-                console.log({
-                    contest_id: $rootScope.contestId,
-                    problem_id: $scope.problemId,
-                    team_id: $rootScope.myTeam.id,
-                    prog_lang: $scope.prog_lang,
-                    code: file
-                });
-                if ($rootScope.myTeam.id) {
-                    file.upload = Upload.upload({
-                        method: "POST",
-                        url: Constants.server + Constants.version + 'submission',
-                        data: {
-                            contest_id: $rootScope.contestId,
-                            problem_id: $scope.problemId,
-                            team_id: $rootScope.myTeam.id,
-                            prog_lang: $scope.prog_lang,
-                            code: file
-                        }
-                    });
-                }
-                else {
-                    file.upload = Upload.upload({
-                        method: "POST",
-                        url: Constants.server + Constants.version + 'submission',
-                        data: {
-                            contest_id: $rootScope.contestId,
-                            problem_id: $scope.problemId,
-                            prog_lang: $scope.prog_lang,
-                            code: file
-                        }
-                    });
-                }
-                file.upload.then(function (response) {
-                        $timeout(function () {
-                            file.result = response.data;
-                            $scope.buttonLoader = false;
-                            $location.hash('submitMsg');
-                            $anchorScroll();
-                            $scope.isCompile = true;
-                            $scope.submitError = false;
-                        }, 500);
-                    },
-                    function (response) {
-                        file.result = response.data;
-                        $scope.buttonLoader = false;
-                        switch (response.status){
-                            case 400:
-                                $scope.errorMsg = 'Bad request';
-                                break;
-                            case 401:
-                                $scope.errorMsg = 'Token is invalid or has expired';
-                                break;
-                            case 403:
-                                $scope.errorMsg = "You aren't owner or member of the team Or You aren't owner or admin of the contest";
-                                break;
-                            case 404:
-                                $scope.errorMsg = 'Contest or problem does not exist';
-                                break;
-                            case 406:
-                                $scope.errorMsg = 'Contest has not started or has been finished Or You have too many pending submissions';
-                                break;
-                            case 413:
-                                $scope.errorMsg = 'Request entity too large. (max size is 16M)';
-                                break;
-                            case 415:
-                                $scope.errorMsg = 'Supported file type is only text/plain';
-                                break;
-                            default :
-                                $scope.errorMsg = 'Unknown Error!Type error';
-                        }
-                        $scope.submitError = true;
-                        $scope.isCompile = false;
+    };
 
+    $scope.submit = function () {
+        alert('here');
+        $scope.buttonLoader = true;
+        if ($scope.f  && $scope.prog_lang != undefined) {
+            console.log({
+                contest_id: $rootScope.contestId,
+                problem_id: $scope.problemId,
+                team_id: $rootScope.myTeam.id,
+                prog_lang: $scope.prog_lang,
+                code: $scope.f
+            });
+            if ($rootScope.myTeam.id) {
+                $scope.f.upload = Upload.upload({
+                    method: "POST",
+                    url: Constants.server + Constants.version + 'submission',
+                    data: {
+                        contest_id: $rootScope.contestId,
+                        problem_id: $scope.problemId,
+                        team_id: $rootScope.myTeam.id,
+                        prog_lang: $scope.prog_lang,
+                        code: $scope.f
                     }
-                );
+                });
             }
             else {
-                $scope.errorMsg = 'no file or language selected';
-                $scope.submitError = true;
-                $scope.buttonLoader = false;
+                $scope.f.upload = Upload.upload({
+                    method: "POST",
+                    url: Constants.server + Constants.version + 'submission',
+                    data: {
+                        contest_id: $rootScope.contestId,
+                        problem_id: $scope.problemId,
+                        prog_lang: $scope.prog_lang,
+                        code: $scope.f
+                    }
+                });
             }
+            $scope.f.upload.then(function (response) {
+                    $timeout(function () {
+                        $scope.f.result = response.data;
+                        $scope.buttonLoader = false;
+                        $location.hash('submitMsg');
+                        $anchorScroll();
+                        $scope.isCompile = true;
+                        $scope.submitError = false;
+                    }, 500);
+                },
+                function (response) {
+                    $scope.f
+                        .result = response.data;
+                    $scope.buttonLoader = false;
+                    switch (response.status){
+                        case 400:
+                            $scope.errorMsg = 'Bad request';
+                            break;
+                        case 401:
+                            $scope.errorMsg = 'Token is invalid or has expired';
+                            break;
+                        case 403:
+                            $scope.errorMsg = "You aren't owner or member of the team Or You aren't owner or admin of the contest";
+                            break;
+                        case 404:
+                            $scope.errorMsg = 'Contest or problem does not exist';
+                            break;
+                        case 406:
+                            $scope.errorMsg = 'Contest has not started or has been finished Or You have too many pending submissions';
+                            break;
+                        case 413:
+                            $scope.errorMsg = 'Request entity too large. (max size is 16M)';
+                            break;
+                        case 415:
+                            $scope.errorMsg = 'Supported file type is only text/plain';
+                            break;
+                        default :
+                            $scope.errorMsg = 'Unknown Error!Type error';
+                    }
+                    $scope.submitError = true;
+                    $scope.isCompile = false;
+
+                }
+            );
+        }
+        else {
+            $scope.errorMsg = 'no file or language selected';
+            $scope.submitError = true;
+            $scope.buttonLoader = false;
         }
     };
 
