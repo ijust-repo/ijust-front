@@ -37,7 +37,7 @@
             <tbody>
             <tr ng-repeat="t in submitsInfo">
                 <td>{{t.problem.title}}</td>
-                <td>{{t.user.username}}</td>
+                <td ng-click="openUserModal(t.user.id)"><a>{{t.user.username}}</a></td>
                 <td>{{$parent.getTime(t.submitted_at)}}</td>
                 <td>
                     <span>{{t.filename}}</span>

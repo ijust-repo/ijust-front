@@ -4,6 +4,9 @@ var ProblemCtrl = function ($scope, $rootScope, Temp, ContestModel, SubmissionMo
     $scope.fileName = undefined;
     $scope.submitError = false;
 
+        $location.hash('problem');
+        $anchorScroll();
+
     if ($scope.problemId) {
         delete $scope.problemId;
     }

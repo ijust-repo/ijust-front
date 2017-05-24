@@ -1,4 +1,4 @@
-var ProblemsCtrl = function ($scope, $rootScope, ContestModel,$state,Upload,Constants,$timeout) {
+var ProblemsCtrl = function ($scope, $rootScope, ContestModel,$state,Upload,Constants,$timeout,$anchorScroll,$location) {
 
     $rootScope.problemsInfo = [] ;
     $scope.showProblemsEmptyError = false ;
@@ -227,6 +227,11 @@ var ProblemsCtrl = function ($scope, $rootScope, ContestModel,$state,Upload,Cons
           default : return num ;
       }
     };
+
+    $rootScope.goDown=function () {
+        $location.hash('problem');
+        $anchorScroll();
+    }
 
 };
 

@@ -20,7 +20,8 @@
     </h3>
     <div class="ui attached segment centered grid container problemsList">
         <div ng-repeat="problem in problemsInfo" class=" four wide column box animated flipInY">
-            <div id="{{problem.id}}" class="ui stacked segment" ui-sref="contest.problems.problem({problemId:problem.id})">
+            <div id="{{problem.id}}" class="ui stacked segment" ui-sref="contest.problems.problem({problemId:problem.id})"
+            ng-click="$root.goDown()">
                 <a class="ui teal ribbon label">{{mapToString($index)}}</a>
                 <div class="ui top attached label"></div>
                 <div class="ui bottom attached label"></div>
