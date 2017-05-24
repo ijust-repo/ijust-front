@@ -2,3 +2,6 @@
 /* COLORS */
 #contestInfo .centeredBtn {
   margin-top: 0 !important; }
+
+#contestInfo a {
+  cursor: pointer; }

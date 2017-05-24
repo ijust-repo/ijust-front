@@ -24,13 +24,13 @@
                         <input type="text" placeholder="team name" ng-model="editTeamInfo.name">
                     </div>
                 </td>
-                <td ng-show="!isEdit">{{teamInfo.owner.username}}</td>
+                <td ng-show="!isEdit" ng-click="openUserModal(teamInfo.owner.id)"><a>{{teamInfo.owner.username}}</a></td>
                 <td ng-show="isEdit">
                     <div class="ui input editMem">
                         <input type="text" placeholder="first member" ng-model="editTeamInfo.members[0].username">
                     </div>
                 </td>
-                <td ng-show="!isEdit"><span ng-repeat="tm in teamInfo.members">{{tm.username}},</span></td>
+                <td ng-show="!isEdit"><a ng-repeat="tm in teamInfo.members" ng-click="openUserModal(teamInfo.members[$index].id)">{{tm.username}},</a></td>
                 <td ng-show="isEdit">
                     <div class="ui input editMem">
                         <input type="text" placeholder="second member" ng-model="editTeamInfo.members[1].username" ng-disabled="!editTeamInfo.members[0].username">
@@ -75,7 +75,7 @@
             <tbody>
             <tr ng-repeat="contest in contestsList.joined_contests" ui-sref="contest({contestId : contest.id})">
                 <td>{{contest.name}}</td>
-                <td>{{contest.owner.username}}</td>
+                <td ng-click="openUserModal(contest.owner.id)"><a>{{contest.owner.username}}</a></td>
                 <td>{{$parent.getDate(contest.starts_at)}}</td>
                 <td>{{$parent.getDate(contest.ends_at)}}</td>
                 <td ng-if="contest.is_active"><i class="large green checkmark icon"></i></td>
@@ -105,7 +105,7 @@
             <tbody>
             <tr ng-repeat="contest in contestsList.waiting_contests" ui-sref="contest({contestId : contest.id})">
                 <td>{{contest.name}}</td>
-                <td>{{contest.owner.username}}</td>
+                <td ng-click="openUserModal(contest.owner.id)"><a>{{contest.owner.username}}</a></td>
                 <td>{{$parent.getDate(contest.starts_at)}}</td>
                 <td>{{$parent.getDate(contest.ends_at)}}</td>
                 <td ng-if="contest.is_active"><i class="large green checkmark icon"></i></td>

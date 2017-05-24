@@ -1,15 +1,17 @@
 var RootCtrl = function ($scope, $rootScope, UserModel,
                          $cookies, $state, $localStorage,
-                         TeamModel) {
+                         TeamModel,UserModel) {
 
     $scope.newTeamInfo = {};
     $scope.newTeamInfo.members = [];
+    $rootScope.thisUserInfo={};
     $scope.init_CreateTeam = function () {
-        $rootScope.showCreateTeamError = false;
-        $rootScope.showCreateTeamSuccess = false;
-        $rootScope.createTeamError = "";
-        $rootScope.createTeamSuccess = "";
+        $scope.showCreateTeamError = false;
+        $scope.showCreateTeamSuccess = false;
+        $scope.createTeamError = "";
+        $scope.createTeamSuccess = "";
     };
+    $rootScope.userProfileLoader=false;
     $scope.init_CreateTeam();
     $rootScope.userInfo = {};
 
@@ -52,9 +54,9 @@ var RootCtrl = function ($scope, $rootScope, UserModel,
         console.log($scope.newTeamInfo);
         TeamModel.createTeam($scope.newTeamInfo, function (data, status) {
             if (status) {
-                $rootScope.showCreateTeamError = false;
-                $rootScope.showCreateTeamSuccess = true;
-                $rootScope.createTeamSuccess = "Your Team is Created Successfully";
+                $scope.showCreateTeamError = false;
+                $scope.showCreateTeamSuccess = true;
+                $scope.createTeamSuccess = "Your Team is Created Successfully";
                 $scope.newTeamInfo = {};
                 $rootScope.myTeams.push(data);
                 // $localStorage.myTeams.push(data);
@@ -129,10 +131,25 @@ var RootCtrl = function ($scope, $rootScope, UserModel,
 
     $('#createTeam').on('click', function () {
         $scope.init_CreateTeam();
-        $('.small.modal')
+        $('.small.modal.createTeamModal')
             .modal('show')
         ;
     });
+    $rootScope.openUserModal=function(userId) {
+        $rootScope.userProfileLoader=true;
+        $('.small.modal.userModal')
+            .modal('show')
+        ;
+        UserModel.getUserProfile(userId,function (data,status) {
+           if(status){
+               $rootScope.userProfileLoader=false;
+               $rootScope.thisUserInfo=data;
+           }
+           else {
+               //nth
+           }
+        });
+    };
     $('.ui.dropdown')
         .dropdown();
 

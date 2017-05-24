@@ -118,7 +118,7 @@
                     <div class="text">{{$root.userInfo.username}}</div>
                     <!--<i class="dropdown icon"></i>-->
                     <!--<div class="menu">-->
-                        <!--<div class="item">{{$root.userInfo.email}}</div>-->
+                    <!--<div class="item">{{$root.userInfo.email}}</div>-->
                     <!--</div>-->
                 </a>
                 <div class="item">
@@ -147,14 +147,15 @@
                     <div class="ui labeled input">
                         <input type="text" placeholder="first member is optional" ng-model="newTeamInfo.members[0]">
                         <!--<div class="ui corner label">-->
-                            <!--<i class="asterisk icon"></i>-->
+                        <!--<i class="asterisk icon"></i>-->
                         <!--</div>-->
                     </div>
                 </div>
                 <div class="field">
                     <label>Member2</label>
                     <div class="ui labeled input">
-                        <input type="text" placeholder="second member is optional" ng-model="newTeamInfo.members[1]" ng-disabled="!newTeamInfo.members[0]">
+                        <input type="text" placeholder="second member is optional" ng-model="newTeamInfo.members[1]"
+                               ng-disabled="!newTeamInfo.members[0]">
                     </div>
                 </div>
                 <div class="ui negative message" ng-show="showCreateTeamError">
@@ -172,15 +173,39 @@
             </div>
             <div class="actions">
                 <!--<div class="ui black deny button">-->
-                    <!--Nope-->
+                <!--Nope-->
                 <!--</div>-->
                 <!--<div class="ui positive right labeled icon button">-->
-                    <!--Yep, that's me-->
-                    <!--<i class="checkmark icon"></i>-->
+                <!--Yep, that's me-->
+                <!--<i class="checkmark icon"></i>-->
                 <!--</div>-->
                 <button class="ui green centeredBtn button" ng-click="createTeam()">submit</button>
             </div>
         </form>
+
+        <div class="ui small modal userModal">
+            <i class="close icon"></i>
+            <div class="header">
+                Modal Title
+            </div>
+            <div class="content">
+                <div class="ui loader" ng-show="$root.userProfileLoader" style="height: 300px"></div>
+                <div class="description" ng-show="!$root.userProfileLoader">
+                    <table class="ui definition table">
+                        <tbody>
+                        <tr>
+                            <td>user name</td>
+                            <td>{{$root.thisUserInfo.username}}</td>
+                        </tr>
+                        <tr>
+                            <td>email</td>
+                            <td>{{$root.thisUserInfo.email}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
         <div>
             <mt-notify></mt-notify>
             <div ui-view></div>

@@ -12,7 +12,7 @@ var UserModel = function ($http, Constants) {
                         msg = 'User does not exist';
                         break;
                     case 406:
-                        msg = 'Wrong password';
+                        msg = 'Wrong username or password';
                         break;
                     case 400:
                         msg = 'Bad request';

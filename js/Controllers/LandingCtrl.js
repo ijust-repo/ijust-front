@@ -6,6 +6,8 @@ var LandingCtrl = function ($scope , UserModel , $cookies ,
     // if($rootScope.isAuthenticated && $localStorage.token){
     //     $state.go('home');
     // }
+    $rootScope.notifyDisplay=false;
+    $rootScope.notifyMessage = "";
     $rootScope.userInfo = {} ;
     if($localStorage.token){
         UserModel.loginWithToken({'Access-Token':$localStorage.token},function (data , status) {
@@ -44,15 +46,21 @@ var LandingCtrl = function ($scope , UserModel , $cookies ,
     $scope.login = function () {
         mtNotifyService.load();
         if ( !($scope.LoginInfo.login) || !($scope.LoginInfo.password)){
-            mtNotifyService.show(" Username/E-mail and Password required" , 0);
+            // mtNotifyService.show(" Username/E-mail and Password required" , 0);
+            $rootScope.notifyDisplay=true;
+            $rootScope.notifyMessage = " Username/E-mail and Password required";
             return ;
         }
         if ( !($scope.LoginInfo.login) && ($scope.LoginInfo.password)) {
-            mtNotifyService.show("Please enter Username/E-mail" , 0);
+            // mtNotifyService.show("Please enter Username/E-mail" , 0);
+            $rootScope.notifyDisplay=true;
+            $rootScope.notifyMessage = " Please enter Username/E-mail";
             return;
         }
         if (($scope.LoginInfo.login) && !($scope.LoginInfo.password)) {
-            mtNotifyService.show("Please enter Password" , 0);
+            // mtNotifyService.show("Please enter Password" , 0)
+            $rootScope.notifyDisplay=true;
+            $rootScope.notifyMessage = " Please enter Password";
             return;
         }
         UserModel.login( $scope.LoginInfo , function (data , status) {
@@ -64,7 +72,9 @@ var LandingCtrl = function ($scope , UserModel , $cookies ,
                 mtNotifyService.unLoad();
             }
             else {
-                mtNotifyService.show(data , 0)
+                // mtNotifyService.show(data , 0)
+                $rootScope.notifyDisplay=true;
+                $rootScope.notifyMessage = data;
             }
         }) ;
     };
@@ -74,23 +84,33 @@ var LandingCtrl = function ($scope , UserModel , $cookies ,
         $scope.signUpInfo.recaptcha = $("#g-recaptcha-response").val();
         // console.log($scope.signUpInfo);
         if ( !$scope.signUpInfo.email ){
-            mtNotifyService.show("please enter E-mail" , 0);
+            // mtNotifyService.show("please enter E-mail" , 0);
+            $rootScope.notifyDisplay=true;
+            $rootScope.notifyMessage = " Please enter Password";
             return;
         }
         if ( !$scope.signUpInfo.username ){
-            mtNotifyService.show("please enter Username" , 0);
+            // mtNotifyService.show("please enter Username" , 0)
+            $rootScope.notifyDisplay=true;
+            $rootScope.notifyMessage = "please enter Username";
             return;
         }
         if ( !$scope.signUpInfo.password ){
-            mtNotifyService.show("please enter Password" , 0);
+            // mtNotifyService.show("please enter Password" , 0);
+            $rootScope.notifyDisplay=true;
+            $rootScope.notifyMessage = "please enter Password";
             return;
         }
         if ( !$scope.confirmPassword ){
-            mtNotifyService.show("please enter confirm Password" , 0);
+            // mtNotifyService.show("please enter confirm Password" , 0);
+            $rootScope.notifyDisplay=true;
+            $rootScope.notifyMessage = "please enter confirm Password";
             return;
         }
         if( $scope.signUpInfo.password != $scope.confirmPassword) {
-            mtNotifyService.show("Password doesn't Match");
+            // mtNotifyService.show("Password doesn't Match");
+            $rootScope.notifyDisplay=true;
+            $rootScope.notifyMessage = "Password doesn't Match";
             return;
         }
         UserModel.signUp($scope.signUpInfo , function (data , status) {
@@ -103,7 +123,9 @@ var LandingCtrl = function ($scope , UserModel , $cookies ,
            }
             else {
                grecaptcha.reset();
-               mtNotifyService.show(data , 0);
+               // mtNotifyService.show(data , 0);
+               $rootScope.notifyDisplay=true;
+               $rootScope.notifyMessage = data;
            }
         })
     }

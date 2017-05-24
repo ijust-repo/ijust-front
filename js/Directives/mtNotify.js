@@ -35,7 +35,7 @@ var mtNotify = angular.module("mtNotify" , [])
        // } , mtNotifyTimeoutDuration )
     } ;
     $rootScope.hideNotify = function () {
-        $rootScope.mtNotifyDisplay = false
+        $rootScope.notifyDisplay = false
     };
     return {
         show : show ,
