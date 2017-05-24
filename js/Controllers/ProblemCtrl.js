@@ -97,6 +97,8 @@ var ProblemCtrl = function ($scope, $rootScope, Temp, ContestModel, SubmissionMo
                     $scope.f
                         .result = response.data;
                     $scope.buttonLoader = false;
+                    $location.hash('submitError');
+                    $anchorScroll();
                     switch (response.status){
                         case 400:
                             $scope.errorMsg = 'Bad request';
@@ -129,6 +131,8 @@ var ProblemCtrl = function ($scope, $rootScope, Temp, ContestModel, SubmissionMo
             );
         }
         else {
+            $location.hash('submitError');
+            $anchorScroll();
             $scope.errorMsg = 'no file or language selected';
             $scope.submitError = true;
             $scope.buttonLoader = false;

@@ -110,7 +110,7 @@ var ContestCtrl = function ($scope , mtNotifyService , $stateParams , $location 
             $rootScope.timer.status = 'to end' ;
         }
         else {
-            $rootScope.timer.status += 'ended' ;
+            $rootScope.timer.status += 'Ended' ;
         }
     }, 1000);
     

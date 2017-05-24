@@ -17,7 +17,7 @@ var ContestInfoCtrl = function ($scope, mtNotifyService, $stateParams, $interval
             $rootScope.contestInfo = data ;
             $rootScope.isOwner = data.is_owner ;
             $rootScope.isAdmin = data.is_admin ;
-            $rootScope.isEnded = data.is_ended ;
+            $rootScope.isEnded = data.is_Ended ;
             $rootScope.isJoined = data.joining_status.status;
             if($rootScope.isOwner||$rootScope.isAdmin){
                 $rootScope.myTeam.id = null ;
@@ -63,7 +63,7 @@ var ContestInfoCtrl = function ($scope, mtNotifyService, $stateParams, $interval
             $rootScope.timer.status = 'to end' ;
         }
         else {
-            $rootScope.timer.status += 'ended' ;
+            $rootScope.timer.status += 'Ended' ;
         }
     }, 1000);
 
