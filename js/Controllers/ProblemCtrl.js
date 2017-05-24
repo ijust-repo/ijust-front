@@ -46,7 +46,6 @@ var ProblemCtrl = function ($scope, $rootScope, Temp, ContestModel, SubmissionMo
     };
 
     $scope.submit = function () {
-        alert('here');
         $scope.buttonLoader = true;
         if ($scope.f  && $scope.prog_lang != undefined) {
             console.log({
