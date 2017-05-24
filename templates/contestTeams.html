@@ -3,7 +3,7 @@
         <div class="ui text massive loader">Loading</div>
     </div>
     <div class="ui top attached header centered">
-        Joined Teams
+        Joined Teams({{joinedCnt}})
     </div>
     <div class="ui attached segment">
         <div class="ui negative message" ng-if="joinedTeamsNumber == 0">
@@ -41,16 +41,16 @@
             </tr>
             </tbody>
         </table>
-        <div class="ui success message" ng-show="successJoinTeam">
-            <div class="header">
-                team joined successfully.
-            </div>
-        </div>
-        <div class="ui error message" ng-show="rejectJoinTeam">
-            <div class="header">
-                team rejected successfully.
-            </div>
-        </div>
+        <!--<div class="ui success message" ng-show="successJoinTeam">-->
+            <!--<div class="header">-->
+                <!--team joined successfully.-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="ui error message" ng-show="rejectJoinTeam">-->
+            <!--<div class="header">-->
+                <!--team rejected successfully.-->
+            <!--</div>-->
+        <!--</div>-->
     </div>
     <div class="ui top attached header centered">
         Pending Teams
