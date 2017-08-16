@@ -103,4 +103,14 @@
       margin-top: 0;
     }
   }
+  #updateRankListBtn{
+    box-shadow: none;
+    margin-top: -2px;
+    margin-right: 1rem;
+    position: absolute;
+    right: 0;
+  }
+  #rankListHeader{
+    position: relative;
+  }
 }

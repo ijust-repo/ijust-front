@@ -2,8 +2,11 @@
     <div class="ui active inverted dimmer" ng-show="$root.notifyLoader">
         <div class="ui text massive loader">Loading</div>
     </div>
-    <h3 class="ui top attached header centered">
-        Rank List
+    <h3 id="rankListHeader" class="ui top attached header centered">
+        Rank List 
+        <button class="circular ui basic right floated icon button" id="updateRankListBtn" ng-click="updateRankList()">
+            <i class="refresh icon"></i>
+        </button>
     </h3>
     <div class="ui attached rankList segment">
         <table class="ui celled table">
