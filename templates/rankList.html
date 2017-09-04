@@ -22,7 +22,7 @@
             <tbody>
             <tr ng-repeat="team in result.teams">
                 <td>{{$index+1}}</td>
-                <td><a>{{team.name}}</a></td>
+                <td ng-click="openTeamModal(team.id)" ><a>{{team.name}}</a></td>
                 <td>{{team.solved_count}}</td>
                 <td>{{team.penalty}}</td>
                 <td ng-repeat="problem in team.problems track by $index"

@@ -137,17 +137,33 @@ var RootCtrl = function ($scope, $rootScope, UserModel,
     });
     $rootScope.openUserModal=function(userId) {
         $rootScope.userProfileLoader=true;
-        $('.small.modal.userModal')
+        $('#userModal')
             .modal('show')
         ;
         UserModel.getUserProfile(userId,function (data,status) {
-           if(status){
-               $rootScope.userProfileLoader=false;
-               $rootScope.thisUserInfo=data;
-           }
-           else {
-               //nth
-           }
+            if(status){
+                $rootScope.userProfileLoader=false;
+                $rootScope.thisUserInfo=data;
+            }
+            else {
+                //nth
+            }
+        });
+    };
+    $rootScope.openTeamModal=function(teamId) {
+        $rootScope.TeamProfileLoader=true;
+        $('#teamModal')
+            .modal('show')
+        ;
+        TeamModel.getTeamInfo(teamId,function (data,status) {
+            if(status){
+                $rootScope.TeamProfileLoader=false;
+                $rootScope.thisTeamInfo=data;
+                console.log($rootScope.thisTeamInfo);
+            }
+            else {
+                //nth
+            }
         });
     };
     $('.ui.dropdown')
