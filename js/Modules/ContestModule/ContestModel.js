@@ -317,10 +317,9 @@ var ContestModel = function ($http, Constants) {
                 callback(data, true);
             })
             .error(function (data, status) {
-                var msg ;
                 switch (status){
                     case 400:
-                        msg = data.error;
+                        msg = 'Bad request';
                         break;
                     case 401:
                         msg = 'Token is invalid or has expired.please sign in again';
