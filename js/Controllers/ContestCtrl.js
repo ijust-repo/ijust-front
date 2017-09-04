@@ -48,6 +48,16 @@ var ContestCtrl = function ($scope , mtNotifyService , $stateParams , $location 
                         //nth
                     }
                 });
+                alert("refresh pending");
+                // ContestModel.getAcceptedTeams($rootScope.contestId,function (data , status) {
+                //     if (status){
+                //         $scope.joinedTeams = data.accepted_teams;
+                //         $scope.joinedTeamsNumber = $scope.joinedTeams.length;
+                //         $scope.joinedCnt = $scope.joinedTeams.length;
+                //         $rootScope.notifyLoader = false ;
+                //     }
+                // });
+
                 // $scope.isShowPendingLoading = false ;
                 $rootScope.notifyLoader = false ;
             }

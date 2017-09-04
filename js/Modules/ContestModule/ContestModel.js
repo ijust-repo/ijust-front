@@ -645,6 +645,30 @@ var ContestModel = function ($http, Constants) {
             })
     };
 
+    var teamKick = function (contestId, teamId, callback) {
+       $http.delete(Constants.server + Constants.version + 'contest/' +contestId + '/team/' + teamId + '/kick')
+            .success(function (data,status) {
+                callback(data,true);
+            })
+            .error(function (data,satus) {
+                var msg ;
+                switch (status){
+                    case 401:
+                        msg = 'Token is invalid or has expired.please sign in again';
+                        break;
+                    case 403:
+                        msg = "You aren't owner or admin of the contest";
+                        break;
+                    case 404:
+                        msg = 'Contest or Team does not exist';
+                        break;
+                    default :
+                        msg = 'Unknown Error';
+                }
+                callback(msg, false);
+            })
+    };
+
     var getResult = function (contestId , callback) {
         $http.get(Constants.server + Constants.version + 'contest/' + contestId + '/result')
             .success(function (data,status) {
@@ -696,7 +720,8 @@ var ContestModel = function ($http, Constants) {
         teamUnJoin: teamUnJoin,
         teamReject: teamReject,
         getResult:getResult,
-        teamAccept: teamAccept
+        teamAccept: teamAccept,
+        teamKick:teamKick
     }
 };
 
