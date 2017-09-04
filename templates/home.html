@@ -46,15 +46,15 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="contest in contestsList" ui-sref="contest({contestId : contest.id})">
-                <td>{{contest.name}}</td>
-                <td>{{contest.owner.username}}</td>
-                <td>{{$parent.getDate(contest.starts_at)}}</td>
-                <td>{{$parent.getDate(contest.ends_at)}}</td>
+            <tr ng-repeat="contest in contestsList" >
+                <td  ui-sref="contest({contestId : contest.id})" >{{contest.name}}</td>
+                <td ng-click="openUserModal(contest.owner.id)" ><a>{{contest.owner.username}}</a></td>
+                <td ui-sref="contest({contestId : contest.id})">{{$parent.getDate(contest.starts_at)}}</td>
+                <td ui-sref="contest({contestId : contest.id})">{{$parent.getDate(contest.ends_at)}}</td>
                 <td data-tooltip="Pending : {{contest.pending_teams_num}}" data-inverted="">{{contest.accepted_teams_num}}</td>
-                <td ng-if="contest.is_active"><i class="large green checkmark icon"></i></td>
-                <td ng-if="!contest.is_active"><i class="large red close icon"></i></td>
-                <td ng-class="{  'negative': (contest.joining_status.status=='0') && !(contest.is_admin||contest.is_owner) ,
+                <td ui-sref="contest({contestId : contest.id})" ng-if="contest.is_active"><i class="large green checkmark icon"></i></td>
+                <td ui-sref="contest({contestId : contest.id})" ng-if="!contest.is_active"><i class="large red close icon"></i></td>
+                <td ui-sref="contest({contestId : contest.id})" ng-class="{  'negative': (contest.joining_status.status=='0') && !(contest.is_admin||contest.is_owner) ,
                                  'warning': (contest.joining_status.status=='1') && !(contest.is_admin||contest.is_owner)  ,
                                  'positive': (contest.joining_status.status=='2') && !(contest.is_admin||contest.is_owner) ,
                                  'admin':contest.is_admin ,
