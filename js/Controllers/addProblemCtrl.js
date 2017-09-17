@@ -6,7 +6,7 @@ var addProblemCtrl = function ($scope, $rootScope, ContestModel, Constants, Uplo
     $scope.showProblemCreateError = false;
     $scope.showUploadBodyError = false;
     $scope.showUploadTestCaseError = false;
-
+    document.title = "Add Problem";
     $scope.createProblem = function () {
         $scope.buttonLoader = true;
         ContestModel.createProblem($rootScope.contestId, $scope.problemInfo, function (data, status) {

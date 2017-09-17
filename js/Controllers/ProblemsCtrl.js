@@ -6,7 +6,7 @@ var ProblemsCtrl = function ($scope, $rootScope, ContestModel,$state,Upload,Cons
     $scope.editProblemInfo = {};
     $scope.problemName = '';
     $scope.showEditProblemError = false;
-
+    document.title = "Contest Problems";
     var toggleState = [1];
     $('.toggleIcon').on('click',function () {
         if(toggleState[0]){

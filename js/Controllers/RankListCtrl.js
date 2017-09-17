@@ -3,7 +3,7 @@ var RankListCtrl = function ($scope, $rootScope, SubmissionModel, ContestModel) 
     $rootScope.notifyLoader = true;
     $scope.result = {};
     $scope.problems = {};
-
+    document.title = "Rank List";
     $scope.updateRankList = function () {
         $rootScope.notifyLoader = true;
         $scope.result = {};

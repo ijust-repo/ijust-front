@@ -11,6 +11,7 @@ var ContestInfoCtrl = function ($scope, mtNotifyService, $stateParams, $interval
     $rootScope.myTeam = {};
     $rootScope.myTeams = $localStorage.myTeams ;
     $scope.showDeleteModal = false ;
+    document.title = "Contest Info";
     ContestModel.getContestInfoById($rootScope.contestId , function (data, status) {
         if (status){
             console.log(data);

@@ -3,7 +3,7 @@ var ProblemCtrl = function ($scope, $rootScope, Temp, ContestModel, SubmissionMo
 
     $scope.fileName = undefined;
     $scope.submitError = false;
-
+    document.title = "Problem";
         $location.hash('problem');
         $anchorScroll();
 

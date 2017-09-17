@@ -4,6 +4,7 @@ var SubmitsCtrl = function ($scope, $rootScope, SubmissionModel, SubmissionServi
     $scope.submitsInfo = {};
     $scope.reason = {};
     $scope.code = "";
+    document.title = "Contest Submits";
     try {
         if ($rootScope.myTeam.id) {
             SubmissionModel.getAllSubmissionInContest($rootScope.contestId, $rootScope.myTeam.id, function (data, status) {

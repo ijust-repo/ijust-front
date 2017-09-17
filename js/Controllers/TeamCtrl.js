@@ -10,7 +10,7 @@ var TeamCtrl = function ($scope , mtNotifyService , TeamModel , ContestModel , $
     $scope.showDeleteTeamError = false ;
     $scope.deleteTeamErrorMsg = "" ;
     $scope.editTeamInfo = {};
-
+    document.title = "Team";
     TeamModel.getTeamInfo($scope.teamId , function (data , status) {
         if (status) {
             $scope.teamInfo = data ;

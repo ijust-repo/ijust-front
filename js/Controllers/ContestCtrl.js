@@ -9,7 +9,7 @@ var ContestCtrl = function ($scope , mtNotifyService , $stateParams , $location 
     $scope.successJoinTeam = false ;
     $scope.rejectJoinTeam = false ;
 
-
+    document.title = "Contest";
 
     // to join
     $rootScope.myTeams = [];

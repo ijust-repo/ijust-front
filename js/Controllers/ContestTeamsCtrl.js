@@ -2,6 +2,7 @@ var ContestTeamsCtrl = function ($scope , $rootScope,ContestModel, $timeout) {
     $rootScope.notifyLoader = true ;
     $scope.joinedTeams = {} ;
     $scope.joinedCnt = 0 ;
+    document.title = "Contest Teams";
     try {
         ContestModel.getAcceptedTeams($rootScope.contestId,function (data , status) {
             if (status){
