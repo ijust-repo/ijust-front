@@ -60,7 +60,7 @@ var ijust = angular.module("ijust",
                 controller : 'ProblemCtrl'
             })
             .state('create_contest', {
-                url: '/create_contest' ,
+                url: '/#/create_contest' ,
                 templateUrl : '/templates/createContest.html' ,
                 controller : 'CreateContestCtrl'
             })
@@ -80,9 +80,10 @@ var ijust = angular.module("ijust",
         //             }
         //         }
         //     });
-        $locationProvider.html5Mode({
-            enabled: true
-        });
+
+        // $locationProvider.html5Mode({
+        //     enabled: true
+        // });
         $urlRouterProvider.otherwise('/');
     })
     //
