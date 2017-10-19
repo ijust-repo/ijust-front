@@ -11,7 +11,36 @@
     </div>
     <div class="textBox">
         <h1>what is ijust?</h1>
+
     </div>
+    <div class="aboutUsContainer">
+        <p>IJust is an open-source judge system used for ACM contests.
+            <br>Our system provides you with all the essential features a judge system demands. The main goal was to implement a secure and easy to use judge system for Iran University of Science and Technology (IUST).
+        </p>
+        <h2>Implementation Details</h2>
+        <p>Basically, our system is based on “Client-Server” architecture, the server consists of a Model and a Controller, and the client side uses an MVC architecture as seen below.</p>
+        <img class="ui centered image" src="/img/implementationDetails.png">
+        <br>
+        <p>
+            Server:
+            <ul style="list-style-type:disc">
+                <li>The server was implemented with Flask Framework.</li>
+                <li>Mongo-engine ORM was used for our MongoDB database.</li>
+                <li>For authentication we used Redis, since it offers a better performance among others.</li>
+            </ul>
+            Web Client:
+            <ul style="list-style-type:disc">
+                <li>Our single page website was created and designed using AngularJS framework.</li>
+                <li>Semantic-UI, Rome.js and particle.js were also used for a more responsive and user-friendly website.</li>
+            </ul>
+        </p>
+        <h2>Collaboration & Contribution</h2>
+        <P>Since our project is open-source, you can view our server and read more about it on github in the following link:
+            <a>https://github.com/k04la/ijust_server</a>
+        </P>
+
+    </div>
+
     <script>
         /* ---- particles.js config ---- */
 

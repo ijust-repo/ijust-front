@@ -25,7 +25,12 @@ ijust.factory('AuthInterceptor', function ($q, $window, $location, $injector,Con
                 }
                 else {
                     $rootScope.isAuthenticated = false;
-                    $location.path('/');
+                    //
+                    //if()
+                   if( $location.path() !=='/about_us')
+                        $location.path('/');
+                   else
+                       $location.path('/about_us');
                 }
             }
             return $q.reject(response);
