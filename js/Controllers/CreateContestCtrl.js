@@ -9,7 +9,7 @@ var CreateContestCtrl = function ($scope , $rootScope , ContestModel,$location, 
     $scope.contestInfo.starts_at=rome(start);
     $scope.contestInfo.ends_at=rome(end);
     $scope.dataSiteKey = Constants.dataSiteKey;
-
+    document.title = "Create Contest";
     function convertlocaltoUCP(date){
         var n_date=new Date(date);
         var d=new Date(moment.utc(n_date).format()).getTime() / 1000;

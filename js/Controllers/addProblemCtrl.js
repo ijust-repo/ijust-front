@@ -6,7 +6,7 @@ var addProblemCtrl = function ($scope, $rootScope, ContestModel, Constants, Uplo
     $scope.showProblemCreateError = false;
     $scope.showUploadBodyError = false;
     $scope.showUploadTestCaseError = false;
-
+    document.title = "Add Problem";
     $scope.createProblem = function () {
         $scope.buttonLoader = true;
         ContestModel.createProblem($rootScope.contestId, $scope.problemInfo, function (data, status) {
@@ -112,9 +112,14 @@ var addProblemCtrl = function ($scope, $rootScope, ContestModel, Constants, Uplo
                     if (response.status >= 400)
                         $scope.errorMsg = response.status + ': ' + response.data;
                     else if (response.status == 200) {
+                        $timeout(function() {
+                            $scope.showUploadProblemSuccess = false;
+                            var infoPath = "/contest/" + $rootScope.contestId + "/problems";
+                            $location.path(infoPath);
+                        }, 1500);
+                        $scope.showUploadProblemSuccess = true;
                         $('.test').removeClass('active').addClass('completed');
-                        var infoPath = "/contest/" + $rootScope.contestId + "/problems";
-                        $location.path(infoPath);
+
                     }
                 }, 500);
             },function (response) {

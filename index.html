@@ -93,7 +93,7 @@
     <title>
         iust acm judge
     </title>
-
+    <!--<base href="/">-->
 </head>
 
 <body ng-app="ijust" ng-controller="RootCtrl">
@@ -185,7 +185,7 @@
             </div>
         </form>
 
-        <div class="ui small modal userModal">
+        <div class="ui small modal userModal" id="userModal">
             <i class="close icon"></i>
             <div class="header">
                 Modal Title
@@ -208,6 +208,29 @@
                 </div>
             </div>
         </div>
+
+        <div class="ui small modal userModal" id="teamModal">
+            <i class="close icon"></i>
+            <div class="header">
+               Team Members
+            </div>
+            <div class="content">
+                <div class="ui loader" ng-show="$root.TeamProfileLoader" style="height: 300px"></div>
+                <div class="description" ng-show="!$root.TeamProfileLoader">
+                    <table class="ui definition table">
+                        <tbody>
+                        <tr>
+                            <td>{{$root.thisTeamInfo.owner.username}}</td>
+                        </tr>
+                        <tr ng-repeat="member in root.thisTeamInfo.members">
+                            <td>{{member.username}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
         <div>
             <mt-notify></mt-notify>
             <div ui-view></div>

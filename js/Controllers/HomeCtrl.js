@@ -11,7 +11,7 @@ var HomeCtrl = function ( $scope , mtNotifyService , ContestModel , TeamModel , 
     // $rootScope.myTeams = [] ;
     $rootScope.myTeams = [];
     $localStorage.myTeams = [] ;
-
+    document.title = "Home";
     TeamModel.getMyTeams(function (data, status) {
         if (status){
             $rootScope.myTeams=$.merge(data.member_teams,data.owner_teams); // jQuery function ( should be solved somehow better )

@@ -21,8 +21,8 @@
             <i class="browser icon"></i>
             Submits
         </a>
-        <a class="item" ng-show="$root.isAdmin||$root.isOwner" ui-sref-active="active">
-            <i class="users icon" ui-sref="contest.teams"></i>
+        <a class="item"  ui-sref="contest.teams" ng-show="$root.isAdmin||$root.isOwner" ui-sref-active="active">
+            <i class="users icon"></i>
             <div class="floating ui circular orange label teamButton">{{pendingTeamsNumber}}</div>
             <span ui-sref="contest.teams">Teams</span>
         </a>
