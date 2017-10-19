@@ -1,0 +1,67 @@
+#aboutUs {
+  background-color: white;
+  background-image: url("../img/pink dust.png");
+  width: 100vw;
+  height: 200vh;
+  position: absolute;
+  top: 0;
+  /* ---- reset ---- */
+  /* ---- particles.js container ---- */
+  /* ---- stats.js ---- */ }
+  #aboutUs * {
+    box-sizing: border-box; }
+  #aboutUs .border {
+    background: transparent;
+    border: 10px solid white;
+    margin: 50px;
+    width: calc(100% - 100px);
+    height: calc(100% - 100px);
+    position: fixed; }
+  #aboutUs body {
+    margin: 0;
+    font: normal 75% Arial, Helvetica, sans-serif; }
+  #aboutUs canvas {
+    display: block;
+    vertical-align: bottom; }
+  #aboutUs #particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%; }
+  #aboutUs .count-particles {
+    background: #000022;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 80px;
+    color: #13E8E9;
+    font-size: .8em;
+    text-align: left;
+    text-indent: 4px;
+    line-height: 14px;
+    padding-bottom: 2px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold; }
+  #aboutUs .js-count-particles {
+    font-size: 1.1em; }
+  #aboutUs #stats,
+  #aboutUs .count-particles {
+    -webkit-user-select: none; }
+  #aboutUs #stats {
+    border-radius: 3px 3px 0 0;
+    overflow: hidden; }
+  #aboutUs .count-particles {
+    border-radius: 0 0 3px 3px;
+    display: none; }
+  #aboutUs .textBox {
+    color: white;
+    z-index: +10000;
+    background-color: #333333;
+    width: 40%;
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    text-align: center; }
