@@ -64,6 +64,10 @@ var ijust = angular.module("ijust",
                 templateUrl : '/templates/createContest.html' ,
                 controller : 'CreateContestCtrl'
             })
+            .state('aboutUs', {
+                url: '/about_us' ,
+                templateUrl : '/templates/aboutUs.html'
+            })
             .state('home', {
                 url: '/home' ,
                 templateUrl: '/templates/home.html' ,

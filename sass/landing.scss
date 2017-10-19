@@ -80,4 +80,19 @@
       }
     }
   }
+  .aboutBox{
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    i{
+      font-size: 3rem;
+      line-height: 40px;
+    }
+    p{
+      //font-size: 1.5rem;
+      padding: 0 !important;
+      margin:0 !important;
+    }
+  }
 }

@@ -21,6 +21,7 @@
     "angular-cookies": "1.4.9",
     "rome": "^2.1.22",
     "moment": "^2.15.1",
-    "clipboard": "^1.6.1"
+    "clipboard": "^1.6.1",
+    "particles.js": "^2.0.0"
   }
 }

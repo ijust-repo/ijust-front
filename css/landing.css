@@ -46,3 +46,14 @@
         -ms-transform: translateX(-50%);
         -o-transform: translateX(-50%);
         transform: translateX(-50%); }
+  #landing .aboutBox {
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
+    bottom: 30px; }
+    #landing .aboutBox i {
+      font-size: 3rem;
+      line-height: 40px; }
+    #landing .aboutBox p {
+      padding: 0 !important;
+      margin: 0 !important; }
