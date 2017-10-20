@@ -60,7 +60,7 @@ var ijust = angular.module("ijust",
                 controller : 'ProblemCtrl'
             })
             .state('create_contest', {
-                url: '/#/create_contest' ,
+                url: '/create_contest' ,
                 templateUrl : '/templates/createContest.html' ,
                 controller : 'CreateContestCtrl'
             })
