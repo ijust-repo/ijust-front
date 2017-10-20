@@ -47,6 +47,7 @@ var HomeCtrl = function ( $scope , mtNotifyService , ContestModel , TeamModel , 
     ContestModel.getAdminContests(function (data,status) {
         if (status){
             $scope.adminContests = data.contests ;
+            console.log("adamin conteest ", $scope.adminContests );
             if (data.contests.length==0){
                 $scope.adminContetsEmptyError = true ;
             }

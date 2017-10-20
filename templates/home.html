@@ -130,7 +130,7 @@
                 <td>{{ac.owner.username}}</td>
                 <td>{{$parent.getDate(ac.starts_at)}}</td>
                 <td>{{$parent.getDate(ac.ends_at)}}</td>
-                <td data-tooltip="Pending : {{contest.pending_teams_num}}" data-inverted="">{{contest.accepted_teams_num}}</td>
+                <td data-tooltip="Pending : {{ac.pending_teams_num}}" data-inverted="">{{ac.accepted_teams_num}}</td>
                 <td ng-if="ac.is_active">
                     <i class="large green checkmark icon"></i>
                 </td>
